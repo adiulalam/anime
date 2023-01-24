@@ -77,23 +77,24 @@ export default function Home() {
 				<Slider {...settings} ref={slider}>
 					{data?.trending?.media?.map((e, i) => (
 						<div key={i} className="group p-2">
-							<div className="relative " onMouseEnter={isMouseInBound}>
+							<div className="relative ">
 								<Link href={`/${e.id}`}>
 									<div
 										className={`flex flex-col md:h-72 md:w-52 h-52 w-36 justify-end bg-cover bg-no-repeat rounded-lg`}
 										style={{
 											backgroundImage: `url(${e.coverImage.large})`,
 										}}
+										onMouseEnter={isMouseInBound}
 									>
 										<div className="flex md:max-h-12 max-h-10 text-sm md:text-base font-medium w-full text-ellipsis overflow-hidden rounded-lg backdrop-blur-md backdrop-contrast-50">
 											<h3 className="px-2">{e.title.userPreferred}</h3>
 										</div>
 									</div>
 								</Link>
-								{/* <div class="hidden group-hover:flex bg-red-600">Child</div> */}
+
 								<div
 									className={`hidden group-hover:flex absolute top-0 z-10 ${
-										showRight ? "-right-52" : "right-52"
+										showRight ? "left-36 md:left-52" : "right-36 md:right-52"
 									} bg-red-600 flex-col md:h-72 md:w-52 h-52 w-36 justify-end bg-cover bg-no-repeat rounded-lg`}
 									style={{
 										backgroundImage: `url(${e.coverImage.large})`,
