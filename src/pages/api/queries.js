@@ -22,26 +22,7 @@ export const getMedia = gql`
 `;
 
 export const getLandingPage = gql`
-	query getLandingPage{
-		trending: Page(page: 1, perPage: 20) {
-			pageInfo {
-				total
-				perPage
-				currentPage
-				hasNextPage
-			}
-			media(type: ANIME, isAdult: false, sort: [TRENDING_DESC]) {
-				id
-				title {
-					userPreferred
-				}
-				coverImage {
-					large
-					color
-				}
-				averageScore
-			}
-		}
+alia
 		popular: Page(page: 1, perPage: 20) {
 			pageInfo {
 				total
@@ -59,6 +40,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 		rating: Page(page: 1, perPage: 50) {
