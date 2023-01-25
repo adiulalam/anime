@@ -70,6 +70,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 		rating: Page(page: 1, perPage: 50) {
@@ -89,6 +100,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 		favourite: Page(page: 1, perPage: 20) {
@@ -108,6 +130,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 		upcoming: Page(page: 1, perPage: 20) {
@@ -127,6 +160,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 		year: Page(page: 1, perPage: 20) {
@@ -146,6 +190,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 		seasonal: Page(page: 1, perPage: 20) {
@@ -165,6 +220,17 @@ export const getLandingPage = gql`
 					color
 				}
 				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
 			}
 		}
 	}
