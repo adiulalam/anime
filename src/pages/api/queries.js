@@ -22,15 +22,15 @@ export const getMedia = gql`
 `;
 
 export const getLandingPage = gql`
-alia
-		popular: Page(page: 1, perPage: 20) {
+	query getLandingPage{
+		trending: Page(page: 1, perPage: 20) {
 			pageInfo {
 				total
 				perPage
 				currentPage
 				hasNextPage
 			}
-			media(type: ANIME, isAdult: false, sort: [POPULARITY_DESC]) {
+			media(type: ANIME, isAdult: false, sort: [TRENDING_DESC]) {
 				id
 				title {
 					userPreferred
@@ -51,6 +51,25 @@ alia
 					episode
 					timeUntilAiring
 				}
+			}
+		}
+		popular: Page(page: 1, perPage: 20) {
+			pageInfo {
+				total
+				perPage
+				currentPage
+				hasNextPage
+			}
+			media(type: ANIME, isAdult: false, sort: [POPULARITY_DESC]) {
+				id
+				title {
+					userPreferred
+				}
+				coverImage {
+					large
+					color
+				}
+				averageScore
 			}
 		}
 		rating: Page(page: 1, perPage: 50) {
