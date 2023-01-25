@@ -91,7 +91,7 @@ export default function Home() {
 								</Link>
 
 								<div
-									className={`hidden group-hover:flex hover:relative absolute top-0 z-10 ${
+									className={`hidden group-hover:flex hover:fixed absolute top-0 z-10 ${
 										showRight ? "left-36 md:left-52" : "right-36 md:right-52"
 									} flex-col md:h-72 md:w-56 h-52 w-40 justify-center bg-cover bg-no-repeat rounded-lg transition-all duration-300 ease-in-out`}
 									style={{
