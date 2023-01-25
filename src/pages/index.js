@@ -138,6 +138,17 @@ export default function Home() {
 											</div>
 										</div>
 									)}
+
+									<div className="flex flex-row flex-wrap w-auto h-auto justify-center items-center mt-2">
+										{e?.genres?.slice(0, 5)?.map((e, i) => (
+											<div
+												key={i}
+												className="flex w-auto h-auto items-center justify-center bg-slate-600 break-normal rounded-lg m-1 px-1"
+											>
+												{e}
+											</div>
+										))}
+									</div>
 								</div>
 							</div>
 						</div>
