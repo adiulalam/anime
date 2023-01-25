@@ -95,14 +95,20 @@ export default function Home() {
 								<div
 									className={`hidden group-hover:flex absolute top-0 z-10 ${
 										showRight ? "left-36 md:left-52" : "right-36 md:right-52"
-									} bg-red-600 flex-col md:h-72 md:w-52 h-52 w-36 justify-end bg-cover bg-no-repeat rounded-lg`}
+									} flex-col md:h-72 md:w-56 h-52 w-40 justify-center bg-cover bg-no-repeat rounded-lg`}
 									style={{
-										backgroundImage: `url(${e.coverImage.large})`,
+										clipPath: showRight
+											? "polygon(100% 0, 7% 0, 7% 40%, 0 50%, 7% 60%, 7% 100%, 100% 100%)"
+											: "polygon(0% 0%, 93% 0, 93% 40%, 100% 50%, 93% 60%, 93% 100%, 0 100%)",
+										color: pickTextColorBasedOnBgColorAdvanced(
+											e.coverImage.color ?? "#9CA38F",
+											"#FFFFFF",
+											"#000000"
+										),
+										backgroundColor: e.coverImage.color ?? "#9CA38F",
 									}}
 								>
-									<div className="flex md:max-h-12 max-h-10 text-sm md:text-base font-medium w-full text-ellipsis overflow-hidden rounded-lg backdrop-blur-md backdrop-contrast-50">
-										<h3 className="px-2">{e.title.userPreferred}</h3>
-									</div>
+									<div className="bg-red-300 flex px-5 absolute w-full h-auto">hello</div>
 								</div>
 							</div>
 						</div>
@@ -112,4 +118,20 @@ export default function Home() {
 			{/* ))} */}
 		</div>
 	);
+}
+
+function pickTextColorBasedOnBgColorAdvanced(bgColor, lightColor, darkColor) {
+	var color = bgColor.charAt(0) === "#" ? bgColor.substring(1, 7) : bgColor;
+	var r = parseInt(color.substring(0, 2), 16); // hexToR
+	var g = parseInt(color.substring(2, 4), 16); // hexToG
+	var b = parseInt(color.substring(4, 6), 16); // hexToB
+	var uicolors = [r / 255, g / 255, b / 255];
+	var c = uicolors.map((col) => {
+		if (col <= 0.03928) {
+			return col / 12.92;
+		}
+		return Math.pow((col + 0.055) / 1.055, 2.4);
+	});
+	var L = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+	return L > 0.179 ? darkColor : lightColor;
 }
