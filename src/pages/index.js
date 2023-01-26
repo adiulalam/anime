@@ -7,7 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Switcher from "@/components/switcher";
 import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-const humanizeDuration = require("humanize-duration");
+import humanizeDuration from "humanize-duration";
+import Color from "color";
 const { data } = require("../data.json");
 
 const gradientKeyframes = keyframes`
@@ -26,7 +27,13 @@ const gradientKeyframes = keyframes`
 
 const Gradient = styled.div`
 	animation: ${gradientKeyframes} 10s ease infinite;
-	background: linear-gradient(-45deg, #23a6d5, #e73c7e, ${(props) => props.startColour || "#ee7752"}, #23d5ab);
+	background: linear-gradient(
+		-45deg,
+		${(props) => Color(props.startColour).rotate(90).hex() || "#23a6d5"},
+		${(props) => Color(props.startColour).rotate(90).hex() || "#e73c7e"},
+		${(props) => props.startColour || "#ee7752"},
+		${(props) => Color(props.startColour).rotate(90).hex() || "#23d5ab"}
+	);
 	background-size: 400% 400%;
 `;
 
@@ -143,7 +150,7 @@ export default function Home() {
 								</Link>
 
 								<Gradient
-									startColour={e.coverImage.color ?? "#9CA38F"}
+									startColour={e.coverImage.color ?? "#ee7752"}
 									className={`hidden group-hover:flex flex-col items-center justify-evenly absolute top-0 z-10 ${
 										showRight ? "left-36 md:left-52 pl-5 pr-2" : "right-36 md:right-52 pr-5 pl-2"
 									} flex-col md:h-72 md:w-56 h-52 w-40 rounded-lg transition-all duration-300 ease-in-out`}
