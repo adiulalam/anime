@@ -11,18 +11,18 @@ import humanizeDuration from "humanize-duration";
 import Color from "color";
 const { data } = require("../data.json");
 
-const gradientKeyframes = keyframes`
-{
-	0% {
-		background-position: 0% 50%;
+const gradientKeyframes = `
+	{
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 `;
 
 const Gradient = styled.div`
