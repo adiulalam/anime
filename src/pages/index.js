@@ -11,7 +11,7 @@ import humanizeDuration from "humanize-duration";
 import Color from "color";
 const { data } = require("../data.json");
 
-const gradientKeyframes = `
+const gradientKeyframes = keyframes`
 	{
 		0% {
 			background-position: 0% 50%;
@@ -69,7 +69,7 @@ export default function Home() {
 		autoplay: true,
 		// speed: 5000,
 		// autoplaySpeed: 5000,
-		// pauseOnHover: true,
+		pauseOnHover: true,
 		// cssEase: "linear",
 	};
 
