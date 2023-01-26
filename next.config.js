@@ -3,6 +3,9 @@ const nextConfig = {
 	images: {
 		domains: ["s4.anilist.co"],
 	},
+	compiler: {
+		styledComponents: true,
+	},
 	reactStrictMode: true,
 };
 

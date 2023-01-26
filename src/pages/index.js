@@ -6,8 +6,29 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Switcher from "@/components/switcher";
 import { useEffect, useRef, useState } from "react";
+import styled, { keyframes } from "styled-components";
 const humanizeDuration = require("humanize-duration");
 const { data } = require("../data.json");
+
+const gradientKeyframes = keyframes`
+{
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+`;
+
+const Gradient = styled.div`
+	animation: ${gradientKeyframes} 10s ease infinite;
+	background: linear-gradient(-45deg, #23a6d5, #e73c7e, ${(props) => props.startColour || "#ee7752"}, #23d5ab);
+	background-size: 400% 400%;
+`;
 
 export default function Home() {
 	// const { loading, error, data, fetchMore } = useQuery(getLandingPage, {
@@ -99,8 +120,8 @@ export default function Home() {
 				</div>
 				<Slider {...settings} ref={slider}>
 					{data?.popular?.media?.map((e, i) => (
-						<div key={i} className="group p-2">
-							<div className=" relative ">
+						<div key={i} className="p-2">
+							<div className="group relative ">
 								<Link href={`/${e.id}`}>
 									<div
 										className={`flex flex-col md:h-72 md:w-52 h-52 w-36 justify-end bg-cover bg-no-repeat rounded-lg`}
@@ -121,7 +142,8 @@ export default function Home() {
 									</div>
 								</Link>
 
-								<div
+								<Gradient
+									startColour={e.coverImage.color ?? "#9CA38F"}
 									className={`hidden group-hover:flex flex-col items-center justify-evenly absolute top-0 z-10 ${
 										showRight ? "left-36 md:left-52 pl-5 pr-2" : "right-36 md:right-52 pr-5 pl-2"
 									} flex-col md:h-72 md:w-56 h-52 w-40 rounded-lg transition-all duration-300 ease-in-out`}
@@ -129,12 +151,6 @@ export default function Home() {
 										clipPath: showRight
 											? "polygon(100% 0, 7% 0, 7% 40%, 0 50%, 7% 60%, 7% 100%, 100% 100%)"
 											: "polygon(0% 0%, 93% 0, 93% 40%, 100% 50%, 93% 60%, 93% 100%, 0 100%)",
-										color: pickTextColorBasedOnBgColorAdvanced(
-											e.coverImage.color ?? "#9CA38F",
-											"#FFFFFF",
-											"#000000"
-										),
-										backgroundColor: e.coverImage.color ?? "#9CA38F",
 									}}
 								>
 									{(e?.status || e?.averageScore) && (
@@ -196,7 +212,7 @@ export default function Home() {
 											</div>
 										))}
 									</div>
-								</div>
+								</Gradient>
 							</div>
 						</div>
 					))}
@@ -205,20 +221,4 @@ export default function Home() {
 			{/* ))} */}
 		</div>
 	);
-}
-
-function pickTextColorBasedOnBgColorAdvanced(bgColor, lightColor, darkColor) {
-	var color = bgColor.charAt(0) === "#" ? bgColor.substring(1, 7) : bgColor;
-	var r = parseInt(color.substring(0, 2), 16); // hexToR
-	var g = parseInt(color.substring(2, 4), 16); // hexToG
-	var b = parseInt(color.substring(4, 6), 16); // hexToB
-	var uicolors = [r / 255, g / 255, b / 255];
-	var c = uicolors.map((col) => {
-		if (col <= 0.03928) {
-			return col / 12.92;
-		}
-		return Math.pow((col + 0.055) / 1.055, 2.4);
-	});
-	var L = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-	return L > 0.179 ? darkColor : lightColor;
 }
