@@ -46,21 +46,18 @@ export default function Home() {
 	const boxRef1 = useRef(null);
 	const [showRight, setShowRight] = useState(false);
 
-	const scroll = (e) => {
+	const scroll = (e) =>
 		slider === null
 			? 0
 			: e.wheelDelta > 0
 			? slider.current.slickNext()
 			: slider.current.slickPrev();
-	};
 
 	useEffect(() => {
 		const slickListDiv = document?.getElementsByClassName("slick-list")[0];
 		slickListDiv.addEventListener("wheel", scroll, true);
 
-		return () => {
-			slickListDiv.removeEventListener("wheel", scroll, true);
-		};
+		return () => slickListDiv.removeEventListener("wheel", scroll, true);
 	}, []);
 
 	const settings = {
