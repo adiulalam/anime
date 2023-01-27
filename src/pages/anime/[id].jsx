@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 
-const Post = () => {
+const Anime = () => {
 	const router = useRouter();
 	const { id } = router.query;
 
 	return <p>Post: {id}</p>;
 };
 
-export default Post;
+export default Anime;

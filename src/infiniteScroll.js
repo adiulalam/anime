@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, ApolloProvider, gql, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { client } from "./pages/api/client";
-import { getMedia } from "./pages/api/queries";
+import { client } from "./services/client";
+import { getMedia } from "./services/queries";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -16,7 +16,9 @@ export default function Home() {
 
 	const clickHandler = () => {
 		fetchMore({
-			variables: { page: data.Page.pageInfo.currentPage ? data.Page.pageInfo.currentPage + 1 : 1 },
+			variables: {
+				page: data.Page.pageInfo.currentPage ? data.Page.pageInfo.currentPage + 1 : 1,
+			},
 			updateQuery: (previousResult, { fetchMoreResult }) => ({
 				Page: {
 					pageInfo: {

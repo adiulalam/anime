@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { getLandingPage } from "./api/queries";
+import { getLandingPage } from "../services/queries";
 import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -29,9 +29,9 @@ const Gradient = styled.div`
 	animation: ${gradientKeyframes} 10s ease infinite;
 	background: linear-gradient(
 		-45deg,
-		${(props) => Color(props.startColour).rotate(90).hex() || "#23a6d5"},
-		${(props) => Color(props.startColour).rotate(90).hex() || "#e73c7e"},
-		${(props) => props.startColour || "#ee7752"},
+		${(props) => Color(props.startColour).rotate(180).hex() || "#23a6d5"},
+		${(props) => Color(props.startColour).rotate(270).hex() || "#e73c7e"},
+		${(props) => Color(props.startColour).rotate(0).hex() || "#ee7752"},
 		${(props) => Color(props.startColour).rotate(90).hex() || "#23d5ab"}
 	);
 	background-size: 400% 400%;
@@ -66,6 +66,7 @@ export default function Home() {
 		arrows: false,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		swipeToSlide: true,
 		variableWidth: true,
 		autoplay: true,
 		pauseOnHover: true,
@@ -124,15 +125,22 @@ export default function Home() {
 					<h2 className="px-2 text-xl md:text-3xl font-bold uppercase text-black dark:text-white">
 						Trending now
 					</h2>
-					<h3 className="px-2 text-sm md:text-md text-black dark:text-white">
-						View More
-					</h3>
+					<Link
+						href={{
+							pathname: "/anime/categories",
+							query: { sort: ["TRENDING_DESC"] },
+						}}
+					>
+						<h3 className="px-2 text-sm md:text-md text-black dark:text-white">
+							View More
+						</h3>
+					</Link>
 				</div>
 				<Slider {...settings} ref={slider}>
 					{data?.popular?.media?.map((e, i) => (
 						<div key={i} className="p-2">
-							<div className="group relative ">
-								<Link href={`/${e.id}`}>
+							<div className="group relative">
+								<Link href={`/anime/${e.id}`}>
 									<div
 										className={`flex flex-col md:h-72 md:w-52 h-52 w-36 justify-end bg-cover bg-no-repeat rounded-lg`}
 										style={{
@@ -143,6 +151,14 @@ export default function Home() {
 												? setShowRight(false)
 												: setShowRight(true)
 										}
+										onTouchStart={(e) => {
+											slider.current.slickPause();
+											(boxRef1.current.offsetWidth / 2).toFixed(0) <
+											e?.changedTouches?.[0]?.clientX
+												? setShowRight(false)
+												: setShowRight(true);
+										}}
+										onTouchEnd={() => slider.current.slickPlay()}
 									>
 										<div
 											className={`flex justify-center md:max-h-14 max-h-10 text-sm md:text-lg font-medium w-full 
