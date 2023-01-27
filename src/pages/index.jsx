@@ -47,7 +47,11 @@ export default function Home() {
 	const [showRight, setShowRight] = useState(false);
 
 	const scroll = (e) => {
-		slider === null ? 0 : e.wheelDelta > 0 ? slider.current.slickNext() : slider.current.slickPrev();
+		slider === null
+			? 0
+			: e.wheelDelta > 0
+			? slider.current.slickNext()
+			: slider.current.slickPrev();
 	};
 
 	useEffect(() => {
@@ -67,9 +71,9 @@ export default function Home() {
 		slidesToScroll: 1,
 		variableWidth: true,
 		autoplay: true,
+		pauseOnHover: true,
 		// speed: 5000,
 		// autoplaySpeed: 5000,
-		pauseOnHover: true,
 		// cssEase: "linear",
 	};
 
@@ -123,7 +127,9 @@ export default function Home() {
 					<h2 className="px-2 text-xl md:text-3xl font-bold uppercase text-black dark:text-white">
 						Trending now
 					</h2>
-					<h3 className="px-2 text-sm md:text-md text-black dark:text-white">View More</h3>
+					<h3 className="px-2 text-sm md:text-md text-black dark:text-white">
+						View More
+					</h3>
 				</div>
 				<Slider {...settings} ref={slider}>
 					{data?.popular?.media?.map((e, i) => (
@@ -141,8 +147,15 @@ export default function Home() {
 												: setShowRight(true)
 										}
 									>
-										<div className="flex md:max-h-14 max-h-10 text-sm md:text-lg font-medium w-full text-ellipsis overflow-hidden rounded-lg backdrop-blur-md backdrop-contrast-50">
-											<h3 className="px-2 text-black [text-shadow:_0_1px_0_rgb(255_255_255_/_40%)] dark:text-white dark:[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
+										<div
+											className={`flex justify-center md:max-h-14 max-h-10 text-sm md:text-lg font-medium w-full 
+												text-ellipsis overflow-hidden rounded-lg backdrop-blur-md backdrop-contrast-50 
+												backdrop-saturate-200 backdrop-brightness-200 dark:backdrop-brightness-75`}
+										>
+											<h3
+												className="px-2 text-center text-black [text-shadow:_0_1px_0_rgb(255_255_255_/_40%)] 
+												dark:text-white dark:[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]"
+											>
 												{e.title.userPreferred}
 											</h3>
 										</div>
@@ -152,7 +165,9 @@ export default function Home() {
 								<Gradient
 									startColour={e.coverImage.color ?? "#ee7752"}
 									className={`hidden group-hover:flex flex-col items-center justify-evenly absolute top-0 z-10 ${
-										showRight ? "left-36 md:left-52 pl-5 pr-2" : "right-36 md:right-52 pr-5 pl-2"
+										showRight
+											? "left-36 md:left-52 pl-5 pr-2"
+											: "right-36 md:right-52 pr-5 pl-2"
 									} flex-col md:h-72 md:w-56 h-52 w-40 rounded-lg transition-all duration-300 ease-in-out`}
 									style={{
 										clipPath: showRight
@@ -165,8 +180,10 @@ export default function Home() {
 											{e.status && (
 												<div
 													className={`${
-														statusMap[e.status].style ?? "bg-gray-300 dark:bg-gray-800"
-													} flex w-auto py-1 px-2 h-auto items-center justify-center break-normal rounded-lg text-black dark:text-white text-xs md:text-base`}
+														statusMap[e.status].style ??
+														"bg-gray-300 dark:bg-gray-800"
+													} flex w-auto py-1 px-2 h-auto items-center justify-center break-normal rounded-lg 
+														text-black dark:text-white text-xs md:text-base`}
 												>
 													{statusMap[e.status].name}
 												</div>
@@ -175,7 +192,8 @@ export default function Home() {
 												<div
 													className={`${scoreColour(
 														e.averageScore
-													)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full text-black dark:text-white text-xs md:text-base`}
+													)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full 
+														text-black dark:text-white text-xs md:text-base`}
 												>
 													{e.averageScore}
 												</div>
@@ -186,12 +204,20 @@ export default function Home() {
 									<div className="flex w-full h-auto justify-center items-center">
 										<div
 											className={`${
-												e.season ? seasonalMap[e.season] : "bg-gray-300 dark:bg-gray-800"
-											} flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black dark:text-white py-1 px-2 text-xs md:text-base`}
+												e.season
+													? seasonalMap[e.season]
+													: "bg-gray-300 dark:bg-gray-800"
+											} flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black 
+												dark:text-white py-1 px-2 text-xs md:text-base`}
 										>
 											{e?.nextAiringEpisode?.id
-												? `Episode ${e.nextAiringEpisode.episode} in ${humanizeDuration(
-														(e.nextAiringEpisode.timeUntilAiring * 1000).toFixed(0) ?? 0,
+												? `Episode ${
+														e.nextAiringEpisode.episode
+												  } in ${humanizeDuration(
+														(
+															e.nextAiringEpisode.timeUntilAiring *
+															1000
+														).toFixed(0) ?? 0,
 														{
 															units: ["d"],
 															round: true,
