@@ -1,3 +1,5 @@
+import { getCurrentSeason } from "./getCurrentSeason";
+
 export const statusMap = {
 	FINISHED: {
 		name: "Finished",
@@ -31,4 +33,74 @@ export const seasonalMap = {
 	SPRING: "bg-lime-400 dark:bg-lime-800",
 	SUMMER: "bg-rose-500 dark:bg-rose-800",
 	FALL: "bg-orange-400 dark:bg-orange-800",
+};
+
+export const carouselMap = {
+	trending: {
+		title: "Trending Now",
+		sort: "TRENDING_DESC",
+		filter: {},
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 3000,
+			cssEase: "linear",
+		},
+	},
+	popular: {
+		title: "Most Popular",
+		sort: "POPULARITY_DESC",
+		filter: {},
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 2000,
+			cssEase: "linear",
+		},
+	},
+	rating: {
+		title: "Highest Rated",
+		sort: "SCORE_DESC",
+		filter: {},
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 3000,
+		},
+	},
+	favourite: {
+		title: "Most Favourite",
+		sort: "FAVOURITES_DESC",
+		filter: {},
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 2000,
+		},
+	},
+	upcoming: {
+		title: "Top Upcoming",
+		sort: "POPULARITY_DESC",
+		filter: { status: "NOT_YET_RELEASED" },
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 4000,
+			cssEase: "linear",
+		},
+	},
+	year: {
+		title: "Top Anime This Year",
+		sort: "SCORE_DESC",
+		filter: { seasonYear: new Date().getFullYear() },
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 4000,
+		},
+	},
+	seasonal: {
+		title: "Top Anime This Season",
+		sort: "SCORE_DESC",
+		filter: { seasonYear: new Date().getFullYear(), season: `${getCurrentSeason()}` },
+		moreSettings: {
+			speed: 1000,
+			autoplaySpeed: 5000,
+			cssEase: "linear",
+		},
+	},
 };
