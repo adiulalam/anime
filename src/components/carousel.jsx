@@ -9,7 +9,7 @@ import { seasonalMap, scoreColour, statusMap } from "@/utils/constMap";
 
 export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => {
 	const slider = useRef(null);
-	const boxRef1 = useRef(null);
+	const carouselWidth = useRef(null);
 	const [showRight, setShowRight] = useState(false);
 
 	const scroll = (e) => {
@@ -28,7 +28,7 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 		slickListDiv.addEventListener("mouseenter", function () {
 			setTimeout(() => {
 				slickListDiv.addEventListener("wheel", scroll, true);
-			}, 1000);
+			}, 600);
 		});
 		slickListDiv.addEventListener("mouseleave", function () {
 			slickListDiv.removeEventListener("wheel", scroll, true);
@@ -51,7 +51,7 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 	};
 
 	return (
-		<div className="py-5" ref={boxRef1}>
+		<div className="py-5" ref={carouselWidth}>
 			<div className="flex flex-row justify-between items-center">
 				<h2 className="px-2 text-xl md:text-3xl font-bold uppercase text-black dark:text-white">
 					{title}
@@ -78,13 +78,14 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 										backgroundImage: `url(${e.coverImage.large})`,
 									}}
 									onMouseEnter={(e) =>
-										(boxRef1.current.offsetWidth / 2).toFixed(0) < e.clientX
+										(carouselWidth.current.offsetWidth / 2).toFixed(0) <
+										e.clientX
 											? setShowRight(false)
 											: setShowRight(true)
 									}
 									onTouchStart={(e) => {
 										slider.current.slickPause();
-										(boxRef1.current.offsetWidth / 2).toFixed(0) <
+										(carouselWidth.current.offsetWidth / 2).toFixed(0) <
 										e?.changedTouches?.[0]?.clientX
 											? setShowRight(false)
 											: setShowRight(true);
