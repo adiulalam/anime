@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 
 const Categories = () => {
 	const router = useRouter();
-	const { name, type } = router.query;
-	console.log("🚀 ~ file: categories.jsx:6 ~ Categories ~ name", type);
+	const { sort, ...rest } = router.query;
+	// console.log("🚀 ~ file: categories.jsx:6 ~ Categories ~ filter", rest);
 
-	return <p>Post: {type}</p>;
+	return <p>Post: {sort}</p>;
 };
 
 export default Categories;

@@ -1,26 +1,6 @@
 import { getCurrentSeason } from "@/utils/getCurrentSeason";
 import { gql } from "@apollo/client";
 
-export const getMedia = gql`
-	query Media($page: Int) {
-		Page(page: $page) {
-			pageInfo {
-				currentPage
-				lastPage
-				hasNextPage
-			}
-			media(type: ANIME) {
-				id
-				title {
-					romaji
-					english
-					native
-				}
-			}
-		}
-	}
-`;
-
 export const getLandingPage = gql`
 	query getLandingPage{
 		trending: Page(page: 1, perPage: 20) {
@@ -180,7 +160,7 @@ export const getLandingPage = gql`
 				currentPage
 				hasNextPage
 			}
-			media(type: ANIME, isAdult: false, sort: [SCORE_DESC], startDate_like: "${new Date().getFullYear()}%") {
+			media(type: ANIME, isAdult: false, sort: [SCORE_DESC], seasonYear: ${new Date().getFullYear()}) {
 				id
 				title {
 					userPreferred
