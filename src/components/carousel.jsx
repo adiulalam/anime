@@ -15,14 +15,6 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 	const scroll = (e) => {
 		e.preventDefault();
 
-		const container = document.body;
-		const containerScrollPosition = document.body.scrollLeft;
-		container.scrollTo({
-			top: 0,
-			left: containerScrollPosition + e.deltaY,
-			behaviour: "smooth",
-		});
-
 		slider === null
 			? 0
 			: e.wheelDelta > 0
@@ -32,7 +24,15 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 
 	useEffect(() => {
 		const slickListDiv = document?.getElementsByClassName("slick-list")[index];
-		slickListDiv.addEventListener("wheel", scroll, true);
+
+		slickListDiv.addEventListener("mouseenter", function () {
+			setTimeout(() => {
+				slickListDiv.addEventListener("wheel", scroll, true);
+			}, 1000);
+		});
+		slickListDiv.addEventListener("mouseleave", function () {
+			slickListDiv.removeEventListener("wheel", scroll, true);
+		});
 
 		return () => slickListDiv.removeEventListener("wheel", scroll, true);
 	}, [index]);
