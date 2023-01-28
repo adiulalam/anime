@@ -49,7 +49,7 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 	};
 
 	return (
-		<div className="py-5" ref={carouselWidth}>
+		<div className="py-5">
 			<div className="flex flex-row justify-between items-center">
 				<h2 className="px-2 text-xl md:text-3xl font-bold uppercase text-black dark:text-white">
 					{title}
@@ -65,11 +65,18 @@ export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => 
 					</h3>
 				</Link>
 			</div>
-			<Slider {...settings} ref={slider}>
-				{data?.media?.map((e, i) => (
-					<CarouselCard key={i} cardData={e} carouselWidth={carouselWidth} />
-				))}
-			</Slider>
+			<div ref={carouselWidth}>
+				<Slider {...settings} ref={slider}>
+					{data?.media?.map((e, i) => (
+						<CarouselCard
+							key={i}
+							cardData={e}
+							carouselWidth={carouselWidth}
+							slider={slider}
+						/>
+					))}
+				</Slider>
+			</div>
 		</div>
 	);
 };

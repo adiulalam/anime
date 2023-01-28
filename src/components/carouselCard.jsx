@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CarouselHover } from "./carouselHover";
 
-export const CarouselCard = ({ cardData, carouselWidth }) => {
+export const CarouselCard = ({ cardData, carouselWidth, slider }) => {
 	const [showRight, setShowRight] = useState(false);
 
 	return (
