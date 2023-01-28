@@ -18,4 +18,5 @@ const cache = new InMemoryCache({
 export const client = new ApolloClient({
 	uri: "https://graphql.anilist.co",
 	cache: cache,
+	ssrMode: typeof window === "undefined",
 });
