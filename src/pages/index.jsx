@@ -40,7 +40,9 @@ export default function Home({ data, isError }) {
 
 	return (
 		<div className="bg-white dark:bg-black">
-			<Switcher />
+			<div className="flex items-center justify-center">
+				<Switcher />
+			</div>
 			{Object.entries(data).map(([key, value], index) => (
 				<Carousel
 					data={value ?? []}
