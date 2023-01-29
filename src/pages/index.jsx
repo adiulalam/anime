@@ -6,7 +6,7 @@ import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
 import { useEffect, useState } from "react";
-import PageError from "./error";
+import PageError from "../components/error";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
