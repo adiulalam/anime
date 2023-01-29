@@ -6,9 +6,11 @@ import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
 import { useEffect, useState } from "react";
+import { gql } from "@apollo/client";
+import Error from "./error";
 // const { data } = require("../data.json");
 
-export default function Home({ data }) {
+export default function Home({ data, isError }) {
 	// const { loading, error, data, fetchMore } = useQuery(getLandingPage, {
 	// 	fetchPolicy: "cache-and-network",
 	// });
@@ -18,6 +20,10 @@ export default function Home({ data }) {
 	useEffect(() => {
 		setIsLoading(false);
 	}, [data]);
+
+	if (isError) {
+		return <Error message={isError?.message} />;
+	}
 
 	if (isLoading) {
 		return <h1>loading...</h1>;
@@ -42,13 +48,20 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-	const { data } = await client.query({
-		query: getLandingPage,
-	});
-
-	return {
-		props: {
-			data,
-		},
-	};
+	try {
+		const { data } = await client.query({
+			query: getLandingPage,
+		});
+		return {
+			props: {
+				data,
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				isError: JSON.parse(JSON.stringify(error)),
+			},
+		};
+	}
 }
