@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styled, { keyframes } from "styled-components";
 import zoro from "../assets/zoro.png";
 import Switcher from "@/components/switcher";
 import { Fade } from "@/utils/getAnimationStyle";
