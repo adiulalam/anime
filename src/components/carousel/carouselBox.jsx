@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { useEffect, useRef } from "react";
 import { CarouselCard } from "./carouselCard";
 
-export const Carousel = ({ data, moreSettings, title, sort, filter, index }) => {
+export const CarouselBox = ({ data, moreSettings, title, sort, filter, index }) => {
 	const slider = useRef(null);
 	const carouselWidth = useRef(null);
 

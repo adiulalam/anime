@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Switcher from "@/components/switcher";
-import { Carousel } from "@/components/carousel";
+import { CarouselBox } from "@/components/carousel/carouselBox";
 import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
@@ -44,7 +44,7 @@ export default function Home({ data, isError }) {
 				<Switcher />
 			</div>
 			{Object.entries(data).map(([key, value], index) => (
-				<Carousel
+				<CarouselBox
 					data={value ?? []}
 					title={carouselMap[key].title ?? ""}
 					sort={carouselMap[key].sort ?? ""}
