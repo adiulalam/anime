@@ -7,7 +7,7 @@ import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
 import { useEffect, useState } from "react";
 import { PageError } from "@/components/error";
-import CarouselSkeleton from "./carouselSkeleton";
+import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
