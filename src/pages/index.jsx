@@ -6,8 +6,7 @@ import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
 import { useEffect, useState } from "react";
-import { gql } from "@apollo/client";
-import Error from "./error";
+import PageError from "./error";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
@@ -22,7 +21,17 @@ export default function Home({ data, isError }) {
 	}, [data]);
 
 	if (isError) {
-		return <Error message={isError?.message} />;
+		return (
+			<PageError
+				message={isError?.message}
+				statuscode={
+					isError?.clientErrors?.[0]?.status ??
+					isError?.graphQLErrors?.[0]?.status ??
+					isError?.networkError?.[0]?.status ??
+					"Unknown"
+				}
+			/>
+		);
 	}
 
 	if (isLoading) {

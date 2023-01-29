@@ -25,3 +25,18 @@ export const Gradient = styled.div`
 	);
 	background-size: 400% 400%;
 `;
+
+const fadeKeyframes = keyframes`
+{
+	from {
+		box-shadow: inset -5px 0px 0px #888;
+	}
+	to {
+		box-shadow: inset -5px 0px 0px transparent;
+	}
+}
+`;
+
+export const Fade = styled.div`
+	animation: ${fadeKeyframes} 0.5s alternate infinite;
+`;
