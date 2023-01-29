@@ -1,4 +1,4 @@
-import PageError from "../components/error";
+import { PageError } from "@/components/error";
 
 function Error({ statusCode }) {
 	return (

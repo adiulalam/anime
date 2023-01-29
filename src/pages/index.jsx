@@ -6,7 +6,8 @@ import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
 import { useEffect, useState } from "react";
-import PageError from "../components/error";
+import { PageError } from "@/components/error";
+import CarouselSkeleton from "./carouselSkeleton";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
@@ -35,7 +36,7 @@ export default function Home({ data, isError }) {
 	}
 
 	if (isLoading) {
-		return <h1>loading...</h1>;
+		return <CarouselSkeleton />;
 	}
 
 	return (

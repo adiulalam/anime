@@ -3,7 +3,7 @@ import zoro from "../assets/zoro.png";
 import Switcher from "@/components/switcher";
 import { Fade } from "@/utils/getAnimationStyle";
 
-export default function PageError({ message, statuscode }) {
+export const PageError = ({ message, statuscode }) => {
 	return (
 		<div
 			className="flex items-center flex-col flex-wrap gap-2 px-4 justify-center h-screen m-0 text-center 
@@ -18,4 +18,4 @@ export default function PageError({ message, statuscode }) {
 			} ${message ? `- ${message}` : ""}`}</Fade>
 		</div>
 	);
-}
+};
