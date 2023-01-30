@@ -2,7 +2,7 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import useDarkMode from "@/hooks/useDarkMode";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const CarouselSkeleton = () => {
 	useDarkMode();
@@ -11,7 +11,8 @@ const CarouselSkeleton = () => {
 	const [numCard, setNumCard] = useState(0);
 	const [numCarousel, setNumCarousel] = useState(0);
 
-	useLayoutEffect(() => {
+	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+	useIsomorphicEffect(() => {
 		document.body.classList.add("overflow-hidden");
 
 		setNumCard(Math.ceil(width / 208));
