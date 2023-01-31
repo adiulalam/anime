@@ -8,6 +8,7 @@ import { client } from "@/services/client";
 import { useEffect, useState } from "react";
 import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
+import Filter from "./filter";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
@@ -41,7 +42,10 @@ export default function Home({ data, isError }) {
 
 	return (
 		<div className="bg-white dark:bg-black">
-			<div className="flex items-center justify-center">
+			<div className="flex items-center justify-center h-16 p-2">
+				<Filter />
+			</div>
+			<div className="flex items-center justify-end p-2">
 				<Switcher />
 			</div>
 			{Object.entries(data).map(([key, value], index) => (

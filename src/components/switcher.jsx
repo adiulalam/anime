@@ -15,9 +15,5 @@ export default function Switcher() {
 		setDarkSide(checked);
 	};
 
-	return (
-		<>
-			<DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} size={50} />
-		</>
-	);
+	return <DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} size={20} />;
 }
