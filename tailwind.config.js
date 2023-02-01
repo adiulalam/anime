@@ -6,4 +6,7 @@ module.exports = {
 		extend: { display: ["group-hover", "hover"] },
 	},
 	plugins: [],
+	corePlugins: {
+		preflight: false,
+	},
 };
