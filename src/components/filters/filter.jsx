@@ -1,55 +1,73 @@
-import { AutoComplete, Input } from "antd";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoSettings } from "react-icons/go";
+import { useCallback } from "react";
+import { useLazyQuery } from "@apollo/client";
+import _ from "lodash";
+import classNames from "classnames";
+import { getFilterResults } from "@/services/queries";
 
-const Filter = () => {
-	const [options, setOptions] = useState([]);
-	// console.log("🚀 ~ file: filter.jsx:7 ~ Filter ~ options", options);
-	const handleSearch = (value) => {
-		setOptions(value ? searchResult(value) : []);
-	};
-	const onSelect = (value) => {
-		console.log("onSelect", value);
-	};
+const SearchList = ({ element }) => {
+	const listRef = useRef(null);
+	const [isScrollingText, setIsScrollingText] = useState(false);
+
+	useEffect(() => {
+		setIsScrollingText(listRef?.current?.offsetWidth < listRef?.current?.scrollWidth);
+	}, [listRef]);
+
 	return (
-		<div className="flex h-full w-full items-center justify-center">
-			<div className="flex h-full md:w-[40rem] w-full rounded-lg">
-				<AutoComplete className="h-full w-full" options={options} onSelect={onSelect} onSearch={handleSearch}>
-					<Input.Search size="large" placeholder={"Search.."} enterButton />
-				</AutoComplete>
+		<li className="flex">
+			<div ref={listRef} className="whitespace-nowrap overflow-hidden">
+				{isScrollingText ? (
+					<marquee>{element?.title?.userPreferred}</marquee>
+				) : (
+					<p>{element?.title?.userPreferred}</p>
+				)}
 			</div>
-		</div>
+		</li>
 	);
 };
 
-const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
-const searchResult = (query) =>
-	new Array(getRandomInt(5))
-		.join(".")
-		.split(".")
-		.map((_, idx) => {
-			const category = `${query}${idx}`;
-			return {
-				value: category,
-				label: <Label query={query} category={category} />,
-			};
-		});
+const Filter = () => {
+	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 
-const Label = ({ query, category }) => {
+	const debouncer = useCallback(_.debounce(search, 1000), []);
+
+	const openModal = (value) => {
+		console.log("onSelect", value);
+	};
+
 	return (
-		<div
-			style={{
-				display: "flex",
-				justifyContent: "space-between",
-			}}
-		>
-			<span>
-				Found {query} on{" "}
-				<a href={`https://s.taobao.com/search?q=${query}`} target="_blank" rel="noopener noreferrer">
-					{category}
-				</a>
-			</span>
-			<span>{getRandomInt(200, 100)} results</span>
+		<div className="flex h-full w-full items-center justify-center">
+			<div className="dropdown dropdown-open flex flex-col h-full md:w-[40rem] w-full rounded-lg">
+				<input
+					className="flex h-full w-full rounded-lg p-2 dark:bg-white bg-black"
+					type={"text"}
+					placeholder={"Search.."}
+					onChange={(e) => debouncer({ variables: { search: e.target.value } })}
+				></input>
+				<div className="flex w-full">
+					<ul
+						tabIndex={0}
+						className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full"
+						style={{
+							opacity: _.isEmpty(data?.filter?.media) ? "0" : "1",
+							transition: "opacity .5s ease-in-out",
+						}}
+					>
+						{loading && (
+							<li>
+								<a>loading..</a>
+							</li>
+						)}
+						{data?.filter?.media?.map((element, index) => (
+							<SearchList key={index} element={element} />
+						))}
+					</ul>
+				</div>
+			</div>
+			<button type="button" onClick={openModal}>
+				<GoSettings className="flex h-full w-10 dark:fill-white fill-black" />
+			</button>
 		</div>
 	);
 };

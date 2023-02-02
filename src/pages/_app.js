@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import "@/styles/tailwindPreFlight.css";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../services/client";
 

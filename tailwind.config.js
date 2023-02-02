@@ -5,8 +5,5 @@ module.exports = {
 	theme: {
 		extend: { display: ["group-hover", "hover"] },
 	},
-	plugins: [],
-	corePlugins: {
-		preflight: false,
-	},
+	plugins: [require("daisyui")],
 };

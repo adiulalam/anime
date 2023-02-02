@@ -217,13 +217,13 @@ export const getLandingPage = gql`
 `;
 
 export const getFilterResults = gql`
-	query getFiltersResult($sort: [MediaSort], $search: String) {
-		Page(page: 1, perPage: 5) {
+	query getFiltersResult($search: String) {
+		filter: Page(page: 1, perPage: 5) {
 			pageInfo {
 				perPage
 				currentPage
 			}
-			media(type: ANIME, isAdult: false, sort: $sort, search: $search) {
+			media(type: ANIME, isAdult: false, sort: POPULARITY_DESC, search: $search) {
 				id
 				title {
 					userPreferred
