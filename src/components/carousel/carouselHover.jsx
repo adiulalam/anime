@@ -8,7 +8,7 @@ export const CarouselHover = ({ cardData, showRight }) => {
 			startColour={cardData.coverImage.color ?? "#ee7752"}
 			className={`hidden group-hover:flex flex-col items-center justify-evenly absolute top-0 z-10 ${
 				showRight ? "left-36 md:left-52 pl-5 pr-2" : "right-36 md:right-52 pr-5 pl-2"
-			} flex-col md:h-72 md:w-56 h-52 w-40 rounded-lg transition-all duration-300 ease-in-out`}
+			} md:h-72 md:w-56 h-52 w-40 rounded-lg transition-all duration-300 ease-in-out`}
 			style={{
 				clipPath: showRight
 					? "polygon(100% 0, 7% 0, 7% 40%, 0 50%, 7% 60%, 7% 100%, 100% 100%)"
@@ -21,7 +21,7 @@ export const CarouselHover = ({ cardData, showRight }) => {
 						<div
 							className={`${
 								statusMap[cardData.status].style ?? "bg-gray-300 dark:bg-gray-800"
-							} flex w-auto py-1 px-2 h-auto items-center justify-center break-normal rounded-lg 
+							} flex w-auto py-1 px-2 h-auto items-center justify-center break-normal rounded-lg
 														text-black dark:text-white text-xs md:text-base`}
 						>
 							{statusMap[cardData.status].name}
@@ -31,7 +31,7 @@ export const CarouselHover = ({ cardData, showRight }) => {
 						<div
 							className={`${scoreColour(
 								cardData.averageScore
-							)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full 
+							)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full
 														text-black dark:text-white text-xs md:text-base`}
 						>
 							{cardData.averageScore}
@@ -46,7 +46,7 @@ export const CarouselHover = ({ cardData, showRight }) => {
 						cardData.season
 							? seasonalMap[cardData.season]
 							: "bg-gray-300 dark:bg-gray-800"
-					} flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black 
+					} flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black
 												dark:text-white py-1 px-2 text-xs md:text-base`}
 				>
 					{cardData?.nextAiringEpisode?.id
