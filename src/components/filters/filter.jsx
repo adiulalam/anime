@@ -30,7 +30,7 @@ const SearchList = ({ element }) => {
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 
-	const debouncer = useCallback(_.debounce(search, 1000), []);
+	const debouncer = useCallback(_.debounce(search, 500), []);
 
 	const openModal = (value) => {
 		console.log("onSelect", value);
