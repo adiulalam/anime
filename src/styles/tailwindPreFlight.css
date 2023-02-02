@@ -14,7 +14,7 @@
 
 html {
 	/* line-height: 1.5; */
-	-webkit-text-size-adjust: 100%; 
+	-webkit-text-size-adjust: 100%;
 	-moz-tab-size: 4;
 	tab-size: 4;
 	font-family: theme(
@@ -250,6 +250,6 @@ video {
 	display: none;
 }
 
-.css-dev-only-do-not-override-ixblex .ant-input-search .ant-input-lg{
+.css-dev-only-do-not-override-ixblex .ant-input-search .ant-input-lg {
 	padding-bottom: 7.5px;
 }
