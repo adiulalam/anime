@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { GoSettings } from "react-icons/go";
 import { useCallback } from "react";
 import { useLazyQuery } from "@apollo/client";
@@ -30,7 +30,20 @@ const SearchList = ({ element }) => {
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 
-	const debouncer = useCallback(_.debounce(search, 500), []);
+	const [value, setValue] = useState("");
+	console.log("🚀 ~ file: filter.jsx:34 ~ Filter ~ value", value);
+
+	const debouncedSearch = useMemo(() => _.debounce(search, 500), [search]);
+
+	const handleChange = useCallback(
+		(e) => {
+			setValue({ variables: { search: e.target.value } });
+			debouncedSearch({ variables: { search: e.target.value } });
+		},
+		[debouncedSearch]
+	);
+
+	// const debouncer = useCallback(_.debounce(search, 500), []);
 
 	const openModal = (value) => {
 		console.log("onSelect", value);
@@ -38,12 +51,12 @@ const Filter = () => {
 
 	return (
 		<div className="flex h-full w-full items-center justify-center">
-			<div className="dropdown dropdown-open flex flex-col h-full md:w-[40rem] w-full rounded-lg">
+			<div className="dropdown flex flex-col h-full md:w-[40rem] w-full rounded-lg">
 				<input
 					className="flex h-full w-full rounded-lg p-2 dark:bg-white bg-black"
 					type={"text"}
 					placeholder={"Search.."}
-					onChange={(e) => debouncer({ variables: { search: e.target.value } })}
+					onChange={handleChange}
 				></input>
 				<div className="flex w-full">
 					<ul
@@ -54,7 +67,7 @@ const Filter = () => {
 							transition: "opacity .5s ease-in-out",
 						}}
 					>
-						{loading && (
+						{value.variables.search && loading && (
 							<li>
 								<a>loading..</a>
 							</li>
