@@ -31,7 +31,6 @@ const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 
 	const [value, setValue] = useState("");
-	console.log("🚀 ~ file: filter.jsx:34 ~ Filter ~ value", value);
 
 	const debouncedSearch = useMemo(() => _.debounce(search, 500), [search]);
 
