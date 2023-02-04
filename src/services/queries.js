@@ -228,6 +228,7 @@ export const getFilterResults = gql`
 				title {
 					userPreferred
 				}
+				format
 				averageScore
 				episodes
 				status

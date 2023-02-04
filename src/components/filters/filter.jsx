@@ -27,7 +27,15 @@ const SearchList = ({ element }) => {
 					</p>
 					{element?.averageScore ? <p>• Score: {element?.averageScore}</p> : <></>}
 					{element?.status ? <p>• Status: {element?.status}</p> : <></>}
-					{element?.episodes ? <p>• Episodes: {element?.episodes}</p> : <></>}
+					{element?.episodes ? (
+						element?.episodes > 1 ? (
+							<p>• Episodes: {element?.episodes}</p>
+						) : (
+							<p>• {element?.format}</p>
+						)
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</li>

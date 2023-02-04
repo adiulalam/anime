@@ -8,7 +8,7 @@ import { client } from "@/services/client";
 import { useEffect, useState } from "react";
 import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
-import Filter from "../components/filters/filter";
+import Filter from "@/components/filters/filter";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
