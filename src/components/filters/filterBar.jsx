@@ -4,14 +4,11 @@ import { useLazyQuery } from "@apollo/client";
 import _ from "lodash";
 import { getFilterResults } from "@/services/queries";
 import { FilterSearchBar } from "./filterSearchBar";
-import UseAnimations from "react-useanimations";
-import settings2 from "react-useanimations/lib/settings2";
-import { useTheme } from "next-themes";
+import { FilterPopover } from "./filterPopover";
 
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 	const [value, setValue] = useState({ search: "" });
-	const { theme } = useTheme();
 
 	const debouncedSearch = useMemo(() => _.debounce(search, 500), [search]);
 
@@ -23,10 +20,6 @@ const Filter = () => {
 		[debouncedSearch]
 	);
 
-	const openModal = (value) => {
-		console.log("onSelect", value);
-	};
-
 	return (
 		<div className="flex h-full w-full items-center justify-center">
 			<FilterSearchBar
@@ -35,13 +28,7 @@ const Filter = () => {
 				value={value}
 				loading={loading}
 			/>
-			<button type="button" onClick={openModal}>
-				<UseAnimations
-					animation={settings2}
-					size={50}
-					strokeColor={theme === "dark" || theme === "system" ? "white" : "black"}
-				/>
-			</button>
+			<FilterPopover />
 		</div>
 	);
 };

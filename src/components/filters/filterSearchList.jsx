@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const FilterSearchList = ({ list }) => {
 	const listRef = useRef(null);
-	const [isScrollingText, setIsScrollingText] = useState(false);
+	const [, setIsScrollingText] = useState(false);
 
 	useEffect(() => {
 		setIsScrollingText(listRef?.current?.offsetWidth < listRef?.current?.scrollWidth);
