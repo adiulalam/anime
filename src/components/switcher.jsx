@@ -1,18 +1,18 @@
-import { useEffect, useRef, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import useDarkMode from "@/hooks/useDarkMode";
+import { useTheme } from "next-themes";
 
-export default function Switcher({ isDarkMode, setIsDarkMode }) {
-	const [colorTheme, setTheme] = useDarkMode();
-
-	useEffect(() => {
-		setIsDarkMode(colorTheme === "light" ? true : false);
-	}, [colorTheme, setIsDarkMode]);
+export default function Switcher() {
+	const { theme, setTheme } = useTheme();
 
 	const toggleDarkMode = (checked) => {
-		setTheme(colorTheme);
-		setIsDarkMode(checked);
+		setTheme(checked ? "dark" : "light");
 	};
 
-	return <DarkModeSwitch checked={isDarkMode} onChange={toggleDarkMode} size={20} />;
+	return (
+		<DarkModeSwitch
+			checked={theme === "dark" || theme === "system"}
+			onChange={toggleDarkMode}
+			size={20}
+		/>
+	);
 }

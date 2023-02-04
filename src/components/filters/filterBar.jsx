@@ -7,10 +7,12 @@ import { getFilterResults } from "@/services/queries";
 import { FilterSearchBar } from "./filterSearchBar";
 import UseAnimations from "react-useanimations";
 import settings2 from "react-useanimations/lib/settings2";
+import { useTheme } from "next-themes";
 
-const Filter = ({ isDarkMode }) => {
+const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 	const [value, setValue] = useState({ search: "" });
+	const { theme } = useTheme();
 
 	const debouncedSearch = useMemo(() => _.debounce(search, 500), [search]);
 
@@ -40,7 +42,7 @@ const Filter = ({ isDarkMode }) => {
 				<UseAnimations
 					animation={settings2}
 					size={50}
-					strokeColor={isDarkMode ? "white" : "black"}
+					strokeColor={theme === "dark" || theme === "system" ? "white" : "black"}
 				/>
 			</button>
 		</div>

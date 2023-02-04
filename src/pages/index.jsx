@@ -9,7 +9,6 @@ import { useEffect, useRef, useState } from "react";
 import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
-import useDarkMode from "@/hooks/useDarkMode";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 // const { data } = require("../data.json");
 
@@ -18,9 +17,7 @@ export default function Home({ data, isError }) {
 	// 	fetchPolicy: "cache-and-network",
 	// });
 
-	useDarkMode();
 	const [isLoading, setIsLoading] = useState(true);
-	const [isDarkMode, setIsDarkMode] = useState(null);
 	useEffect(() => {
 		setIsLoading(false);
 	}, [data]);
@@ -51,10 +48,10 @@ export default function Home({ data, isError }) {
 	return (
 		<div className="bg-white dark:bg-black">
 			<div className="flex items-center justify-center h-16 p-2">
-				<Filter isDarkMode={isDarkMode} />
+				<Filter />
 			</div>
 			<div className="flex items-center justify-end p-2">
-				<Switcher isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+				<Switcher />
 			</div>
 			{Object.entries(data).map(([key, value], index) => (
 				<CarouselBox
