@@ -15,13 +15,20 @@ const SearchList = ({ element }) => {
 	}, [listRef]);
 
 	return (
-		<li className="flex">
-			<div ref={listRef} className="whitespace-nowrap overflow-hidden">
-				{isScrollingText ? (
-					<marquee>{element?.title?.userPreferred}</marquee>
-				) : (
-					<p>{element?.title?.userPreferred}</p>
-				)}
+		<li className="flex w-full rounded-box bg-black dark:bg-white">
+			<div
+				ref={listRef}
+				className="whitespace-nowrap w-full overflow-hidden text-white dark:text-black"
+			>
+				<div className={`flex flex-row gap-2 ${isScrollingText ? "animate-marquee" : ""}`}>
+					<p>
+						{element?.title?.userPreferred}{" "}
+						{element?.seasonYear ? `(${element?.seasonYear})` : ""}
+					</p>
+					{element?.averageScore ? <p>• Score: {element?.averageScore}</p> : <></>}
+					{element?.status ? <p>• Status: {element?.status}</p> : <></>}
+					{element?.episodes ? <p>• Episodes: {element?.episodes}</p> : <></>}
+				</div>
 			</div>
 		</li>
 	);
@@ -57,16 +64,17 @@ const Filter = () => {
 					placeholder={"Search.."}
 					onChange={handleChange}
 				></input>
-				<div className="flex w-full">
+				<div className="flex w-full ">
 					<ul
 						tabIndex={0}
-						className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full"
+						className="dropdown-content flex flex-col gap-1 
+						menu p-2 shadow w-full bg-white dark:bg-black rounded-box"
 						style={{
 							opacity: _.isEmpty(data?.filter?.media) ? "0" : "1",
 							transition: "opacity .5s ease-in-out",
 						}}
 					>
-						{value.variables.search && loading && (
+						{value?.variables?.search && loading && (
 							<li>
 								<a>loading..</a>
 							</li>
