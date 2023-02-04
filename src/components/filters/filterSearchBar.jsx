@@ -15,7 +15,7 @@ export const FilterSearchBar = ({ handleChange, searchData, value, loading }) =>
 				<ul
 					tabIndex={0}
 					className="dropdown-content flex flex-col gap-1 
-						menu p-2 shadow w-full bg-white dark:bg-black rounded-box"
+						menu p-2 shadow w-full bg-white dark:bg-black rounded-box "
 					style={{
 						opacity: _.isEmpty(searchData?.media) ? "0" : "1",
 						transition: "opacity .5s ease-in-out",

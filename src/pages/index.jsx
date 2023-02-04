@@ -9,13 +9,15 @@ import { useEffect, useState } from "react";
 import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
+import useDarkMode from "@/hooks/useDarkMode";
+import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 // const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
 	// const { loading, error, data, fetchMore } = useQuery(getLandingPage, {
 	// 	fetchPolicy: "cache-and-network",
 	// });
-
+	useDarkMode();
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -37,7 +39,12 @@ export default function Home({ data, isError }) {
 	}
 
 	if (isLoading) {
-		return <CarouselSkeleton />;
+		return (
+			<>
+				<FilterSkeleton />
+				<CarouselSkeleton />
+			</>
+		);
 	}
 
 	return (

@@ -5,7 +5,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 const CarouselSkeleton = () => {
-	useDarkMode();
 	const { height, width } = useWindowDimensions();
 
 	const [numCard, setNumCard] = useState(0);
