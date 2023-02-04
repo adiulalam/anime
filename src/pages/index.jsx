@@ -5,18 +5,13 @@ import { CarouselBox } from "@/components/carousel/carouselBox";
 import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
-// const { data } = require("../data.json");
 
 export default function Home({ data, isError }) {
-	// const { loading, error, data, fetchMore } = useQuery(getLandingPage, {
-	// 	fetchPolicy: "cache-and-network",
-	// });
-
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		setIsLoading(false);

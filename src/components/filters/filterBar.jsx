@@ -1,5 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { GoSettings } from "react-icons/go";
+import { useMemo, useState } from "react";
 import { useCallback } from "react";
 import { useLazyQuery } from "@apollo/client";
 import _ from "lodash";
@@ -23,8 +22,6 @@ const Filter = () => {
 		},
 		[debouncedSearch]
 	);
-
-	// const debouncer = useCallback(_.debounce(search, 500), []);
 
 	const openModal = (value) => {
 		console.log("onSelect", value);
