@@ -5,7 +5,7 @@ import { CarouselBox } from "@/components/carousel/carouselBox";
 import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
@@ -17,9 +17,10 @@ export default function Home({ data, isError }) {
 	// const { loading, error, data, fetchMore } = useQuery(getLandingPage, {
 	// 	fetchPolicy: "cache-and-network",
 	// });
+
 	useDarkMode();
 	const [isLoading, setIsLoading] = useState(true);
-
+	const [isDarkMode, setIsDarkMode] = useState(null);
 	useEffect(() => {
 		setIsLoading(false);
 	}, [data]);
@@ -50,10 +51,10 @@ export default function Home({ data, isError }) {
 	return (
 		<div className="bg-white dark:bg-black">
 			<div className="flex items-center justify-center h-16 p-2">
-				<Filter />
+				<Filter isDarkMode={isDarkMode} />
 			</div>
 			<div className="flex items-center justify-end p-2">
-				<Switcher />
+				<Switcher isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 			</div>
 			{Object.entries(data).map(([key, value], index) => (
 				<CarouselBox

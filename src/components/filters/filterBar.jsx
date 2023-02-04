@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { GoSettings } from "react-icons/go";
 import { useCallback } from "react";
 import { useLazyQuery } from "@apollo/client";
 import _ from "lodash";
-import classNames from "classnames";
 import { getFilterResults } from "@/services/queries";
 import { FilterSearchBar } from "./filterSearchBar";
+import UseAnimations from "react-useanimations";
+import settings2 from "react-useanimations/lib/settings2";
 
-const Filter = () => {
+const Filter = ({ isDarkMode }) => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
-
 	const [value, setValue] = useState({ search: "" });
 
 	const debouncedSearch = useMemo(() => _.debounce(search, 500), [search]);
@@ -37,7 +37,11 @@ const Filter = () => {
 				loading={loading}
 			/>
 			<button type="button" onClick={openModal}>
-				<GoSettings className="flex h-full w-10 dark:fill-white fill-black" />
+				<UseAnimations
+					animation={settings2}
+					size={50}
+					strokeColor={isDarkMode ? "white" : "black"}
+				/>
 			</button>
 		</div>
 	);

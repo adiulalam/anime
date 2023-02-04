@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import useDarkMode from "@/hooks/useDarkMode";
 
-export default function Switcher() {
+export default function Switcher({ isDarkMode, setIsDarkMode }) {
 	const [colorTheme, setTheme] = useDarkMode();
-	const [darkSide, setDarkSide] = useState(null);
 
 	useEffect(() => {
-		setDarkSide(colorTheme === "light" ? true : false);
-	}, [colorTheme]);
+		setIsDarkMode(colorTheme === "light" ? true : false);
+	}, [colorTheme, setIsDarkMode]);
 
 	const toggleDarkMode = (checked) => {
 		setTheme(colorTheme);
-		setDarkSide(checked);
+		setIsDarkMode(checked);
 	};
 
-	return <DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} size={20} />;
+	return <DarkModeSwitch checked={isDarkMode} onChange={toggleDarkMode} size={20} />;
 }
