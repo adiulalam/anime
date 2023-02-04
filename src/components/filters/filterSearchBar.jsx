@@ -1,17 +1,21 @@
 import _ from "lodash";
 import Skeleton from "react-loading-skeleton";
 import { FilterSearchList } from "./filterSearchList";
+import { BsSearch } from "react-icons/bs";
 
 export const FilterSearchBar = ({ handleChange, searchData, value, loading }) => {
 	return (
 		<div className="dropdown flex flex-col h-full md:w-[40rem] w-full rounded-lg">
-			<input
-				className="flex h-full w-full rounded-lg p-2 dark:bg-white bg-black"
-				type={"text"}
-				placeholder={"Search.."}
-				onChange={(e) => handleChange(e)}
-			></input>
-			<div className="flex w-full ">
+			<div className="flex relative w-full h-full pb-1">
+				<BsSearch className="absolute top-4 left-2 h-4 w-4 dark:fill-black fill-white " />
+				<input
+					className="flex pl-10 h-full w-full rounded-lg p-2 dark:bg-white bg-black"
+					type={"text"}
+					placeholder={"Search.."}
+					onChange={(e) => handleChange(e)}
+				></input>
+			</div>
+			<div className="flex w-full">
 				<ul
 					tabIndex={0}
 					className="dropdown-content flex flex-col gap-1 
