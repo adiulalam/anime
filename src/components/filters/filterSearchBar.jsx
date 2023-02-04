@@ -1,4 +1,5 @@
 import _ from "lodash";
+import Skeleton from "react-loading-skeleton";
 import { FilterSearchList } from "./filterSearchList";
 
 export const FilterSearchBar = ({ handleChange, searchData, value, loading }) => {
@@ -21,8 +22,11 @@ export const FilterSearchBar = ({ handleChange, searchData, value, loading }) =>
 					}}
 				>
 					{value?.search && loading && (
-						<li>
-							<a>loading..</a>
+						<li className="flex w-full rounded-box bg-black dark:bg-white">
+							<Skeleton
+								className="flex h-full w-full items-center bg-white dark:bg-black"
+								highlightColor="#4444"
+							/>
 						</li>
 					)}
 					{searchData?.media?.map((element, index) => (
