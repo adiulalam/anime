@@ -52,6 +52,7 @@ export const FilterPopover = () => {
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
 										filterKey={"selected"}
+										label={"Select Status"}
 									/>
 								</div>
 							</div>

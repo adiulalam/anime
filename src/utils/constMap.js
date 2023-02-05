@@ -104,3 +104,10 @@ export const carouselMap = {
 		},
 	},
 };
+
+export const filterMap = {
+	selected: {
+		filterArrayKeys: ["a", "b", "c", "d", "e"],
+		filterArrayMap: { a: "A", b: "B", c: "C", d: "D", e: "E" },
+	},
+};
