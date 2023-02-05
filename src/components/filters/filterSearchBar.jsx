@@ -9,7 +9,7 @@ export const FilterSearchBar = ({ handleChange, searchData, value, loading }) =>
 			<div className="flex relative w-full h-full pb-1">
 				<BsSearch className="absolute top-4 left-2 h-4 w-4 dark:fill-black fill-white " />
 				<input
-					className="flex pl-10 h-full w-full rounded-lg p-2 dark:bg-white bg-black"
+					className="flex pl-10 h-full w-full rounded-lg p-2 dark:bg-white bg-black text-white dark:text-black"
 					type={"text"}
 					placeholder={"Search.."}
 					onChange={(e) => handleChange(e)}

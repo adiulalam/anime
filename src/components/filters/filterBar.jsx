@@ -9,10 +9,10 @@ const cleanDeep = require("clean-deep");
 
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
-	const [value, setValue] = useState({ search: "" });
+	const [filterValue, setFilterValue] = useState({ search: "" });
 
 	const handleChange = (e) => {
-		setValue({ search: e.target.value });
+		setFilterValue({ search: e.target.value });
 	};
 
 	const debouncedSearch = useMemo(
@@ -21,15 +21,15 @@ const Filter = () => {
 	);
 
 	useEffect(() => {
-		!_.isEmpty(value?.search) && debouncedSearch({ variables: cleanDeep(value) });
-	}, [value, debouncedSearch]);
+		!_.isEmpty(filterValue?.search) && debouncedSearch({ variables: cleanDeep(filterValue) });
+	}, [filterValue, debouncedSearch]);
 
 	return (
 		<div className="flex h-full w-full items-center justify-center">
 			<FilterSearchBar
 				handleChange={handleChange}
 				searchData={data?.filter}
-				value={value}
+				value={filterValue}
 				loading={loading}
 			/>
 			<FilterPopover />

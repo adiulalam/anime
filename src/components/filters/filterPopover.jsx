@@ -1,5 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import settings2 from "react-useanimations/lib/settings2";
 import UseAnimations from "react-useanimations";
 import { useTheme } from "next-themes";
@@ -8,18 +8,7 @@ import { FilterAutocomplete } from "./filterAutocomplete";
 export const FilterPopover = () => {
 	const { theme } = useTheme();
 
-	const solutions = [
-		{
-			name: "Insights",
-			description: "Measure actions your users take",
-			href: "##",
-		},
-		{
-			name: "Automations",
-			description: "Create your own targeted content",
-			href: "##",
-		},
-	];
+	const [filterValue, setFilterValue] = useState({ search: "", selected: [] });
 	return (
 		<Popover className=" relative">
 			{({ open }) => (
@@ -59,7 +48,11 @@ export const FilterPopover = () => {
 											</div>
 										</a>
 									))} */}
-									<FilterAutocomplete />
+									<FilterAutocomplete
+										filterValue={filterValue}
+										setFilterValue={setFilterValue}
+										filterKey={"selected"}
+									/>
 								</div>
 							</div>
 						</Popover.Panel>

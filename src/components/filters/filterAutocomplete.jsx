@@ -1,12 +1,13 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { BsChevronExpand, BsCheck2 } from "react-icons/bs";
+import _ from "lodash";
 
 const people = ["a", "b", "c", "d", "e"];
 const peopleMap = { a: "A", b: "B", c: "C", d: "D", e: "E" };
 
-export const FilterAutocomplete = () => {
-	const [selected, setSelected] = useState([]);
+export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) => {
+	// const [filterValue, setFilterValue] = useState({ search: "", selected: [] });
 	const [query, setQuery] = useState("");
 
 	const filteredPeople =
@@ -19,7 +20,11 @@ export const FilterAutocomplete = () => {
 						.includes(query.toLowerCase().replace(/\s+/g, ""))
 			  );
 	return (
-		<Combobox value={selected} onChange={setSelected} multiple>
+		<Combobox
+			value={_.get(filterValue, filterKey)}
+			onChange={(e) => setFilterValue((prev) => ({ ..._.set(prev, filterKey, e) }))}
+			multiple
+		>
 			{({ value }) => (
 				<div className="relative mt-1">
 					<Combobox.Label>Label:</Combobox.Label>
