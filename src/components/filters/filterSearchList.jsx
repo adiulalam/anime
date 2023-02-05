@@ -3,19 +3,19 @@ import Link from "next/link";
 
 export const FilterSearchList = ({ list }) => {
 	const listRef = useRef(null);
-	const [, setIsScrollingText] = useState(false);
+	const [isScrollingText, setIsScrollingText] = useState(false);
 
 	useEffect(() => {
 		setIsScrollingText(listRef?.current?.offsetWidth < listRef?.current?.scrollWidth);
 	}, [listRef]);
 
 	return (
-		<Link href={`/anime/${list.id}`}>
-			<li className="flex w-full rounded-box bg-black dark:bg-white">
-				<div
-					ref={listRef}
-					className="whitespace-nowrap w-full overflow-hidden text-white dark:text-black"
-				>
+		<li className="flex w-full rounded-box bg-black dark:bg-white">
+			<div
+				ref={listRef}
+				className="whitespace-nowrap w-full overflow-hidden text-white dark:text-black"
+			>
+				<Link href={`/anime/${list.id}`}>
 					<div
 						className={`flex flex-row gap-2 ${
 							isScrollingText ? "animate-marquee" : ""
@@ -37,8 +37,8 @@ export const FilterSearchList = ({ list }) => {
 							<></>
 						)}
 					</div>
-				</div>
-			</li>
-		</Link>
+				</Link>
+			</div>
+		</li>
 	);
 };
