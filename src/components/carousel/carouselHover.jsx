@@ -66,7 +66,9 @@ export const CarouselHover = ({ cardData, showRight }) => {
 			{cardData.episodes && (
 				<div className="flex w-full h-auto justify-center items-center">
 					<div className="flex py-1 px-2 md:px-4 h-auto items-center justify-center bg-slate-400 dark:bg-slate-800 text-black dark:text-white break-normal rounded-lg text-xs md:text-base">
-						Total Episodes: {cardData.episodes}
+						{cardData.episodes > 1
+							? `Total Episodes: ${cardData.episodes}`
+							: cardData.format ?? "Unknown"}
 					</div>
 				</div>
 			)}
