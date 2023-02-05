@@ -10,12 +10,15 @@ export const FilterSearchList = ({ list }) => {
 	}, [listRef]);
 
 	return (
-		<li className="flex w-full rounded-box bg-black dark:bg-white">
-			<div
-				ref={listRef}
-				className="whitespace-nowrap w-full overflow-hidden text-white dark:text-black"
+		<li className="flex w-full h-full rounded-box bg-black dark:bg-white ">
+			<Link
+				href={`/anime/${list.id}`}
+				className="flex h-full w-full focus:bg-neutral-700	dark:focus:bg-neutral-300"
 			>
-				<Link href={`/anime/${list.id}`}>
+				<div
+					ref={listRef}
+					className="whitespace-nowrap w-full h-full overflow-hidden text-white dark:text-black"
+				>
 					<div
 						className={`flex flex-row gap-2 ${
 							isScrollingText ? "animate-marquee" : ""
@@ -37,8 +40,8 @@ export const FilterSearchList = ({ list }) => {
 							<></>
 						)}
 					</div>
-				</Link>
-			</div>
+				</div>
+			</Link>
 		</li>
 	);
 };

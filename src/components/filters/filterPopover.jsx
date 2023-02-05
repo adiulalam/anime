@@ -46,7 +46,7 @@ export const FilterPopover = () => {
 										<a
 											key={item.name}
 											href={item.href}
-											className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+											className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-800 dark:hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
 										>
 											<div className="ml-4">
 												<p className="text-sm font-medium text-gray-900">

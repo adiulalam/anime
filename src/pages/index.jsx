@@ -45,7 +45,7 @@ export default function Home({ data, isError }) {
 			<div className="flex items-center justify-center h-16 p-2">
 				<Filter />
 			</div>
-			<div className="flex items-center justify-end p-2">
+			<div className="flex items-center justify-end px-2">
 				<Switcher />
 			</div>
 			{Object.entries(data).map(([key, value], index) => (
