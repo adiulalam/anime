@@ -17,6 +17,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, ""))
 			  );
+
 	return (
 		<Combobox
 			value={_.get(filterValue, filterKey)}
@@ -24,24 +25,34 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 			multiple={_.isArray(_.get(filterValue, filterKey))}
 		>
 			{({ value }) => (
-				<div className="relative mt-1">
-					<Combobox.Label>{label}</Combobox.Label>
+				<div className="relative mt-1 ">
+					<Combobox.Label className={"text-white dark:text-black"}>
+						{label}
+					</Combobox.Label>
 					{_.isArray(value) && (
-						<div className="flex inset-y-0 left-0 items-center pr-2">
-							{value.map((key) => filterArrayMap[key])}
+						<div className="flex flex-row flex-wrap gap-1 text-black dark:text-white py-1">
+							{value.map((key, index) => (
+								<div
+									key={index}
+									className="flex flex-col px-2 rounded-3xl bg-white dark:bg-black"
+								>
+									{filterArrayMap[key]}
+								</div>
+							))}
 						</div>
 					)}
 					<div
-						className="relative w-full cursor-default overflow-hidden rounded-lg bg-white 
-				text-left shadow-md focus:outline-none sm:text-sm"
+						className="relative w-full cursor-default overflow-hidden rounded-lg text-left shadow-md 
+						focus:outline-none sm:text-sm bg-white dark:bg-black text-black dark:text-white"
 					>
 						<Combobox.Input
 							className="w-full border-none focus:ring-inherit py-2 pl-3 pr-10 text-sm leading-5 
-							text-gray-900 focus:ring-0 bg-inherit"
+							focus:ring-0 bg-inherit"
 							displayValue={(people) =>
 								_.isArray(people) ? query : filterArrayMap[people]
 							}
 							onChange={(event) => setQuery(event.target.value)}
+							placeholder={"search.."}
 						/>
 						<Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
 							<BsChevronExpand className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -56,26 +67,23 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 					>
 						<Combobox.Options
 							className="flex flex-col mt-1 max-h-60 w-full overflow-auto rounded-md 
-					bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
-					sm:text-sm"
+					py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
+					sm:text-sm bg-white dark:bg-black text-black dark:text-white"
 						>
 							{_.isEmpty(filteredQuery) && query !== "" ? (
-								<div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+								<div className="relative cursor-default select-none py-2 px-4">
 									Nothing found.
 								</div>
 							) : (
 								filteredQuery.map((element, index) => (
 									<Combobox.Option
 										key={index}
-										className={({ active }) =>
-											`relative cursor-default select-none py-2 pl-10 pr-4 ${
-												active ? "bg-teal-600 text-white" : "text-gray-900"
-											}`
-										}
+										className={`relative cursor-default select-none py-2 pl-10 pr-4 
+										hover:bg-neutral-300 hover:dark:bg-neutral-700`}
 										value={element}
 										onClick={() => setQuery("")}
 									>
-										{({ selected, active }) => (
+										{({ selected }) => (
 											<>
 												<span
 													className={`block truncate ${
@@ -86,8 +94,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 												</span>
 												{selected ? (
 													<span
-														className={`absolute inset-y-0 left-0 flex items-center pl-3 
-													${active ? "text-white" : "text-teal-600"}`}
+														className={`absolute inset-y-0 left-0 flex items-center pl-3 `}
 													>
 														<BsCheck2
 															className="h-5 w-5"
