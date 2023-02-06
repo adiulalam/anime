@@ -5,17 +5,13 @@ import UseAnimations from "react-useanimations";
 import { useTheme } from "next-themes";
 import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
+import { FilterSlider } from "./filterSlider";
 
 export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 	const { theme } = useTheme();
 
 	const [filterValue, setFilterValue] = useState({ search: "", selected: [] });
 
-	function log(value) {
-		console.log(value);
-	}
 	return (
 		<Popover className="relative flex h-full w-full items-center justify-center">
 			{({ open }) => (
@@ -51,13 +47,12 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 										filterKey={"selected"}
 										label={"Select Status:"}
 									/>
-									<Slider
-										range
-										allowCross={false}
-										defaultValue={[1, 50]}
-										min={1}
+									<FilterSlider
+										min={0}
 										max={50}
-										onAfterChange={log}
+										interval={10}
+										label={"Label"}
+										range={true}
 									/>
 								</div>
 							</div>

@@ -25,7 +25,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 			multiple={_.isArray(_.get(filterValue, filterKey))}
 		>
 			{({ value }) => (
-				<div className="relative mt-1 ">
+				<div className="relative">
 					<Combobox.Label className={"text-white dark:text-black"}>
 						{label}
 					</Combobox.Label>
