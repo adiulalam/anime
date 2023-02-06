@@ -107,7 +107,7 @@ export const carouselMap = {
 
 export const filterMap = {
 	selected: {
-		filterArrayKeys: ["a", "b", "c", "d", "e"],
-		filterArrayMap: { a: "A", b: "B", c: "C", d: "D", e: "E" },
+		filterArrayKeys: ["a", "b", "c", "d", "e", "f", "g", "h"],
+		filterArrayMap: { a: "A", b: "B", c: "C", d: "D", e: "E", f: "F", g: "G", h: "H" },
 	},
 };

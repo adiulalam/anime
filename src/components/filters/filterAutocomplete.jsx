@@ -46,13 +46,13 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 						focus:outline-none sm:text-sm bg-white dark:bg-black text-black dark:text-white"
 					>
 						<Combobox.Input
-							className="w-full border-none focus:ring-inherit py-2 pl-3 pr-10 text-sm leading-5 
-							focus:ring-0 bg-inherit"
+							className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 
+							focus:ring-0 focus:outline-none bg-inherit"
 							displayValue={(people) =>
 								_.isArray(people) ? query : filterArrayMap[people]
 							}
 							onChange={(event) => setQuery(event.target.value)}
-							placeholder={"search.."}
+							placeholder={"Search.."}
 						/>
 						<Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
 							<BsChevronExpand className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -78,7 +78,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 								filteredQuery.map((element, index) => (
 									<Combobox.Option
 										key={index}
-										className={`relative cursor-default select-none py-2 pl-10 pr-4 
+										className={`relative cursor-pointer py-2 pl-10 pr-4 
 										hover:bg-neutral-300 hover:dark:bg-neutral-700 rounded-md`}
 										value={element}
 										onClick={() => setQuery("")}
