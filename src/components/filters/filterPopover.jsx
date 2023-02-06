@@ -54,6 +54,19 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 										label={"Label"}
 										range={true}
 									/>
+									<FilterAutocomplete
+										filterValue={filterValue}
+										setFilterValue={setFilterValue}
+										filterKey={"selected"}
+										label={"Select Status:"}
+									/>
+									<FilterSlider
+										min={0}
+										max={50}
+										interval={10}
+										label={"Label"}
+										range={true}
+									/>
 								</div>
 							</div>
 						</Popover.Panel>
