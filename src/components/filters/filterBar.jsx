@@ -26,13 +26,12 @@ const Filter = () => {
 
 	return (
 		<div className="flex h-full w-full items-center justify-center">
-			<FilterSearchBar
+			<FilterPopover
 				handleChange={handleChange}
 				searchData={data?.filter}
 				value={filterValue}
 				loading={loading}
 			/>
-			<FilterPopover />
 		</div>
 	);
 };

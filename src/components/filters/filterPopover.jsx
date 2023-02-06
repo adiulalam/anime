@@ -4,15 +4,22 @@ import settings2 from "react-useanimations/lib/settings2";
 import UseAnimations from "react-useanimations";
 import { useTheme } from "next-themes";
 import { FilterAutocomplete } from "./filterAutocomplete";
+import { FilterSearchBar } from "./filterSearchBar";
 
-export const FilterPopover = () => {
+export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 	const { theme } = useTheme();
 
 	const [filterValue, setFilterValue] = useState({ search: "", selected: [] });
 	return (
-		<Popover className=" relative">
+		<Popover className="relative flex h-full w-full items-center justify-center">
 			{({ open }) => (
 				<>
+					<FilterSearchBar
+						handleChange={handleChange}
+						searchData={searchData}
+						value={value}
+						loading={loading}
+					/>
 					<Popover.Button className={"focus:outline-none"}>
 						<UseAnimations
 							animation={settings2}
@@ -29,7 +36,7 @@ export const FilterPopover = () => {
 						leaveFrom="opacity-100 translate-y-0"
 						leaveTo="opacity-0 translate-y-1"
 					>
-						<Popover.Panel className="fixed left-1/2 transform -translate-x-1/2 z-10 w-screen max-w-full md:max-w-3xl">
+						<Popover.Panel className="absolute left-1/2 top-1/2 mt-8 transform -translate-x-1/2 z-10 w-screen max-w-full md:max-w-3xl">
 							<div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
 								<div className="relative grid gap-8 bg-black dark:bg-white p-7 md:grid-cols-3">
 									<FilterAutocomplete
