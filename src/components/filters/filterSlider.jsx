@@ -2,16 +2,7 @@ import Slider from "rc-slider";
 import _ from "lodash";
 import "rc-slider/assets/index.css";
 
-export const FilterSlider = ({
-	min,
-	max,
-	interval,
-	label,
-	range = false,
-	sliderMap,
-	filterValue,
-	setFilterValue,
-}) => {
+export const FilterSlider = ({ min, max, interval, label, range = false, sliderMap, filterValue, setFilterValue }) => {
 	const onChangeEvent = (value) => {
 		if (range) {
 			const { minMap, maxMap } = sliderMap;
@@ -52,6 +43,11 @@ export const FilterSlider = ({
 				dotStyle={{ borderColor: "black" }}
 				activeDotStyle={{ borderColor: "black" }}
 				marks={getSliderMarks(min, max, interval)}
+				// handleRender={({ props }) => (
+				// 	<div {...props} className="tooltip bottom-[450%]" data-tip={props["aria-valuenow"]}>
+				// 		<div {...props}></div>
+				// 	</div>
+				// )}
 			/>
 		</div>
 	);
@@ -71,13 +67,9 @@ const getDefaultValues = (range, sliderMap, filterValue, min, max = 0) => {
 	if (range) {
 		const { minMap, maxMap } = sliderMap;
 
-		const defaultMinValue = _.isNil(_.get(filterValue, minMap))
-			? min
-			: _.get(filterValue, minMap);
+		const defaultMinValue = _.isNil(_.get(filterValue, minMap)) ? min : _.get(filterValue, minMap);
 
-		const defaultMaxValue = _.isNil(_.get(filterValue, maxMap))
-			? max
-			: _.get(filterValue, maxMap);
+		const defaultMaxValue = _.isNil(_.get(filterValue, maxMap)) ? max : _.get(filterValue, maxMap);
 
 		return [defaultMinValue, defaultMaxValue];
 	} else {
