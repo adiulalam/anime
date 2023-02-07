@@ -21,7 +21,12 @@ export default function Home() {
 	const filteredPeople =
 		query === ""
 			? people
-			: people.filter((person) => person.name.toLowerCase().replace(/\s+/g, "").includes(query.toLowerCase().replace(/\s+/g, "")));
+			: people.filter((person) =>
+					person.name
+						.toLowerCase()
+						.replace(/\s+/g, "")
+						.includes(query.toLowerCase().replace(/\s+/g, ""))
+			  );
 
 	const onSliderChange = (value) => {
 		// console.log(value);
@@ -34,7 +39,13 @@ export default function Home() {
 		const { value, dragging, index, ...restProps } = props;
 		console.log("🚀 ~ file: index.js:34 ~ handle ~ value", value);
 		return (
-			<Tooltip prefixCls="rc-slider-tooltip" overlay={value} visible={dragging} placement="top" key={index}>
+			<Tooltip
+				prefixCls="rc-slider-tooltip"
+				overlay={value}
+				visible={dragging}
+				placement="top"
+				key={index}
+			>
 				{/* <Handle value={value} {...restProps} /> */}
 				<Handle value={value} {...restProps}>
 					<span>{value}</span>
@@ -108,7 +119,11 @@ export default function Home() {
 				range
 				allowCross={false}
 				handleRender={({ props }) => (
-					<div {...props} className="tooltip bottom-[450%]" data-tip={props["aria-valuenow"]}>
+					<div
+						{...props}
+						className="tooltip bottom-[450%]"
+						data-tip={props["aria-valuenow"]}
+					>
 						<div {...props}></div>
 					</div>
 				)}
@@ -122,12 +137,12 @@ export default function Home() {
 				activeDotStyle={{ borderColor: "black" }}
 			/>
 
-<div class="relative m-4 max-w-[fit-content] group">
+			<div class="relative m-4 max-w-[fit-content] group">
 				<input type="number" class="outline-none px-3 py-3 peer" placeholder=" " />
 
 				<label
 					class="absolute left-[9px] top-px text-sm text-gray-500 transition-all duration-300 px-1 transform -translate-y-1/2 pointer-events-none
-  peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-xl group-focus-within:!top-px group-focus-within:!text-sm group-focus-within:!text-blue-500"
+  					peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-xl group-focus-within:!top-px group-focus-within:!text-sm group-focus-within:!text-blue-500"
 				>
 					Label
 				</label>
@@ -135,7 +150,7 @@ export default function Home() {
 				{/* <!--This fieldset+legend is used for the the border and notch transition--> */}
 				<fieldset
 					class="inset-0 absolute border border-gray-400 rounded pointer-events-none mt-[-9px] invisible peer-placeholder-shown:visible
-  group-focus-within:!border-blue-500 group-focus-within:border-2 group-hover:border-gray-700"
+  						group-focus-within:!border-blue-500 group-focus-within:border-2 group-hover:border-gray-700"
 				>
 					<legend class="ml-2 px-0 text-sm transition-all duration-300 invisible max-w-[0.01px] group-focus-within:max-w-full group-focus-within:px-1 whitespace-nowrap">
 						Label
@@ -145,9 +160,11 @@ export default function Home() {
 				{/* <!--This fieldset+legend always has a notch and is shown when the input is filled, instead of the other, so the notch doesnt vanish when you unfocus the field--> */}
 				<fieldset
 					class="inset-0 absolute border border-gray-400 rounded pointer-events-none mt-[-9px] visible peer-placeholder-shown:invisible
-  group-focus-within:border-2 group-focus-within:!border-blue-500 group-hover:border-gray-700"
+  							group-focus-within:border-2 group-focus-within:!border-blue-500 group-hover:border-gray-700"
 				>
-					<legend class="ml-2 text-sm invisible px-1 max-w-full whitespace-nowrap">Label</legend>
+					<legend class="ml-2 text-sm invisible px-1 max-w-full whitespace-nowrap">
+						Label
+					</legend>
 				</fieldset>
 			</div>
 		</div>

@@ -44,8 +44,8 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 						leaveTo="opacity-0 translate-y-1"
 					>
 						<Popover.Panel className="absolute left-1/2 top-1/2 mt-8 transform -translate-x-1/2 z-10 w-screen max-w-full md:max-w-3xl">
-							<div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-								<div className="relative grid gap-8 bg-black dark:bg-white p-7 md:grid-cols-3">
+							<div className="overflow-none shadow-lg ring-1 ring-black ring-opacity-5">
+								<div className="relative grid gap-8 bg-black dark:bg-white p-7 md:grid-cols-3 rounded-lg">
 									<FilterAutocomplete
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}

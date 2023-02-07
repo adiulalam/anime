@@ -25,7 +25,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 			multiple={_.isArray(_.get(filterValue, filterKey))}
 		>
 			{({ value }) => (
-				<div className="relative">
+				<div className="relative dropdown">
 					<Combobox.Label className={"text-white dark:text-black"}>
 						{label}
 					</Combobox.Label>
@@ -66,19 +66,19 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 						afterLeave={() => setQuery("")}
 					>
 						<Combobox.Options
-							className="flex flex-col mt-1 max-h-60 w-full overflow-auto rounded-md 
+							className="dropdown-content menu flex flex-row flex-wrap mt-1 max-h-60 w-full overflow-auto rounded-md 
 					text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
 					sm:text-sm bg-white dark:bg-black text-black dark:text-white"
 						>
 							{_.isEmpty(filteredQuery) && query !== "" ? (
-								<div className="relative cursor-default select-none py-2 px-4">
+								<div className="relative cursor-default select-none px-4 py-2">
 									Nothing found.
 								</div>
 							) : (
 								filteredQuery.map((element, index) => (
 									<Combobox.Option
 										key={index}
-										className={`relative cursor-pointer py-2 pl-10 pr-4 
+										className={`relative w-full cursor-pointer pl-8  
 										hover:bg-neutral-300 hover:dark:bg-neutral-700 rounded-md`}
 										value={element}
 										onClick={() => setQuery("")}
@@ -86,7 +86,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 										{({ selected }) => (
 											<>
 												<span
-													className={`block truncate ${
+													className={`block truncate bg-transparent ${
 														selected ? "font-medium" : "font-normal"
 													}`}
 												>
@@ -94,7 +94,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 												</span>
 												{selected ? (
 													<span
-														className={`absolute inset-y-0 left-0 flex items-center pl-3 `}
+														className={`absolute bg-transparent inset-y-0 left-0 flex items-center pl-3 `}
 													>
 														<BsCheck2
 															className="h-5 w-5"
