@@ -29,9 +29,13 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 					<Combobox.Label className={"text-white dark:text-black"}>
 						{label}
 					</Combobox.Label>
-					{_.isArray(value) && (
-						<div className="flex flex-row flex-wrap gap-1 text-black dark:text-white py-1">
-							{value.map((key, index) => (
+					<div
+						className={`relative flex flex-row gap-1 overflow-auto w-full text-black dark:text-white ${
+							_.isEmpty(value) ? "mb-5" : "mb-1 pb-1"
+						}`}
+					>
+						{_.isArray(value) &&
+							value.map((key, index) => (
 								<div
 									key={index}
 									className="flex flex-col px-2 rounded-3xl bg-white dark:bg-black"
@@ -39,8 +43,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 									{filterArrayMap[key]}
 								</div>
 							))}
-						</div>
-					)}
+					</div>
 					<div
 						className="relative w-full cursor-default overflow-hidden rounded-lg text-left shadow-md 
 						focus:outline-none sm:text-sm bg-white dark:bg-black text-black dark:text-white"

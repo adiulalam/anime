@@ -39,7 +39,7 @@ export const FilterSlider = ({
 
 	return (
 		<div className="flex flex-col w-full h-full">
-			<label className={"text-white dark:text-black mb-3"}>{label}</label>
+			<label className={"text-white dark:text-black mb-6"}>{label}</label>
 			<Slider
 				range={range}
 				allowCross={false}
