@@ -1,8 +1,21 @@
 import Slider from "rc-slider";
 import _ from "lodash";
+import { useTheme } from "next-themes";
 import "rc-slider/assets/index.css";
 
-export const FilterSlider = ({ min, max, interval, label, range = false, sliderMap, filterValue, setFilterValue }) => {
+export const FilterSlider = ({
+	min,
+	max,
+	interval,
+	label,
+	range = false,
+	sliderMap,
+	filterValue,
+	setFilterValue,
+}) => {
+	const { theme } = useTheme();
+	const isDarkMode = theme === "dark" || theme === "system";
+
 	const onChangeEvent = (value) => {
 		if (range) {
 			const { minMap, maxMap } = sliderMap;
@@ -34,20 +47,29 @@ export const FilterSlider = ({ min, max, interval, label, range = false, sliderM
 				min={min}
 				max={max}
 				onAfterChange={onChangeEvent}
-				trackStyle={{ backgroundColor: "black" }}
+				trackStyle={{ backgroundColor: isDarkMode ? "black" : "white" }}
 				handleStyle={{
-					backgroundColor: "black",
-					borderColor: "darkgrey",
+					backgroundColor: isDarkMode ? "black" : "white",
+					borderColor: isDarkMode ? "darkgrey" : "lightgrey",
 				}}
-				railStyle={{ backgroundColor: "gray" }}
-				dotStyle={{ borderColor: "black" }}
-				activeDotStyle={{ borderColor: "black" }}
+				railStyle={{ backgroundColor: isDarkMode ? "darkgrey" : "lightgrey" }}
+				dotStyle={{
+					backgroundColor: isDarkMode ? "white" : "black",
+					borderColor: isDarkMode ? "black" : "white",
+				}}
+				activeDotStyle={{ borderColor: isDarkMode ? "black" : "white" }}
 				marks={getSliderMarks(min, max, interval)}
-				// handleRender={({ props }) => (
-				// 	<div {...props} className="tooltip bottom-[450%]" data-tip={props["aria-valuenow"]}>
-				// 		<div {...props}></div>
-				// 	</div>
-				// )}
+				handleRender={({ props }) => (
+					<div className="flex w-full h-full ">
+						<div
+							{...props}
+							data-tip={props["aria-valuenow"]}
+							className="tooltip tooltip-white before:bg-white dark:before:bg-black before:text-black dark:before:text-white"
+						>
+							<div {...props}></div>
+						</div>
+					</div>
+				)}
 			/>
 		</div>
 	);
@@ -67,9 +89,13 @@ const getDefaultValues = (range, sliderMap, filterValue, min, max = 0) => {
 	if (range) {
 		const { minMap, maxMap } = sliderMap;
 
-		const defaultMinValue = _.isNil(_.get(filterValue, minMap)) ? min : _.get(filterValue, minMap);
+		const defaultMinValue = _.isNil(_.get(filterValue, minMap))
+			? min
+			: _.get(filterValue, minMap);
 
-		const defaultMaxValue = _.isNil(_.get(filterValue, maxMap)) ? max : _.get(filterValue, maxMap);
+		const defaultMaxValue = _.isNil(_.get(filterValue, maxMap))
+			? max
+			: _.get(filterValue, maxMap);
 
 		return [defaultMinValue, defaultMaxValue];
 	} else {
