@@ -10,7 +10,12 @@ import { FilterSlider } from "./filterSlider";
 export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 	const { theme } = useTheme();
 
-	const [filterValue, setFilterValue] = useState({ search: "", selected: [] });
+	const [filterValue, setFilterValue] = useState({
+		search: "",
+		selected: [],
+		minimum: null,
+		maximum: null,
+	});
 
 	return (
 		<Popover className="relative flex h-full w-full items-center justify-center">
@@ -52,20 +57,10 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 										max={50}
 										interval={10}
 										label={"Label"}
-										range={true}
-									/>
-									<FilterAutocomplete
+										range={false}
+										sliderMap={{ minMap: "minimum", maxMap: "maximum" }}
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
-										filterKey={"selected"}
-										label={"Select Status:"}
-									/>
-									<FilterSlider
-										min={0}
-										max={50}
-										interval={10}
-										label={"Label"}
-										range={true}
 									/>
 								</div>
 							</div>

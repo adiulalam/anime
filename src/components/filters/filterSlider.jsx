@@ -1,20 +1,37 @@
 import Slider from "rc-slider";
+import _ from "lodash";
 import "rc-slider/assets/index.css";
 
-function getSliderMarks(min, max, interval) {
-	const marks = {};
-	for (let i = min; i <= max; i += interval) {
-		marks[i] = i;
-	}
-	marks[max] = max;
+export const FilterSlider = ({
+	min,
+	max,
+	interval,
+	label,
+	range = false,
+	sliderMap,
+	filterValue,
+	setFilterValue,
+}) => {
+	const onChangeEvent = (value) => {
+		if (range) {
+			const { minMap, maxMap } = sliderMap;
+			const minimum = value[0];
+			const maximum = value[1];
 
-	return marks;
-}
+			setFilterValue((prev) => ({
+				...prev,
+				[minMap]: minimum <= min ? null : minimum,
+				[maxMap]: maximum >= max ? null : maximum,
+			}));
+		} else {
+			const { minMap } = sliderMap;
 
-export const FilterSlider = ({ min, max, interval, label, range = false }) => {
-	function log(value) {
-		console.log(value);
-	}
+			setFilterValue((prev) => ({
+				...prev,
+				[minMap]: value <= min ? null : value,
+			}));
+		}
+	};
 
 	return (
 		<div className="flex flex-col w-full h-full">
@@ -22,14 +39,14 @@ export const FilterSlider = ({ min, max, interval, label, range = false }) => {
 			<Slider
 				range={range}
 				allowCross={false}
-				defaultValue={[min, max]}
+				defaultValue={getDefaultValues(range, sliderMap, filterValue, min, max)}
 				min={min}
 				max={max}
-				onAfterChange={log}
+				onAfterChange={onChangeEvent}
 				trackStyle={{ backgroundColor: "black" }}
 				handleStyle={{
 					backgroundColor: "black",
-					borderColor: "gray",
+					borderColor: "darkgrey",
 				}}
 				railStyle={{ backgroundColor: "gray" }}
 				dotStyle={{ borderColor: "black" }}
@@ -38,4 +55,36 @@ export const FilterSlider = ({ min, max, interval, label, range = false }) => {
 			/>
 		</div>
 	);
+};
+
+const getSliderMarks = (min, max, interval) => {
+	const marks = {};
+	for (let i = min; i <= max; i += interval) {
+		marks[i] = i;
+	}
+	marks[max] = max;
+
+	return marks;
+};
+
+const getDefaultValues = (range, sliderMap, filterValue, min, max = 0) => {
+	if (range) {
+		const { minMap, maxMap } = sliderMap;
+
+		const defaultMinValue = _.isNil(_.get(filterValue, minMap))
+			? min
+			: _.get(filterValue, minMap);
+
+		const defaultMaxValue = _.isNil(_.get(filterValue, maxMap))
+			? max
+			: _.get(filterValue, maxMap);
+
+		return [defaultMinValue, defaultMaxValue];
+	} else {
+		const { minMap } = sliderMap;
+
+		const defaultValue = _.isNil(_.get(filterValue, minMap)) ? min : _.get(filterValue, minMap);
+
+		return defaultValue;
+	}
 };
