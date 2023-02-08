@@ -4,7 +4,13 @@ import { BsChevronExpand, BsCheck2 } from "react-icons/bs";
 import _ from "lodash";
 import { filterMap } from "@/utils/constMap";
 
-export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, label }) => {
+export const FilterAutocomplete = ({
+	filterValue,
+	setFilterValue,
+	filterKey,
+	label,
+	accessorKey,
+}) => {
 	const { filterArrayKeys, filterArrayMap } = filterMap[filterKey];
 	const [query, setQuery] = useState("");
 
@@ -21,9 +27,11 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 
 	return (
 		<Combobox
-			value={_.get(filterValue, filterKey)}
-			onChange={(e) => setFilterValue((prev) => ({ ..._.set(prev, filterKey, e) }))}
-			multiple={_.isArray(_.get(filterValue, filterKey))}
+			value={_.get(filterValue, accessorKey ?? filterKey)}
+			onChange={(e) =>
+				setFilterValue((prev) => ({ ..._.set(prev, accessorKey ?? filterKey, e) }))
+			}
+			multiple={_.isArray(_.get(filterValue, accessorKey ?? filterKey))}
 			nullable={true}
 		>
 			{({ value }) => (
@@ -33,7 +41,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 					</Combobox.Label>
 					<div
 						className={`relative flex flex-row gap-1 overflow-auto w-full text-black dark:text-white ${
-							_.isEmpty(value) ? "mb-5" : "mb-1 pb-1"
+							_.isEmpty(value) ? "mb-4" : "mb-1 pb-1"
 						}`}
 					>
 						{_.isArray(value) &&

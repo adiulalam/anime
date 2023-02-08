@@ -7,7 +7,14 @@ import cleanDeep from "clean-deep";
 
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
-	const [filterValue, setFilterValue] = useState({ search: "", format: null, });
+	const [filterValue, setFilterValue] = useState({
+		search: "",
+		format: null,
+		status: null,
+		genre_in: [],
+		season: null,
+		year: null,
+	});
 
 	const debouncedSearch = useMemo(
 		() => _.debounce((variables) => search(variables), 200),

@@ -46,6 +46,31 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 										filterKey={"format"}
 										label={"Format:"}
 									/>
+									<FilterAutocomplete
+										filterValue={filterValue}
+										setFilterValue={setFilterValue}
+										filterKey={"status"}
+										label={"Status:"}
+									/>
+									<FilterAutocomplete
+										filterValue={filterValue}
+										setFilterValue={setFilterValue}
+										filterKey={"genre"}
+										accessorKey={"genre_in"}
+										label={"Genre:"}
+									/>
+									<FilterAutocomplete
+										filterValue={filterValue}
+										setFilterValue={setFilterValue}
+										filterKey={"season"}
+										label={"Season:"}
+									/>
+									<FilterAutocomplete
+										filterValue={filterValue}
+										setFilterValue={setFilterValue}
+										filterKey={"year"}
+										label={"Year:"}
+									/>
 									{/* <FilterSlider
 										min={0}
 										max={50}
