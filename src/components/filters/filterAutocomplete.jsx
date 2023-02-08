@@ -24,6 +24,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 			value={_.get(filterValue, filterKey)}
 			onChange={(e) => setFilterValue((prev) => ({ ..._.set(prev, filterKey, e) }))}
 			multiple={_.isArray(_.get(filterValue, filterKey))}
+			nullable={true}
 		>
 			{({ value }) => (
 				<div className="relative dropdown">

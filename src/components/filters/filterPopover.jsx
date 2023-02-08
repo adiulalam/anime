@@ -15,7 +15,7 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 		selected: [],
 		minimum: null,
 		maximum: null,
-		year: null,
+		year: [],
 	});
 
 	return (
