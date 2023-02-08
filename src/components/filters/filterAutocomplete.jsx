@@ -12,7 +12,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 		query === ""
 			? filterArrayKeys
 			: filterArrayKeys.filter((key) =>
-					(!_.isEmpty(filterArrayMap) ? filterArrayMap[key] : key)
+					(!_.isNil(filterArrayMap) ? filterArrayMap[key] : key)
 						.toLowerCase()
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, ""))
@@ -40,7 +40,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 									key={index}
 									className="flex flex-col px-2 rounded-3xl bg-white dark:bg-black"
 								>
-									{!_.isEmpty(filterArrayMap)
+									{!_.isNil(filterArrayMap)
 										? filterArrayMap[key]
 										: key.toUpperCase()}
 								</div>
@@ -56,7 +56,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 							displayValue={(people) =>
 								_.isArray(people)
 									? query
-									: !_.isEmpty(filterArrayMap)
+									: !_.isNil(filterArrayMap)
 									? filterArrayMap[key]
 									: key
 							}
@@ -99,7 +99,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 														selected ? "font-medium" : "font-normal"
 													}`}
 												>
-													{!_.isEmpty(filterArrayMap)
+													{!_.isNil(filterArrayMap)
 														? filterArrayMap[element]
 														: element.toUpperCase()}
 												</span>
