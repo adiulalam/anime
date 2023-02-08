@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { useCallback } from "react";
 import { useLazyQuery } from "@apollo/client";
 import _ from "lodash";
 import { getFilterResults } from "@/services/queries";
-import { FilterSearchBar } from "./filterSearchBar";
 import { FilterPopover } from "./filterPopover";
-const cleanDeep = require("clean-deep");
+import cleanDeep from "clean-deep";
 
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
