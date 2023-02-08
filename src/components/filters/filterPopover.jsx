@@ -15,6 +15,7 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 		selected: [],
 		minimum: null,
 		maximum: null,
+		year: null,
 	});
 
 	return (
@@ -49,7 +50,7 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 									<FilterAutocomplete
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
-										filterKey={"selected"}
+										filterKey={"year"}
 										label={"Select Status:"}
 									/>
 									<FilterSlider

@@ -13,6 +13,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 			? filterArrayKeys
 			: filterArrayKeys.filter((key) =>
 					(!_.isNil(filterArrayMap) ? filterArrayMap[key] : key)
+						.toString()
 						.toLowerCase()
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, ""))
@@ -42,7 +43,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 								>
 									{!_.isNil(filterArrayMap)
 										? filterArrayMap[key]
-										: key.toUpperCase()}
+										: key.toString().toUpperCase()}
 								</div>
 							))}
 					</div>
@@ -57,8 +58,8 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 								_.isArray(people)
 									? query
 									: !_.isNil(filterArrayMap)
-									? filterArrayMap[key]
-									: key
+									? filterArrayMap[people]
+									: people
 							}
 							onChange={(event) => setQuery(event.target.value)}
 							placeholder={"Search.."}
@@ -101,7 +102,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 												>
 													{!_.isNil(filterArrayMap)
 														? filterArrayMap[element]
-														: element.toUpperCase()}
+														: element.toString().toUpperCase()}
 												</span>
 												{selected ? (
 													<span
