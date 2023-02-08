@@ -12,7 +12,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 		query === ""
 			? filterArrayKeys
 			: filterArrayKeys.filter((key) =>
-					filterArrayMap[key]
+					(!_.isEmpty(filterArrayMap) ? filterArrayMap[key] : key)
 						.toLowerCase()
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, ""))
@@ -40,7 +40,9 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 									key={index}
 									className="flex flex-col px-2 rounded-3xl bg-white dark:bg-black"
 								>
-									{filterArrayMap[key]}
+									{!_.isEmpty(filterArrayMap)
+										? filterArrayMap[key]
+										: key.toUpperCase()}
 								</div>
 							))}
 					</div>
@@ -52,7 +54,11 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 							className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 
 							focus:ring-0 focus:outline-none bg-inherit"
 							displayValue={(people) =>
-								_.isArray(people) ? query : filterArrayMap[people]
+								_.isArray(people)
+									? query
+									: !_.isEmpty(filterArrayMap)
+									? filterArrayMap[key]
+									: key
 							}
 							onChange={(event) => setQuery(event.target.value)}
 							placeholder={"Search.."}
@@ -93,7 +99,9 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey, lab
 														selected ? "font-medium" : "font-normal"
 													}`}
 												>
-													{filterArrayMap[element]}
+													{!_.isEmpty(filterArrayMap)
+														? filterArrayMap[element]
+														: element.toUpperCase()}
 												</span>
 												{selected ? (
 													<span
