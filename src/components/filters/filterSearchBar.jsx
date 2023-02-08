@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import { FilterSearchList } from "./filterSearchList";
 import { BsSearch } from "react-icons/bs";
 
-export const FilterSearchBar = ({ handleChange, searchData, value, loading }) => {
+export const FilterSearchBar = ({ searchData, filterValue, setFilterValue, loading, filterKey }) => {
 	return (
 		<div className="dropdown flex flex-col h-full md:w-[40rem] w-full rounded-lg">
 			<div className="flex relative w-full h-full pb-1">
@@ -12,20 +12,20 @@ export const FilterSearchBar = ({ handleChange, searchData, value, loading }) =>
 					className="flex pl-10 h-full w-full rounded-lg p-2 dark:bg-white bg-black text-white dark:text-black"
 					type={"text"}
 					placeholder={"Search.."}
-					onChange={(e) => handleChange(e)}
+					onChange={(e) => setFilterValue((prev)=>({ ...prev, search: e.target.value }))}
 				></input>
 			</div>
 			<div className="flex w-full">
 				<ul
 					tabIndex={0}
-					className="dropdown-content flex flex-col gap-1 
+					className="dropdown-content flex flex-col gap-1
 						menu p-2 shadow w-full bg-white dark:bg-black rounded-box "
 					style={{
 						opacity: _.isEmpty(searchData?.media) ? "0" : "1",
 						transition: "opacity .5s ease-in-out",
 					}}
 				>
-					{value?.search && loading && (
+					{filterValue[filterKey] && loading && (
 						<li className="flex w-full rounded-box bg-black dark:bg-white">
 							<Skeleton
 								className="flex h-full w-full items-center bg-white dark:bg-black"

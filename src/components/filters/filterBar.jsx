@@ -7,11 +7,7 @@ import cleanDeep from "clean-deep";
 
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
-	const [filterValue, setFilterValue] = useState({ search: "" });
-
-	const handleChange = (e) => {
-		setFilterValue({ search: e.target.value });
-	};
+	const [filterValue, setFilterValue] = useState({ search: "", format: null, });
 
 	const debouncedSearch = useMemo(
 		() => _.debounce((variables) => search(variables), 200),
@@ -25,9 +21,9 @@ const Filter = () => {
 	return (
 		<div className="flex h-full w-full items-center justify-center">
 			<FilterPopover
-				handleChange={handleChange}
 				searchData={data?.filter}
-				value={filterValue}
+				filterValue={filterValue}
+				setFilterValue={setFilterValue}
 				loading={loading}
 			/>
 		</div>

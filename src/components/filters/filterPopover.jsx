@@ -7,26 +7,19 @@ import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
 import { FilterSlider } from "./filterSlider";
 
-export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
+export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {
 	const { theme } = useTheme();
-
-	const [filterValue, setFilterValue] = useState({
-		search: "",
-		selected: [],
-		minimum: null,
-		maximum: null,
-		year: [],
-	});
 
 	return (
 		<Popover className="relative flex h-full w-full items-center justify-center">
 			{({ open }) => (
 				<>
 					<FilterSearchBar
-						handleChange={handleChange}
 						searchData={searchData}
-						value={value}
+						filterValue={filterValue}
+						setFilterValue={setFilterValue}
 						loading={loading}
+						filterKey={"search"}
 					/>
 					<Popover.Button className={"focus:outline-none"}>
 						<UseAnimations
@@ -50,10 +43,10 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 									<FilterAutocomplete
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
-										filterKey={"year"}
-										label={"Select Status:"}
+										filterKey={"format"}
+										label={"Format:"}
 									/>
-									<FilterSlider
+									{/* <FilterSlider
 										min={0}
 										max={50}
 										interval={10}
@@ -62,7 +55,7 @@ export const FilterPopover = ({ handleChange, searchData, value, loading }) => {
 										sliderMap={{ minMap: "minimum", maxMap: "maximum" }}
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
-									/>
+									/> */}
 								</div>
 							</div>
 						</Popover.Panel>
