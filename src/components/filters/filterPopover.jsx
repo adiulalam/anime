@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
 import { FilterSlider } from "./filterSlider";
+import FilterToggle from "./filterToggle";
 
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {
 	const { theme } = useTheme();
@@ -81,6 +82,7 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
 									/> */}
+									<FilterToggle />
 								</div>
 							</div>
 						</Popover.Panel>
