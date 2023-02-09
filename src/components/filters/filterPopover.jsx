@@ -9,6 +9,7 @@ import { FilterSlider } from "./filterSlider";
 import FilterToggle from "./filterToggle";
 
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {
+	const [enableAdvanced, setEnableAdvanced] = useState(false);
 	const { theme } = useTheme();
 
 	return (
@@ -82,7 +83,12 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 										filterValue={filterValue}
 										setFilterValue={setFilterValue}
 									/> */}
-									<FilterToggle />
+									<FilterToggle
+										label={"Advanced"}
+										overrideClass={"items-center font-bold"}
+										enableAdvanced={enableAdvanced}
+										setEnableAdvanced={setEnableAdvanced}
+									/>
 								</div>
 							</div>
 						</Popover.Panel>
