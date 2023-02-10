@@ -49,18 +49,21 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 												(value.advanced && enableAdvanced)) &&
 											(value.type === "autocomplete" ? (
 												<FilterAutocomplete
+													key={index}
 													filterValue={filterValue}
 													setFilterValue={setFilterValue}
 													filterKey={key}
 												/>
 											) : value.type === "toggle_advanced" ? (
 												<FilterToggle
+													key={index}
 													enableAdvanced={enableAdvanced}
 													setEnableAdvanced={setEnableAdvanced}
 													filterKey={key}
 												/>
 											) : value.type === "slider" ? (
 												<FilterSlider
+													key={index}
 													filterKey={key}
 													filterValue={filterValue}
 													setFilterValue={setFilterValue}
