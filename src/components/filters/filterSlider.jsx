@@ -2,18 +2,12 @@ import Slider from "rc-slider";
 import _ from "lodash";
 import { useTheme } from "next-themes";
 import "rc-slider/assets/index.css";
+import { filterMap } from "@/utils/constMap";
 
-export const FilterSlider = ({
-	min,
-	max,
-	interval,
-	label,
-	range = false,
-	sliderMap,
-	filterValue,
-	setFilterValue,
-}) => {
+export const FilterSlider = ({ filterValue, setFilterValue, filterKey }) => {
 	const { theme } = useTheme();
+	const { min, max, interval, label, range, sliderMap } = filterMap[filterKey];
+
 	const isDarkMode = theme === "dark" || theme === "system";
 
 	const onChangeEvent = (value) => {
@@ -39,7 +33,7 @@ export const FilterSlider = ({
 
 	return (
 		<div className="flex flex-col w-full h-full">
-			<label className={"text-white dark:text-black mb-6"}>{label}</label>
+			<label className={"text-white dark:text-black mb-1"}>{label}</label>
 			<Slider
 				range={range}
 				allowCross={false}

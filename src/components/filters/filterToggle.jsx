@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import { filterMap } from "@/utils/constMap";
 
-const FilterToggle = ({ label, overrideClass, enableAdvanced, setEnableAdvanced }) => {
+const FilterToggle = ({ enableAdvanced, setEnableAdvanced, filterKey }) => {
+	const { label, overrideClass } = filterMap[filterKey];
 	return (
 		<div className={`flex flex-col ${overrideClass}`}>
 			<label className={"text-white dark:text-black "}>{label}</label>

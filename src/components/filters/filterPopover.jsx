@@ -7,6 +7,7 @@ import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
 import { FilterSlider } from "./filterSlider";
 import FilterToggle from "./filterToggle";
+import { filterMap } from "@/utils/constMap";
 
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {
 	const [enableAdvanced, setEnableAdvanced] = useState(false);
@@ -42,53 +43,32 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 						<Popover.Panel className="absolute left-1/2 top-1/2 mt-8 transform -translate-x-1/2 z-10 w-screen max-w-full md:max-w-3xl">
 							<div className="overflow-none shadow-lg ring-1 ring-black ring-opacity-5">
 								<div className="relative grid gap-8 bg-black dark:bg-white p-7 md:grid-cols-3 rounded-lg">
-									<FilterAutocomplete
-										filterValue={filterValue}
-										setFilterValue={setFilterValue}
-										filterKey={"format"}
-										label={"Format:"}
-									/>
-									<FilterAutocomplete
-										filterValue={filterValue}
-										setFilterValue={setFilterValue}
-										filterKey={"status"}
-										label={"Status:"}
-									/>
-									<FilterAutocomplete
-										filterValue={filterValue}
-										setFilterValue={setFilterValue}
-										filterKey={"genre"}
-										accessorKey={"genre_in"}
-										label={"Genre:"}
-									/>
-									<FilterAutocomplete
-										filterValue={filterValue}
-										setFilterValue={setFilterValue}
-										filterKey={"season"}
-										label={"Season:"}
-									/>
-									<FilterAutocomplete
-										filterValue={filterValue}
-										setFilterValue={setFilterValue}
-										filterKey={"year"}
-										label={"Year:"}
-									/>
-									{/* <FilterSlider
-										min={0}
-										max={50}
-										interval={10}
-										label={"Label"}
-										range={false}
-										sliderMap={{ minMap: "minimum", maxMap: "maximum" }}
-										filterValue={filterValue}
-										setFilterValue={setFilterValue}
-									/> */}
-									<FilterToggle
-										label={"Advanced"}
-										overrideClass={"items-center font-bold"}
-										enableAdvanced={enableAdvanced}
-										setEnableAdvanced={setEnableAdvanced}
-									/>
+									{Object.entries(filterMap).map(
+										([key, value], index) =>
+											(!value.advanced ||
+												(value.advanced && enableAdvanced)) &&
+											(value.type === "autocomplete" ? (
+												<FilterAutocomplete
+													filterValue={filterValue}
+													setFilterValue={setFilterValue}
+													filterKey={key}
+												/>
+											) : value.type === "toggle_advanced" ? (
+												<FilterToggle
+													enableAdvanced={enableAdvanced}
+													setEnableAdvanced={setEnableAdvanced}
+													filterKey={key}
+												/>
+											) : value.type === "slider" ? (
+												<FilterSlider
+													filterKey={key}
+													filterValue={filterValue}
+													setFilterValue={setFilterValue}
+												/>
+											) : (
+												<></>
+											))
+									)}
 								</div>
 							</div>
 						</Popover.Panel>

@@ -106,9 +106,33 @@ export const carouselMap = {
 };
 
 export const filterMap = {
-	selected: {
-		filterArrayKeys: ["a", "b", "c", "d", "e", "f", "g", "h"],
-		filterArrayMap: { a: "A", b: "B", c: "C", d: "D", e: "E", f: "F", g: "G", h: "H" },
+	format: {
+		filterArrayKeys: ["TV", "TV_SHORT", "MOVIE", "SPECIAL", "OVA", "ONA"],
+		filterArrayMap: {
+			TV: "TV Shows",
+			TV_SHORT: "TV Short",
+			MOVIE: "Movie",
+			SPECIAL: "Special",
+			OVA: "OVA",
+			ONA: "ONA",
+		},
+		type: "autocomplete",
+		advanced: false,
+		accessorKey: null,
+		label: "Format:",
+	},
+	status: {
+		filterArrayKeys: ["RELEASING", "FINISHED", "NOT_YET_RELEASED", "CANCELLED"],
+		filterArrayMap: {
+			RELEASING: "Airing",
+			FINISHED: "Finished",
+			NOT_YET_RELEASED: "Not Yet Aired",
+			CANCELLED: "Cancelled",
+		},
+		type: "autocomplete",
+		advanced: false,
+		accessorKey: null,
+		label: "Status:",
 	},
 	genre: {
 		filterArrayKeys: [
@@ -131,6 +155,38 @@ export const filterMap = {
 			"Supernatural",
 			"Thriller",
 		],
+		type: "autocomplete",
+		advanced: false,
+		accessorKey: "genre_in",
+		label: "Genre:",
+	},
+	season: {
+		filterArrayKeys: ["WINTER", "SPRING", "SUMMER", "FALL"],
+		filterArrayMap: {
+			WINTER: "Winter",
+			SPRING: "Spring",
+			SUMMER: "Summer",
+			FALL: "Fall",
+		},
+		type: "autocomplete",
+		advanced: false,
+		accessorKey: null,
+		label: "Season:",
+	},
+	year: {
+		filterArrayKeys: Array(new Date().getFullYear() + 2 - (new Date().getFullYear() - 60) + 1)
+			.fill(new Date().getFullYear() - 60)
+			.map((year, index) => year + index),
+		type: "autocomplete",
+		advanced: false,
+		accessorKey: null,
+		label: "Year:",
+	},
+	toggle_advanced: {
+		type: "toggle_advanced",
+		label: "Advanced",
+		overrideClass: "items-center font-bold",
+		advanced: false,
 	},
 	tags: {
 		filterArrayKeys: [
@@ -417,39 +473,19 @@ export const filterMap = {
 			"Yuri",
 			"Zombie",
 		],
+		type: "autocomplete",
+		advanced: true,
+		accessorKey: null,
+		label: "Tags:",
 	},
-	status: {
-		filterArrayKeys: ["RELEASING", "FINISHED", "NOT_YET_RELEASED", "CANCELLED"],
-		filterArrayMap: {
-			RELEASING: "Airing",
-			FINISHED: "Finished",
-			NOT_YET_RELEASED: "Not Yet Aired",
-			CANCELLED: "Cancelled",
-		},
-	},
-	format: {
-		filterArrayKeys: ["TV", "TV_SHORT", "MOVIE", "SPECIAL", "OVA", "ONA"],
-		filterArrayMap: {
-			TV: "TV Shows",
-			TV_SHORT: "TV Short",
-			MOVIE: "Movie",
-			SPECIAL: "Special",
-			OVA: "OVA",
-			ONA: "ONA",
-		},
-	},
-	season: {
-		filterArrayKeys: ["WINTER", "SPRING", "SUMMER", "FALL"],
-		filterArrayMap: {
-			WINTER: "Winter",
-			SPRING: "Spring",
-			SUMMER: "Summer",
-			FALL: "Fall",
-		},
-	},
-	year: {
-		filterArrayKeys: Array(new Date().getFullYear() + 2 - (new Date().getFullYear() - 60) + 1)
-			.fill(new Date().getFullYear() - 60)
-			.map((year, index) => year + index),
+	test: {
+		type: "slider",
+		min: 0,
+		max: 50,
+		interval: 10,
+		label: "Label",
+		range: true,
+		sliderMap: { minMap: "minimum", maxMap: "maximum" },
+		advanced: true,
 	},
 };

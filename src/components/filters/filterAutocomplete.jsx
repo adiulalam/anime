@@ -4,14 +4,8 @@ import { BsChevronExpand, BsCheck2 } from "react-icons/bs";
 import _ from "lodash";
 import { filterMap } from "@/utils/constMap";
 
-export const FilterAutocomplete = ({
-	filterValue,
-	setFilterValue,
-	filterKey,
-	label,
-	accessorKey,
-}) => {
-	const { filterArrayKeys, filterArrayMap } = filterMap[filterKey];
+export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) => {
+	const { filterArrayKeys, filterArrayMap, label, accessorKey } = filterMap[filterKey];
 	const [query, setQuery] = useState("");
 
 	const filteredQuery =

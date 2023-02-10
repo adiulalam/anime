@@ -32,3 +32,11 @@
 	border-radius: 14px;
 	border: 3px solid var(--primary);
 }
+
+/* Slider range adjustment */
+.rc-slider-handle-2 {
+	bottom: -0.1rem;
+
+}
+
+
