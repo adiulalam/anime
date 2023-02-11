@@ -5,7 +5,7 @@ import _ from "lodash";
 import { filterMap } from "@/utils/constMap";
 
 export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) => {
-	const { filterArrayKeys, filterArrayMap, label, accessorKey } = filterMap[filterKey];
+	const { filterArrayKeys, filterArrayMap, label } = filterMap[filterKey];
 	const [query, setQuery] = useState("");
 
 	const filteredQuery =
@@ -21,11 +21,9 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) =
 
 	return (
 		<Combobox
-			value={_.get(filterValue, accessorKey ?? filterKey)}
-			onChange={(e) =>
-				setFilterValue((prev) => ({ ..._.set(prev, accessorKey ?? filterKey, e) }))
-			}
-			multiple={_.isArray(_.get(filterValue, accessorKey ?? filterKey))}
+			value={_.get(filterValue, filterKey)}
+			onChange={(e) => setFilterValue((prev) => ({ ..._.set(prev, filterKey, e) }))}
+			multiple={_.isArray(_.get(filterValue, filterKey))}
 			nullable={true}
 		>
 			{({ value }) => (

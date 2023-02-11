@@ -118,7 +118,6 @@ export const filterMap = {
 		},
 		type: "autocomplete",
 		advanced: false,
-		accessorKey: null,
 		label: "Format:",
 	},
 	status: {
@@ -131,10 +130,9 @@ export const filterMap = {
 		},
 		type: "autocomplete",
 		advanced: false,
-		accessorKey: null,
 		label: "Status:",
 	},
-	genre: {
+	genre_in: {
 		filterArrayKeys: [
 			"Action",
 			"Adventure",
@@ -157,7 +155,6 @@ export const filterMap = {
 		],
 		type: "autocomplete",
 		advanced: false,
-		accessorKey: "genre_in",
 		label: "Genres:",
 	},
 	season: {
@@ -170,7 +167,6 @@ export const filterMap = {
 		},
 		type: "autocomplete",
 		advanced: false,
-		accessorKey: null,
 		label: "Season:",
 	},
 	year: {
@@ -179,7 +175,6 @@ export const filterMap = {
 			.map((year, index) => year + index),
 		type: "autocomplete",
 		advanced: false,
-		accessorKey: null,
 		label: "Year:",
 	},
 	toggle_advanced: {
@@ -221,7 +216,7 @@ export const filterMap = {
 		isDate: false,
 		advanced: true,
 	},
-	tags: {
+	tag_in: {
 		filterArrayKeys: [
 			"4-koma",
 			"Achromatic",
@@ -508,7 +503,6 @@ export const filterMap = {
 		],
 		type: "autocomplete",
 		advanced: true,
-		accessorKey: "tag_in",
 		label: "Tags:",
 	},
 };
