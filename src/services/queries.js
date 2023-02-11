@@ -223,6 +223,8 @@ export const getFilterResults = gql`
 		$status: MediaStatus
 		$genre_in: [String]
 		$tag_in: [String]
+		$startDate_greater: FuzzyDateInt
+		$endDate_lesser: FuzzyDateInt
 	) {
 		filter: Page(page: 1, perPage: 5) {
 			pageInfo {
@@ -238,6 +240,8 @@ export const getFilterResults = gql`
 				status: $status
 				genre_in: $genre_in
 				tag_in: $tag_in
+				startDate_greater: $startDate_greater
+				endDate_lesser: $endDate_lesser
 			) {
 				id
 				title {

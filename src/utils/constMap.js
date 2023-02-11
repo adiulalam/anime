@@ -478,14 +478,15 @@ export const filterMap = {
 		accessorKey: "tag_in",
 		label: "Tags:",
 	},
-	test: {
+	year_range: {
 		type: "slider",
-		min: 0,
-		max: 50,
-		interval: 10,
-		label: "Label",
+		min: 1980,
+		max: new Date().getFullYear() + 2,
+		interval: Math.ceil((new Date().getFullYear() + 2 - 1980) / 3),
+		label: "Year Range",
 		range: true,
-		sliderMap: { minMap: "minimum", maxMap: "maximum" },
+		sliderMap: { minMap: "startDate_greater", maxMap: "endDate_lesser" },
+		isDate: true,
 		advanced: true,
 	},
 };

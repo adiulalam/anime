@@ -3,7 +3,13 @@ import Skeleton from "react-loading-skeleton";
 import { FilterSearchList } from "./filterSearchList";
 import { BsSearch } from "react-icons/bs";
 
-export const FilterSearchBar = ({ searchData, filterValue, setFilterValue, loading, filterKey }) => {
+export const FilterSearchBar = ({
+	searchData,
+	filterValue,
+	setFilterValue,
+	loading,
+	filterKey,
+}) => {
 	return (
 		<div className="dropdown flex flex-col h-full md:w-[40rem] w-full rounded-lg">
 			<div className="flex relative w-full h-full pb-1">
@@ -12,7 +18,9 @@ export const FilterSearchBar = ({ searchData, filterValue, setFilterValue, loadi
 					className="flex pl-10 h-full w-full rounded-lg p-2 dark:bg-white bg-black text-white dark:text-black"
 					type={"text"}
 					placeholder={"Search.."}
-					onChange={(e) => setFilterValue((prev)=>({ ...prev, search: e.target.value }))}
+					onChange={(e) =>
+						setFilterValue((prev) => ({ ...prev, [filterKey]: e.target.value }))
+					}
 				></input>
 			</div>
 			<div className="flex w-full">

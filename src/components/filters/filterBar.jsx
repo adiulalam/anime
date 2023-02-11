@@ -8,13 +8,15 @@ import cleanDeep from "clean-deep";
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 	const [filterValue, setFilterValue] = useState({
-		search: "",
+		search: null,
 		format: null,
 		status: null,
 		genre_in: [],
 		season: null,
 		year: null,
 		tag_in: [],
+		startDate_greater: null,
+		endDate_lesser: null,
 	});
 	console.log("🚀 ~ file: filterBar.jsx:19 ~ Filter ~ filterValue", filterValue);
 
