@@ -21,8 +21,8 @@ const Filter = () => {
 		averageScore_lesser: null,
 		episodes_greater: null,
 		episodes_lesser: null,
+		sort: ["POPULARITY_DESC"],
 	});
-	console.log("🚀 ~ file: filterBar.jsx:19 ~ Filter ~ filterValue", filterValue);
 
 	const debouncedSearch = useMemo(
 		() => _.debounce((variables) => search(variables), 200),

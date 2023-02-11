@@ -218,6 +218,7 @@ export const getLandingPage = gql`
 
 export const getFilterResults = gql`
 	query getFiltersResult(
+		$sort: [MediaSort]
 		$search: String
 		$format: MediaFormat
 		$status: MediaStatus
@@ -236,7 +237,7 @@ export const getFilterResults = gql`
 			media(
 				type: ANIME
 				isAdult: false
-				sort: POPULARITY_DESC
+				sort: $sort
 				search: $search
 				format: $format
 				status: $status

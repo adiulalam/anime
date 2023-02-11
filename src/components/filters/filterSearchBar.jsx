@@ -10,7 +10,6 @@ export const FilterSearchBar = ({
 	loading,
 	filterKey,
 }) => {
-	console.log(!_.isEmpty(filterValue[filterKey]) && _.isEmpty(searchData?.media));
 	return (
 		<div className="dropdown flex flex-col h-full md:w-[40rem] w-full rounded-lg">
 			<div className="flex relative w-full h-full pb-1">
