@@ -19,6 +19,8 @@ const Filter = () => {
 		endDate_lesser: null,
 		averageScore_greater: null,
 		averageScore_lesser: null,
+		episodes_greater: null,
+		episodes_lesser: null,
 	});
 	console.log("🚀 ~ file: filterBar.jsx:19 ~ Filter ~ filterValue", filterValue);
 

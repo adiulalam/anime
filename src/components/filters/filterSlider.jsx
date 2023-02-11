@@ -36,37 +36,39 @@ export const FilterSlider = ({ filterValue, setFilterValue, filterKey }) => {
 	return (
 		<div className="flex flex-col w-full h-full">
 			<label className={"text-white dark:text-black mb-1"}>{label}</label>
-			<Slider
-				range={range}
-				allowCross={false}
-				defaultValue={getDefaultValues(range, sliderMap, filterValue, min, max, isDate)}
-				min={min}
-				max={max}
-				onAfterChange={onChangeEvent}
-				trackStyle={{ backgroundColor: isDarkMode ? "black" : "white" }}
-				handleStyle={{
-					backgroundColor: isDarkMode ? "black" : "white",
-					borderColor: isDarkMode ? "darkgrey" : "lightgrey",
-				}}
-				railStyle={{ backgroundColor: isDarkMode ? "darkgrey" : "lightgrey" }}
-				dotStyle={{
-					backgroundColor: isDarkMode ? "white" : "black",
-					borderColor: isDarkMode ? "black" : "white",
-				}}
-				activeDotStyle={{ borderColor: isDarkMode ? "black" : "white" }}
-				marks={getSliderMarks(min, max, interval)}
-				handleRender={({ props }) => (
-					<div className="flex w-full h-full ">
-						<div
-							{...props}
-							data-tip={props["aria-valuenow"]}
-							className="tooltip tooltip-white before:bg-white dark:before:bg-black before:text-black dark:before:text-white"
-						>
-							<div {...props}></div>
+			<div className="flex p-2">
+				<Slider
+					range={range}
+					allowCross={false}
+					defaultValue={getDefaultValues(range, sliderMap, filterValue, min, max, isDate)}
+					min={min}
+					max={max}
+					onAfterChange={onChangeEvent}
+					trackStyle={{ backgroundColor: isDarkMode ? "black" : "white" }}
+					handleStyle={{
+						backgroundColor: isDarkMode ? "black" : "white",
+						borderColor: isDarkMode ? "darkgrey" : "lightgrey",
+					}}
+					railStyle={{ backgroundColor: isDarkMode ? "darkgrey" : "lightgrey" }}
+					dotStyle={{
+						backgroundColor: isDarkMode ? "white" : "black",
+						borderColor: isDarkMode ? "black" : "white",
+					}}
+					activeDotStyle={{ borderColor: isDarkMode ? "black" : "white" }}
+					marks={getSliderMarks(min, max, interval)}
+					handleRender={({ props }) => (
+						<div className="flex w-full h-full ">
+							<div
+								{...props}
+								data-tip={props["aria-valuenow"]}
+								className="tooltip tooltip-white before:bg-white dark:before:bg-black before:text-black dark:before:text-white"
+							>
+								<div {...props}></div>
+							</div>
 						</div>
-					</div>
-				)}
-			/>
+					)}
+				/>
+			</div>
 		</div>
 	);
 };
