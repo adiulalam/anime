@@ -2,6 +2,7 @@ import _ from "lodash";
 import Skeleton from "react-loading-skeleton";
 import { FilterSearchList } from "./filterSearchList";
 import { BsSearch } from "react-icons/bs";
+import Link from "next/link";
 
 export const FilterSearchBar = ({
 	searchData,
@@ -46,7 +47,7 @@ export const FilterSearchBar = ({
 					) : !_.isEmpty(filterValue[filterKey]) && _.isEmpty(searchData?.media) ? (
 						<li className="flex w-full h-full rounded-box ">
 							<div className="flex h-full w-full focus:bg-neutral-700 dark:focus:bg-neutral-300 cursor-default bg-black dark:bg-white ">
-								<div className="flex whitespace-nowrap w-full h-full overflow-hidden text-white dark:text-black ">
+								<div className="flex whitespace-nowrap w-full h-full overflow-hidden text-white dark:text-black">
 									<div className={`flex flex-row gap-2`}>
 										<p>Nothing found...</p>
 									</div>
@@ -54,9 +55,18 @@ export const FilterSearchBar = ({
 							</div>
 						</li>
 					) : (
-						searchData?.media?.map((element, index) => (
-							<FilterSearchList key={index} list={element} />
-						))
+						<>
+							{searchData?.media?.map((element, index) => (
+								<FilterSearchList key={index} list={element} />
+							))}
+							{searchData?.media?.length >= 5 && (
+								<div className="flex items-end justify-end text-black dark:text-white">
+									<Link href={""}>
+										<p>See more...</p>
+									</Link>
+								</div>
+							)}
+						</>
 					)}
 				</ul>
 			</div>

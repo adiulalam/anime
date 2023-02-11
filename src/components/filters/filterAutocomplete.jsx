@@ -80,8 +80,8 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) =
 					>
 						<Combobox.Options
 							className="dropdown-content menu flex flex-row flex-wrap mt-1 max-h-60 w-full overflow-auto 
-							rounded-md text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
-							sm:text-sm bg-white dark:bg-black text-black dark:text-white "
+							rounded-md text-base shadow-lg ring-1 ring-black dark:ring-white ring-opacity-50 focus:outline-none 
+							sm:text-sm bg-white dark:bg-black text-black dark:text-white"
 						>
 							{_.isEmpty(filteredQuery) && query !== "" ? (
 								<div className="relative cursor-default select-none px-4 py-2">
