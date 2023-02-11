@@ -225,6 +225,8 @@ export const getFilterResults = gql`
 		$tag_in: [String]
 		$startDate_greater: FuzzyDateInt
 		$endDate_lesser: FuzzyDateInt
+		$averageScore_greater: Int
+		$averageScore_lesser: Int
 	) {
 		filter: Page(page: 1, perPage: 5) {
 			pageInfo {
@@ -242,6 +244,8 @@ export const getFilterResults = gql`
 				tag_in: $tag_in
 				startDate_greater: $startDate_greater
 				endDate_lesser: $endDate_lesser
+				averageScore_greater: $averageScore_greater
+				averageScore_lesser: $averageScore_lesser
 			) {
 				id
 				title {

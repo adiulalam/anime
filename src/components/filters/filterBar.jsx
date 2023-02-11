@@ -17,6 +17,8 @@ const Filter = () => {
 		tag_in: [],
 		startDate_greater: null,
 		endDate_lesser: null,
+		averageScore_greater: null,
+		averageScore_lesser: null,
 	});
 	console.log("🚀 ~ file: filterBar.jsx:19 ~ Filter ~ filterValue", filterValue);
 

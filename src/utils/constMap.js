@@ -489,4 +489,15 @@ export const filterMap = {
 		isDate: true,
 		advanced: true,
 	},
+	score_range: {
+		type: "slider",
+		min: 0,
+		max: 100,
+		interval: 10,
+		label: "Score Range",
+		range: true,
+		sliderMap: { minMap: "averageScore_greater", maxMap: "averageScore_lesser" },
+		isDate: false,
+		advanced: true,
+	},
 };
