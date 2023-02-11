@@ -49,7 +49,7 @@ export const FilterSearchBar = ({
 							<div className="flex h-full w-full focus:bg-neutral-700 dark:focus:bg-neutral-300 cursor-default bg-black dark:bg-white ">
 								<div className="flex whitespace-nowrap w-full h-full overflow-hidden text-white dark:text-black ">
 									<div className={`flex flex-row gap-2`}>
-										<p>Nothing found.</p>
+										<p>Nothing found...</p>
 									</div>
 								</div>
 							</div>
