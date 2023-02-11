@@ -14,7 +14,9 @@ const Filter = () => {
 		genre_in: [],
 		season: null,
 		year: null,
+		tag_in: [],
 	});
+	console.log("🚀 ~ file: filterBar.jsx:19 ~ Filter ~ filterValue", filterValue);
 
 	const debouncedSearch = useMemo(
 		() => _.debounce((variables) => search(variables), 200),

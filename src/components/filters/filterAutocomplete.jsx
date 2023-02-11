@@ -35,7 +35,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) =
 					</Combobox.Label>
 					{!_.isEmpty(value) && (
 						<div
-							className={`relative flex flex-row gap-1 overflow-auto w-full text-black dark:text-white ${
+							className={`relative flex flex-row gap-1 overflow-auto w-full whitespace-nowrap text-black  dark:text-white ${
 								_.isArray(value) ? "pb-1 mb-1" : ""
 							}`}
 						>
@@ -81,9 +81,9 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) =
 						afterLeave={() => setQuery("")}
 					>
 						<Combobox.Options
-							className="dropdown-content menu flex flex-row flex-wrap mt-1 max-h-60 w-full overflow-auto rounded-md 
-					text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
-					sm:text-sm bg-white dark:bg-black text-black dark:text-white"
+							className="dropdown-content menu flex flex-row flex-wrap mt-1 max-h-60 w-full overflow-auto 
+							rounded-md text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none 
+							sm:text-sm bg-white dark:bg-black text-black dark:text-white "
 						>
 							{_.isEmpty(filteredQuery) && query !== "" ? (
 								<div className="relative cursor-default select-none px-4 py-2">
@@ -101,7 +101,7 @@ export const FilterAutocomplete = ({ filterValue, setFilterValue, filterKey }) =
 										{({ selected }) => (
 											<>
 												<span
-													className={`block truncate bg-transparent ${
+													className={`block bg-transparent w-full break-normal ${
 														selected ? "font-medium" : "font-normal"
 													}`}
 												>

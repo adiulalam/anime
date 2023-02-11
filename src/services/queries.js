@@ -222,6 +222,7 @@ export const getFilterResults = gql`
 		$format: MediaFormat
 		$status: MediaStatus
 		$genre_in: [String]
+		$tag_in: [String]
 	) {
 		filter: Page(page: 1, perPage: 5) {
 			pageInfo {
@@ -236,6 +237,7 @@ export const getFilterResults = gql`
 				format: $format
 				status: $status
 				genre_in: $genre_in
+				tag_in: $tag_in
 			) {
 				id
 				title {

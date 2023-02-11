@@ -475,7 +475,7 @@ export const filterMap = {
 		],
 		type: "autocomplete",
 		advanced: true,
-		accessorKey: null,
+		accessorKey: "tag_in",
 		label: "Tags:",
 	},
 	test: {
