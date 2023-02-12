@@ -10,7 +10,6 @@ const Categories = () => {
 	const [searchQuery, { loading, data, error, fetchMore }] = useLazyQuery(
 		getFilterCategoryResults,
 		{
-			variables: { page: 1 },
 			fetchPolicy: "cache-and-network",
 		}
 	);
@@ -60,7 +59,9 @@ const Categories = () => {
 						<h1 className="text-3xl font-bold underline">{e.title.userPreferred}</h1>
 					</div>
 				))}
-				<button onClick={() => clickHandler()}>Load more</button>
+				{data?.filter?.pageInfo?.hasNextPage && (
+					<button onClick={() => clickHandler()}>Load more</button>
+				)}
 			</div>
 		</div>
 	);
