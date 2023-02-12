@@ -68,7 +68,7 @@ export const CarouselBox = ({ data, moreSettings, title, sort, filter, index }) 
 						<CarouselCard
 							key={i}
 							cardData={e}
-							carouselWidth={carouselWidth}
+							boxWidth={carouselWidth}
 							slider={slider}
 						/>
 					))}

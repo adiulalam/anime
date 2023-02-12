@@ -1,46 +1,36 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { getFilterResults } from "@/services/queries";
+import { useLazyQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
+import _ from "lodash";
+import CategoryIcons from "@/components/category/categoryIcons";
+import CategoryFilter from "@/components/category/categoryFilter";
 
 const Categories = () => {
-	const router = useRouter();
-	const {
-		search,
-		format,
-		status,
-		genre_in,
-		season,
-		year,
-		tag_in,
-		startDate_greater,
-		endDate_lesser,
-		averageScore_greater,
-		averageScore_lesser,
-		episodes_greater,
-		episodes_lesser,
-		sort,
-	} = router.query;
+	const [searchQuery, { loading, data, error }] = useLazyQuery(getFilterResults);
+	const [isLoading, setIsLoading] = useState(true);
 
-	const [filterValue, setFilterValue] = useState({
-		search: search ?? null,
-		format: format ?? null,
-		status: status ?? null,
-		genre_in: genre_in ?? [],
-		season: season ?? null,
-		year: year ?? null,
-		tag_in: tag_in ?? [],
-		startDate_greater: startDate_greater ?? null,
-		endDate_lesser: endDate_lesser ?? null,
-		averageScore_greater: averageScore_greater ?? null,
-		averageScore_lesser: averageScore_lesser ?? null,
-		episodes_greater: episodes_greater ?? null,
-		episodes_lesser: episodes_lesser ?? null,
-		sort: sort ?? ["POPULARITY_DESC"],
-	});
-	// console.log("🚀 ~ file: categories.jsx:6 ~ Categories ~ genre_in", filterValue);
-	// const router = useRouter();
-	console.log(router.pathname);
+	useEffect(() => {
+		setIsLoading(false);
+	}, []);
 
-	return <p>Post: {sort}</p>;
+	if (isLoading) {
+		return (
+			<>
+				<h1>loading..</h1>
+			</>
+		);
+	}
+
+	return (
+		<div className="bg-white dark:bg-black">
+			<div className="flex items-center justify-center h-16 p-2">
+				<CategoryFilter data={data} loading={loading} searchQuery={searchQuery} />
+			</div>
+			<div className="flex items-center justify-end px-2">
+				<CategoryIcons />
+			</div>
+		</div>
+	);
 };
 
 export default Categories;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CarouselHover } from "./carouselHover";
 
-export const CarouselCard = ({ cardData, carouselWidth, slider }) => {
+export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 	const [showRight, setShowRight] = useState(false);
 
 	return (
@@ -13,13 +13,13 @@ export const CarouselCard = ({ cardData, carouselWidth, slider }) => {
 					<div
 						className={`flex flex-col relative md:h-72 md:w-52 h-52 w-36 justify-end rounded-lg`}
 						onMouseEnter={(e) =>
-							(carouselWidth.current.offsetWidth / 2).toFixed(0) < e.clientX
+							(boxWidth.current.offsetWidth / 2).toFixed(0) < e.clientX
 								? setShowRight(false)
 								: setShowRight(true)
 						}
 						onTouchStart={(e) => {
 							slider.current.slickPause();
-							(carouselWidth.current.offsetWidth / 2).toFixed(0) <
+							(boxWidth.current.offsetWidth / 2).toFixed(0) <
 							e?.changedTouches?.[0]?.clientX
 								? setShowRight(false)
 								: setShowRight(true);
