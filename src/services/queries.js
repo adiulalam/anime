@@ -261,3 +261,52 @@ export const getFilterResults = gql`
 		}
 	}
 `;
+
+export const getFilterCategoryResults = gql`
+	query getFiltersResult(
+		$page: Int
+		$sort: [MediaSort]
+		$search: String
+		$format: MediaFormat
+		$status: MediaStatus
+		$genre_in: [String]
+		$tag_in: [String]
+		$startDate_greater: FuzzyDateInt
+		$endDate_lesser: FuzzyDateInt
+		$averageScore_greater: Int
+		$averageScore_lesser: Int
+	) {
+		filter: Page(page: $page) {
+			pageInfo {
+				total
+				perPage
+				currentPage
+				hasNextPage
+			}
+			media(
+				type: ANIME
+				isAdult: false
+				sort: $sort
+				search: $search
+				format: $format
+				status: $status
+				genre_in: $genre_in
+				tag_in: $tag_in
+				startDate_greater: $startDate_greater
+				endDate_lesser: $endDate_lesser
+				averageScore_greater: $averageScore_greater
+				averageScore_lesser: $averageScore_lesser
+			) {
+				id
+				title {
+					userPreferred
+				}
+				format
+				averageScore
+				episodes
+				status
+				seasonYear
+			}
+		}
+	}
+`;

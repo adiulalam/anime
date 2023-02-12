@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 
 const CategoryIcons = () => {
 	const [categoryView, setCategoryView] = useState("");
-	console.log("🚀 ~ file: categories.jsx:57 ~ Categories ~ categoryView", categoryView);
 
 	useEffect(() => {
 		setCategoryView(localStorage.getItem("categoryView") ?? "grid");
