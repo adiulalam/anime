@@ -1,10 +1,12 @@
 import { getFilterCategoryResults } from "@/services/queries";
 import { useLazyQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import _ from "lodash";
 import CategoryIcons from "@/components/category/categoryIcons";
 import CategoryFilter from "@/components/category/categoryFilter";
 import Link from "next/link";
+import Image from "next/image";
+import CategoryGrid from "@/components/category/categoryGrid";
 
 const Categories = () => {
 	const [searchQuery, { loading, data, error, fetchMore }] = useLazyQuery(
@@ -14,7 +16,6 @@ const Categories = () => {
 		}
 	);
 	const [isLoading, setIsLoading] = useState(true);
-	console.log("🚀 ~ file: categories.jsx:11 ~ Categories ~ data", data);
 
 	useEffect(() => {
 		setIsLoading(false);
@@ -53,16 +54,25 @@ const Categories = () => {
 				<CategoryIcons />
 			</div>
 			<div>
-				{data?.filter?.media?.map((e, i) => (
-					<div key={i}>
-						<Link href={`/${e.id}`}>{`Go to pages/post/[pid ${e.id}].js`}</Link>
-						<h1 className="text-3xl font-bold underline">{e.title.userPreferred}</h1>
-					</div>
-				))}
-				{data?.filter?.pageInfo?.hasNextPage && (
-					<button onClick={() => clickHandler()}>Load more</button>
-				)}
+				{/* <Test data={data} clickHandler={clickHandler} /> */}
+				<CategoryGrid />
 			</div>
+		</div>
+	);
+};
+
+const Test = ({ data, clickHandler }) => {
+	return (
+		<div>
+			{data?.filter?.media?.map((e, i) => (
+				<div key={i}>
+					<Link href={`/${e.id}`}>{`Go to pages/post/[pid ${e.id}].js`}</Link>
+					<h1 className="text-3xl font-bold underline">{e.title.userPreferred}</h1>
+				</div>
+			))}
+			{data?.filter?.pageInfo?.hasNextPage && (
+				<button onClick={() => clickHandler()}>Load more</button>
+			)}
 		</div>
 	);
 };
