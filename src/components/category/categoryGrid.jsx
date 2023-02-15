@@ -30,7 +30,9 @@ const CategoryGrid = ({ data }) => {
 										element.averageScore
 									)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg sm:text-sm md:text-xl`}
 								>
-									<p className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center justify-center text-center`}>
+									<p
+										className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center justify-center text-center`}
+									>
 										{element.averageScore}
 									</p>
 								</div>
@@ -38,32 +40,47 @@ const CategoryGrid = ({ data }) => {
 						</div>
 						<div className="flex flex-col items-center justify-between flex-wrap col-span-3 row-span-1 ">
 							<div className="flex w-full h-2/5">
-								<div className="flex flex-col items-center justify-between flex-wrap w-full h-full ">
-									<div className="flex w-full h-3/5 text-lg sm:text-base md:text-xl rounded-tr-xl justify-center overflow-hidden">
-										<div className="leading-[1.5rem] sm:leading-[1.2rem] md:leading-[1.6rem] ">
-											<p className="flex px-2 rounded-lg text-ellipsis bg-white dark:bg-black">
+								<div className="flex flex-col items-center justify-evenly flex-wrap w-full h-full gap-1">
+									<div className="flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl rounded-tr-xl justify-center overflow-hidden">
+										<div className="leading-[1.4rem] sm:leading-[1.2rem] md:leading-[1.6rem] ">
+											<p className="flex px-2 w-full h-full rounded-lg text-ellipsis bg-white dark:bg-black">
 												{element.title.userPreferred}
 											</p>
 										</div>
 									</div>
-									<div className="flex w-full h-2/5 items-center justify-center ">
+									<div className="flex w-full max-h-4 sm:max-h-4 md:max-h-6 items-center justify-center">
 										<div
 											className={`${
-												element.season ? seasonalMap[element.season] : "bg-gray-300 dark:bg-gray-800"
+												element.season
+													? seasonalMap[element.season]
+													: "bg-gray-300 dark:bg-gray-800"
 											}  px-2 rounded-lg`}
 										>
-											<p className="flex truncate text-base sm:text-sm md:text-lg">
+											<p className="flex truncate text-base sm:text-xs md:text-lg">
 												{!_.isEmpty(element.nextAiringEpisode)
-													? `Episode ${element.nextAiringEpisode.episode} in ${humanizeDuration(
-															(element.nextAiringEpisode.timeUntilAiring * 1000).toFixed(0) ?? 0,
+													? `Episode ${
+															element.nextAiringEpisode.episode
+													  } in ${humanizeDuration(
+															(
+																element.nextAiringEpisode
+																	.timeUntilAiring * 1000
+															).toFixed(0) ?? 0,
 															{
 																units: ["d"],
 																round: true,
 															}
 													  )}`
-													: element.season || element.seasonYear || element.startDate.year
-													? `${element.season ?? ""} ${element.seasonYear ?? element.startDate.year ?? ""} ${
-															element.episodes ? `(${element.episodes} Episodes)` : ""
+													: element.season ||
+													  element.seasonYear ||
+													  element.startDate.year
+													? `${element.season ?? ""} ${
+															element.seasonYear ??
+															element.startDate.year ??
+															""
+													  } ${
+															element.episodes
+																? `(${element.episodes} Episodes)`
+																: ""
 													  }`
 													: "TBA"}
 											</p>
@@ -85,9 +102,19 @@ const CategoryGrid = ({ data }) => {
 										<p
 											key={i}
 											className={`${
-												Color(element.coverImage.color ?? "#ee7752").rotate(45).isDark() ? `text-white` : `text-black`
-											} flex text-xs sm:text-xs md:text-sm px-2 rounded-xl border-black dark:border-white border-2 items-center`}
-											style={{backgroundColor: Color(element.coverImage.color ?? "#ee7752").rotate(45).hex() }}
+												Color(element.coverImage.color ?? "#ee7752")
+													.rotate(45)
+													.isDark()
+													? `text-white`
+													: `text-black`
+											} flex text-xs sm:text-xs md:text-sm px-2 rounded-xl `}
+											style={{
+												backgroundColor: Color(
+													element.coverImage.color ?? "#ee7752"
+												)
+													.rotate(45)
+													.hex(),
+											}}
 										>
 											{genre}
 										</p>
