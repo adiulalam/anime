@@ -10,7 +10,9 @@ import CategoryCoverSkeleton from "@/components/skeleton/categoryCoverSkeleton";
 import CategoryGridSkeleton from "@/components/skeleton/categoryGridSkeleton";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 import CategoryCover from "@/components/category/categoryCover";
+import InfiniteScroll from "react-infinite-scroll-component";
 
+// todo Error handling..
 const Categories = () => {
 	const [searchQuery, { loading, data, error, fetchMore }] = useLazyQuery(
 		getFilterCategoryResults,
@@ -34,7 +36,7 @@ const Categories = () => {
 		);
 	}
 
-	const clickHandler = () => {
+	const fetchMoreData = () => {
 		fetchMore({
 			variables: {
 				page: data.filter.pageInfo.currentPage ? data.filter.pageInfo.currentPage + 1 : 1,
@@ -65,30 +67,24 @@ const Categories = () => {
 					<CategoryGridSkeleton />
 				)
 			) : (
-				<div>
-					{/* <Test data={data} clickHandler={clickHandler} /> */}
+				<InfiniteScroll
+					dataLength={data?.filter?.media ? data?.filter?.media?.length : 0}
+					next={() => fetchMoreData()}
+					hasMore={data?.filter?.pageInfo?.hasNextPage}
+					loader={
+						categoryView === "cover" ? (
+							<CategoryCoverSkeleton overflow={false} />
+						) : (
+							<CategoryGridSkeleton overflow={false} />
+						)
+					}
+				>
 					{categoryView === "cover" ? (
 						<CategoryCover data={data} />
 					) : (
 						<CategoryGrid data={data} />
 					)}
-				</div>
-			)}
-		</div>
-	);
-};
-
-const Test = ({ data, clickHandler }) => {
-	return (
-		<div>
-			{data?.filter?.media?.map((e, i) => (
-				<div key={i}>
-					<Link href={`/${e.id}`}>{`Go to pages/post/[pid ${e.id}].js`}</Link>
-					<h1 className="text-3xl font-bold underline">{e.title.userPreferred}</h1>
-				</div>
-			))}
-			{data?.filter?.pageInfo?.hasNextPage && (
-				<button onClick={() => clickHandler()}>Load more</button>
+				</InfiniteScroll>
 			)}
 		</div>
 	);

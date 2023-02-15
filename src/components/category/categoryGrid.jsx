@@ -23,6 +23,7 @@ const CategoryGrid = ({ data }) => {
 									<Image
 										alt={element.title.userPreferred}
 										fill
+										sizes="100%"
 										src={element.coverImage.large}
 										className="rounded-l-xl"
 									/>
