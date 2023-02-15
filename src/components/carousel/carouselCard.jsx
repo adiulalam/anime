@@ -7,7 +7,7 @@ export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 	const [showRight, setShowRight] = useState(false);
 
 	return (
-		<div className="p-2">
+		<div className="px-2">
 			<div className="group relative">
 				<Link href={`/anime/${cardData.id}`}>
 					<div

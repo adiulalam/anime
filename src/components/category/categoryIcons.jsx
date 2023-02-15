@@ -18,7 +18,7 @@ const CategoryIcons = ({ categoryView, setCategoryView }) => {
 	return (
 		<div className="flex flex-row flex-wrap items-center justify-end gap-4">
 			<Link href={"/"}>
-				<Home size={19} />
+				<Home size={18} />
 			</Link>
 			<div className="flex flex-row gap-2">
 				<button onClick={(e) => onClickSetView("cover")}>

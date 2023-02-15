@@ -47,7 +47,7 @@ export const CarouselBox = ({ data, moreSettings, title, sort, filter, index }) 
 
 	return (
 		<div className="py-5">
-			<div className="flex flex-row justify-between items-center">
+			<div className="flex flex-row justify-between items-center mb-2">
 				<h2 className="px-2 text-xl md:text-3xl font-bold uppercase text-black dark:text-white">
 					{title}
 				</h2>
