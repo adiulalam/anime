@@ -3,6 +3,7 @@ import { seasonalMap, scoreColour, statusMap, formatMap } from "@/utils/constMap
 import humanizeDuration from "humanize-duration";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Color from "color";
+import Link from "next/link";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -17,37 +18,44 @@ const CategoryGrid = ({ data }) => {
 						className="grid grid-cols-5 grid-rows-1 grid-flow-col w-full h-full rounded-xl"
 					>
 						<div className="col-span-2 row-span-full">
-							<div className="relative w-full h-full bg-cover">
-								<Image
-									alt={element.title.userPreferred}
-									fill
-									// src="data:image/jpeg;base64,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"
-									src={element.coverImage.large}
-									className="rounded-l-xl"
-								/>
-								<div
-									className={`${scoreColour(
-										element.averageScore
-									)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg sm:text-sm md:text-xl`}
-								>
-									<p
-										className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center justify-center text-center`}
+							<Link href={`/anime/${element.id}`}>
+								<div className="relative w-full h-full bg-cover">
+									<Image
+										alt={element.title.userPreferred}
+										fill
+										src={element.coverImage.large}
+										className="rounded-l-xl"
+									/>
+
+									<div
+										className={`${scoreColour(
+											element.averageScore
+										)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg sm:text-sm md:text-xl`}
 									>
-										{element.averageScore}
-									</p>
+										<p
+											className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center justify-center text-center`}
+										>
+											{element.averageScore}
+										</p>
+									</div>
 								</div>
-							</div>
+							</Link>
 						</div>
 						<div className="flex flex-col items-center justify-between flex-wrap col-span-3 row-span-1 ">
 							<div className="flex w-full h-2/5">
 								<div className="flex flex-col items-center justify-evenly flex-wrap w-full h-full gap-1">
-									<div className="flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl rounded-tr-xl justify-center overflow-hidden">
-										<div className="leading-[1.4rem] sm:leading-[1.2rem] md:leading-[1.6rem] ">
-											<p className="flex px-2 w-full h-full rounded-lg text-ellipsis bg-white dark:bg-black">
-												{element.title.userPreferred}
-											</p>
+									<Link href={`/anime/${element.id}`}>
+										<div className="flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl  justify-center overflow-hidden">
+											<div className="leading-[1.4rem] sm:leading-[1.2rem] md:leading-[1.6rem] font-medium">
+												<p
+													className="flex px-2 w-full h-full rounded-md text-ellipsis backdrop-blur-md backdrop-contrast-75
+											backdrop-saturate-100 backdrop-brightness-200 dark:backdrop-brightness-50 "
+												>
+													{element.title.userPreferred}
+												</p>
+											</div>
 										</div>
-									</div>
+									</Link>
 									<div className="flex w-full max-h-4 sm:max-h-4 md:max-h-6 items-center justify-center">
 										<div
 											className={`${
@@ -89,35 +97,46 @@ const CategoryGrid = ({ data }) => {
 								</div>
 							</div>
 
-							<div className="flex flex-wrap h-1/2 w-full bg-gray-300 dark:bg-gray-600 overflow-hidden hover:overflow-auto text-sm sm:text-xs md:text-base ">
+							<div
+								className="flex flex-wrap h-[45%] w-full bg-gray-300 dark:bg-gray-600 overflow-hidden hover:overflow-auto 
+							text-sm sm:text-xs md:text-base rounded-md"
+							>
 								<p
-									className="leading-4 sm:leading-4 md:leading-5 ml-1"
+									className="leading-4 sm:leading-4 md:leading-5 ml-1 "
 									dangerouslySetInnerHTML={{ __html: element.description ?? "" }}
 								/>
 							</div>
 
-							<div className="flex w-full h-[10%] overflow-hidden rounded-br-xl">
-								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee ">
+							<div className="flex w-full h-[13%] overflow-hidden rounded-br-xl py-1 sm:py-0 md:py-1">
+								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
 									{element?.genres?.map((genre, i) => (
-										<p
+										<Link
 											key={i}
-											className={`${
-												Color(element.coverImage.color ?? "#ee7752")
-													.rotate(45)
-													.isDark()
-													? `text-white`
-													: `text-black`
-											} flex text-xs sm:text-xs md:text-sm px-2 rounded-xl `}
-											style={{
-												backgroundColor: Color(
-													element.coverImage.color ?? "#ee7752"
-												)
-													.rotate(45)
-													.hex(),
+											href={{
+												pathname: "/anime/categories",
+												query: { genre_in: [genre] },
 											}}
 										>
-											{genre}
-										</p>
+											<p
+												className={`${
+													Color(element.coverImage.color ?? "#ee7752")
+														.rotate(45)
+														.isDark()
+														? `text-white`
+														: `text-black`
+												} flex text-xs sm:text-xs md:text-sm px-2 rounded-xl ring-1 ring-black 
+												dark:ring-white font-medium`}
+												style={{
+													backgroundColor: Color(
+														element.coverImage.color ?? "#ee7752"
+													)
+														.rotate(45)
+														.hex(),
+												}}
+											>
+												{genre}
+											</p>
+										</Link>
 									))}
 								</div>
 							</div>
