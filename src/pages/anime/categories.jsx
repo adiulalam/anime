@@ -12,7 +12,7 @@ import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 import CategoryCover from "@/components/category/categoryCover";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-// todo Error handling..
+// todo Error handling and empty data..
 const Categories = () => {
 	const [searchQuery, { loading, data, error, fetchMore }] = useLazyQuery(
 		getFilterCategoryResults,

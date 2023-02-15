@@ -1,11 +1,9 @@
 import useWindowDimensions from "@/hooks/useWindowDimensions";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
 import GridSkeleton from "./gridSkeleton";
 
 const CategoryGridSkeleton = ({ overflow = true }) => {
-	const { height, width } = useWindowDimensions();
+	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
 	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -17,7 +15,7 @@ const CategoryGridSkeleton = ({ overflow = true }) => {
 		return () => {
 			document.body.classList.remove("overflow-hidden");
 		};
-	}, [height, width]);
+	}, [height]);
 
 	return (
 		<div className="bg-white dark:bg-black">

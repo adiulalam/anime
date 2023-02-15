@@ -10,14 +10,11 @@ import Switcher from "../switcher";
 import { useEffect, useState } from "react";
 
 const CategoryIcons = ({ categoryView, setCategoryView }) => {
-	// useEffect(() => {
-	// 	setCategoryView(localStorage.getItem("categoryView") ?? "grid");
-	// }, []);
-
 	const onClickSetView = (name) => {
 		window.localStorage.setItem("categoryView", name);
 		setCategoryView(name);
 	};
+
 	return (
 		<div className="flex flex-row flex-wrap gap-4">
 			<div className="flex flex-row gap-2">

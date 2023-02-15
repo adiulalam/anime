@@ -11,6 +11,7 @@ import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 
+// todo add date countdown for cover, grid, table
 export default function Home({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {

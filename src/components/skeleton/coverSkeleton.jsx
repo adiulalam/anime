@@ -4,7 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 const CoverSkeleton = ({ overflow = true }) => {
-	const { height, width } = useWindowDimensions();
+	const { width } = useWindowDimensions();
 
 	const [numCard, setNumCard] = useState(0);
 
@@ -17,7 +17,7 @@ const CoverSkeleton = ({ overflow = true }) => {
 		return () => {
 			document.body.classList.remove("overflow-hidden");
 		};
-	}, [height, width]);
+	}, [width]);
 
 	return (
 		<div className="flex flex-row flex-wrap overflow-hidden items-center justify-evenly gap-2 md:h-72 md:w-full h-52 w-full bg-white dark:bg-black p-2">

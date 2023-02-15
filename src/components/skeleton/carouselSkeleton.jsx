@@ -5,7 +5,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import CoverSkeleton from "./coverSkeleton";
 
 const CarouselSkeleton = () => {
-	const { height, width } = useWindowDimensions();
+	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
 	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -17,7 +17,7 @@ const CarouselSkeleton = () => {
 		return () => {
 			document.body.classList.remove("overflow-hidden");
 		};
-	}, [height, width]);
+	}, [height]);
 
 	return (
 		<div className="bg-white dark:bg-black">

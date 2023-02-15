@@ -9,6 +9,7 @@ import { FilterSlider } from "./filterSlider";
 import FilterToggle from "./filterToggle";
 import { filterMap } from "@/utils/constMap";
 
+// todo add remove all text/array from autocomplete
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {
 	const [enableAdvanced, setEnableAdvanced] = useState(false);
 	const { theme } = useTheme();

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { seasonalMap, scoreColour, statusMap, formatMap } from "@/utils/constMap";
+import { seasonalMap, scoreColour } from "@/utils/constMap";
 import humanizeDuration from "humanize-duration";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Color from "color";
@@ -11,7 +11,8 @@ const CategoryGrid = ({ data }) => {
 			{data?.filter?.media?.map((element, index) => (
 				<div
 					key={index}
-					className="flex h-48 md:h-56 sm:h-40 w-full md:w-[28rem] sm:w-72 justify-center text-6xl border-2 border-gray-300 rounded-xl bg-gray-100"
+					className="flex h-48 md:h-56 sm:h-40 w-full md:w-[28rem] sm:w-72 justify-center text-6xl border-2 
+					border-gray-300 rounded-xl bg-gray-100"
 				>
 					<Gradient
 						startColour={element.coverImage.color ?? "#ee7752"}
@@ -31,10 +32,12 @@ const CategoryGrid = ({ data }) => {
 									<div
 										className={`${scoreColour(
 											element.averageScore
-										)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg sm:text-sm md:text-xl`}
+										)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg 
+										sm:text-sm md:text-xl ring-1 ring-black dark:ring-white`}
 									>
 										<p
-											className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center justify-center text-center`}
+											className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center 
+											justify-center text-center`}
 										>
 											{element.averageScore}
 										</p>
@@ -46,11 +49,15 @@ const CategoryGrid = ({ data }) => {
 							<div className="flex w-full h-2/5">
 								<div className="flex flex-col items-center justify-evenly flex-wrap w-full h-full gap-1">
 									<Link href={`/anime/${element.id}`}>
-										<div className="flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl  justify-center overflow-hidden">
+										<div
+											className="flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl 
+										justify-center overflow-hidden"
+										>
 											<div className="leading-[1.4rem] sm:leading-[1.2rem] md:leading-[1.6rem] font-medium">
 												<p
-													className="flex px-2 w-full h-full rounded-md text-ellipsis backdrop-blur-md backdrop-contrast-75
-											backdrop-saturate-100 backdrop-brightness-200 dark:backdrop-brightness-50 "
+													className="flex px-2 w-full h-full rounded-md text-ellipsis backdrop-blur-md 
+													backdrop-contrast-75 backdrop-saturate-100 backdrop-brightness-200 
+													dark:backdrop-brightness-50 "
 												>
 													{element.title.userPreferred}
 												</p>
