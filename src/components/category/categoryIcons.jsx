@@ -9,12 +9,10 @@ import { FaThList as Table } from "react-icons/fa";
 import Switcher from "../switcher";
 import { useEffect, useState } from "react";
 
-const CategoryIcons = () => {
-	const [categoryView, setCategoryView] = useState("");
-
-	useEffect(() => {
-		setCategoryView(localStorage.getItem("categoryView") ?? "grid");
-	}, []);
+const CategoryIcons = ({ categoryView, setCategoryView }) => {
+	// useEffect(() => {
+	// 	setCategoryView(localStorage.getItem("categoryView") ?? "grid");
+	// }, []);
 
 	const onClickSetView = (name) => {
 		window.localStorage.setItem("categoryView", name);

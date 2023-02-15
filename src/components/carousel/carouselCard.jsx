@@ -18,13 +18,13 @@ export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 								: setShowRight(true)
 						}
 						onTouchStart={(e) => {
-							slider.current.slickPause();
+							slider.current && slider.current.slickPause();
 							(boxWidth.current.offsetWidth / 2).toFixed(0) <
 							e?.changedTouches?.[0]?.clientX
 								? setShowRight(false)
 								: setShowRight(true);
 						}}
-						onTouchEnd={() => slider.current.slickPlay()}
+						onTouchEnd={() => slider.current && slider.current.slickPlay()}
 					>
 						<Image
 							alt={cardData.title.userPreferred}

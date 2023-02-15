@@ -7,6 +7,11 @@ import CategoryFilter from "@/components/category/categoryFilter";
 import Link from "next/link";
 import Image from "next/image";
 import CategoryGrid from "@/components/category/categoryGrid";
+import CategoryCoverSkeleton from "@/components/skeleton/categoryCoverSkeleton";
+import GridSkeleton from "@/components/skeleton/gridSkeleton";
+import CategoryGridSkeleton from "@/components/skeleton/categoryGridSkeleton";
+import CategorySkeleton from "@/components/skeleton/categorySkeleton_old";
+import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 
 const Categories = () => {
 	const [searchQuery, { loading, data, error, fetchMore }] = useLazyQuery(
@@ -16,15 +21,17 @@ const Categories = () => {
 		}
 	);
 	const [isLoading, setIsLoading] = useState(true);
+	const [categoryView, setCategoryView] = useState("");
 
 	useEffect(() => {
+		setCategoryView(localStorage.getItem("categoryView") ?? "grid");
 		setIsLoading(false);
 	}, []);
 
 	if (isLoading) {
 		return (
 			<>
-				<h1>loading..</h1>
+				<FilterSkeleton />
 			</>
 		);
 	}
@@ -51,10 +58,14 @@ const Categories = () => {
 				<CategoryFilter data={data} loading={loading} searchQuery={searchQuery} />
 			</div>
 			<div className="flex items-center justify-end px-2">
-				<CategoryIcons />
+				<CategoryIcons categoryView={categoryView} setCategoryView={setCategoryView} />
 			</div>
 			{loading ? (
-				<h1>loading..</h1>
+				categoryView === "cover" ? (
+					<CategoryCoverSkeleton />
+				) : (
+					<CategoryGridSkeleton />
+				)
 			) : (
 				<div>
 					{/* <Test data={data} clickHandler={clickHandler} /> */}
