@@ -5,9 +5,9 @@ import {
 	BsGrid as Grid,
 } from "react-icons/bs";
 import { TfiViewListAlt as TableFilled } from "react-icons/tfi";
-import { FaThList as Table } from "react-icons/fa";
+import { FaThList as Table, FaHome as Home } from "react-icons/fa";
 import Switcher from "../switcher";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const CategoryIcons = ({ categoryView, setCategoryView }) => {
 	const onClickSetView = (name) => {
@@ -16,7 +16,10 @@ const CategoryIcons = ({ categoryView, setCategoryView }) => {
 	};
 
 	return (
-		<div className="flex flex-row flex-wrap gap-4">
+		<div className="flex flex-row flex-wrap items-center justify-center gap-4">
+			<Link href={"/"}>
+				<Home />
+			</Link>
 			<div className="flex flex-row gap-2">
 				<button onClick={(e) => onClickSetView("cover")}>
 					{categoryView === "cover" ? <CoverFilled /> : <Cover />}
