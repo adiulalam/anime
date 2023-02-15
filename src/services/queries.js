@@ -331,6 +331,9 @@ export const getFilterCategoryResults = gql`
 				status
 				seasonYear
 				season
+				duration
+				description
+				genres
 				startDate {
 					year
 				}

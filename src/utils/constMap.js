@@ -35,6 +35,19 @@ export const seasonalMap = {
 	FALL: "bg-orange-400 dark:bg-orange-800",
 };
 
+export const formatMap = {
+	TV: "TV",
+	TV_SHORT: "Short",
+	MOVIE: "Movie",
+	SPECIAL: "Special",
+	OVA: 'OVA',
+	ONA: 'ONA',
+	MUSIC: 'Music',
+	MANGA: 'Manga',
+	NOVEL: 'Novel',
+	ONE_SHOT: 'One Shot'
+};
+
 export const carouselMap = {
 	trending: {
 		title: "Trending Now",
