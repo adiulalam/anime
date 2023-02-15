@@ -12,7 +12,7 @@ const CategoryGrid = ({ data }) => {
 				<div
 					key={index}
 					className="flex h-48 md:h-56 sm:h-40 w-full md:w-[28rem] sm:w-72 justify-center text-6xl border-2 
-					border-gray-300 rounded-xl bg-gray-100"
+					border-gray-800 dark:border-gray-300 rounded-xl bg-gray-100"
 				>
 					<Gradient
 						startColour={element.coverImage.color ?? "#ee7752"}
