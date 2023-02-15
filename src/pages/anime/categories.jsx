@@ -53,10 +53,14 @@ const Categories = () => {
 			<div className="flex items-center justify-end px-2">
 				<CategoryIcons />
 			</div>
-			<div>
-				{/* <Test data={data} clickHandler={clickHandler} /> */}
-				<CategoryGrid data={data} />
-			</div>
+			{loading ? (
+				<h1>loading..</h1>
+			) : (
+				<div>
+					{/* <Test data={data} clickHandler={clickHandler} /> */}
+					<CategoryGrid data={data} />
+				</div>
+			)}
 		</div>
 	);
 };
