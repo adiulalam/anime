@@ -5,7 +5,7 @@ const CategoryCover = ({ data }) => {
 	const boxWidth = useRef(null);
 	return (
 		<div
-			className="flex flex-col sm:flex-row flex-wrap items-center justify-evenly h-auto w-full gap-4 p-4"
+			className="flex flex-row flex-wrap items-center justify-evenly h-auto w-full gap-4 p-4"
 			ref={boxWidth}
 		>
 			{data?.filter?.media?.map((element, index) => (
