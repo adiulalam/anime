@@ -25,6 +25,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -55,6 +58,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -85,6 +91,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -115,6 +124,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -145,6 +157,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -175,6 +190,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -205,6 +223,9 @@ export const getLandingPage = gql`
 				format
 				status
 				seasonYear
+				startDate {
+					year
+				}
 				season
 				nextAiringEpisode {
 					id
@@ -257,6 +278,9 @@ export const getFilterResults = gql`
 				episodes
 				status
 				seasonYear
+				startDate {
+					year
+				}
 			}
 		}
 	}
@@ -306,6 +330,25 @@ export const getFilterCategoryResults = gql`
 				episodes
 				status
 				seasonYear
+				season
+				startDate {
+					year
+				}
+				coverImage {
+					large
+					color
+				}
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
+				studios(isMain: true) {
+					nodes {
+						id
+						name
+					}
+				}
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 import { Gradient } from "@/utils/getAnimationStyle";
 import humanizeDuration from "humanize-duration";
 import { seasonalMap, scoreColour, statusMap } from "@/utils/constMap";
+import _ from "lodash";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (
@@ -49,7 +50,7 @@ export const CarouselHover = ({ cardData, showRight }) => {
 					} flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black
 												dark:text-white py-1 px-2 text-xs md:text-base`}
 				>
-					{cardData?.nextAiringEpisode?.id
+					{!_.isEmpty(cardData.nextAiringEpisode)
 						? `Episode ${cardData.nextAiringEpisode.episode} in ${humanizeDuration(
 								(cardData.nextAiringEpisode.timeUntilAiring * 1000).toFixed(0) ?? 0,
 								{
@@ -57,8 +58,10 @@ export const CarouselHover = ({ cardData, showRight }) => {
 									round: true,
 								}
 						  )}`
-						: cardData.season || cardData.seasonYear
-						? `${cardData.season ?? ""} ${cardData.seasonYear ?? ""}`
+						: cardData.season || cardData.seasonYear || cardData.startDate.year
+						? `${cardData.season ?? ""} ${
+								cardData.seasonYear ?? cardData.startDate.year ?? ""
+						  }`
 						: "TBA"}
 				</div>
 			</div>

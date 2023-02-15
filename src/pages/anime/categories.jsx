@@ -55,7 +55,7 @@ const Categories = () => {
 			</div>
 			<div>
 				{/* <Test data={data} clickHandler={clickHandler} /> */}
-				<CategoryGrid />
+				<CategoryGrid data={data} />
 			</div>
 		</div>
 	);

@@ -26,7 +26,11 @@ export const FilterSearchList = ({ list }) => {
 					>
 						<p>
 							{list?.title?.userPreferred}{" "}
-							{list?.seasonYear ? `(${list?.seasonYear})` : ""}
+							{list?.seasonYear
+								? `(${list?.seasonYear})`
+								: list?.startDate.year
+								? `(${list?.startDate.year})`
+								: ""}
 						</p>
 						{list?.averageScore ? <p>• Score: {list?.averageScore}</p> : <></>}
 						{list?.status ? <p>• Status: {list?.status}</p> : <></>}
