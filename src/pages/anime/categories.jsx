@@ -5,13 +5,11 @@ import _ from "lodash";
 import CategoryIcons from "@/components/category/categoryIcons";
 import CategoryFilter from "@/components/category/categoryFilter";
 import Link from "next/link";
-import Image from "next/image";
 import CategoryGrid from "@/components/category/categoryGrid";
 import CategoryCoverSkeleton from "@/components/skeleton/categoryCoverSkeleton";
-import GridSkeleton from "@/components/skeleton/gridSkeleton";
 import CategoryGridSkeleton from "@/components/skeleton/categoryGridSkeleton";
-import CategorySkeleton from "@/components/skeleton/categorySkeleton_old";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
+import CategoryCover from "@/components/category/categoryCover";
 
 const Categories = () => {
 	const [searchQuery, { loading, data, error, fetchMore }] = useLazyQuery(
@@ -69,7 +67,11 @@ const Categories = () => {
 			) : (
 				<div>
 					{/* <Test data={data} clickHandler={clickHandler} /> */}
-					<CategoryGrid data={data} />
+					{categoryView === "cover" ? (
+						<CategoryCover data={data} />
+					) : (
+						<CategoryGrid data={data} />
+					)}
 				</div>
 			)}
 		</div>

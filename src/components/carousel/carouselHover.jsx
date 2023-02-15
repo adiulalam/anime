@@ -68,7 +68,10 @@ export const CarouselHover = ({ cardData, showRight }) => {
 
 			{cardData.episodes && (
 				<div className="flex w-full h-auto justify-center items-center">
-					<div className="flex py-1 px-2 md:px-4 h-auto items-center justify-center bg-slate-400 dark:bg-slate-800 text-black dark:text-white break-normal rounded-lg text-xs md:text-base">
+					<div
+						className="flex py-1 px-2 md:px-4 h-auto items-center justify-center bg-slate-400 dark:bg-slate-800 
+					text-black dark:text-white break-normal rounded-lg text-xs md:text-base"
+					>
 						{cardData.episodes > 1
 							? `Total Episodes: ${cardData.episodes}`
 							: cardData.format ?? "Unknown"}
@@ -80,7 +83,8 @@ export const CarouselHover = ({ cardData, showRight }) => {
 				{cardData?.genres?.slice(0, 5)?.map((genre, i) => (
 					<div
 						key={i}
-						className="flex w-auto h-auto items-center justify-center bg-gray-300 dark:bg-gray-700 text-black dark:text-white break-normal rounded-3xl m-1 px-2 text-xs md:text-base"
+						className="flex w-auto h-auto items-center justify-center bg-gray-300 dark:bg-gray-700 text-black 
+						dark:text-white break-normal rounded-3xl m-1 px-2 text-xs md:text-base"
 					>
 						{genre}
 					</div>
