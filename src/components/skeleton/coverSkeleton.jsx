@@ -2,17 +2,17 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
-import CoverSkeleton from "./coverSkeleton";
 
-const CarouselSkeleton = () => {
+const CoverSkeleton = () => {
 	const { height, width } = useWindowDimensions();
-	const [numCarousel, setNumCarousel] = useState(0);
+
+	const [numCard, setNumCard] = useState(0);
 
 	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 	useIsomorphicEffect(() => {
 		document.body.classList.add("overflow-hidden");
 
-		setNumCarousel(Math.ceil(height / 320));
+		setNumCard(Math.ceil(width / 208));
 
 		return () => {
 			document.body.classList.remove("overflow-hidden");
@@ -20,15 +20,18 @@ const CarouselSkeleton = () => {
 	}, [height, width]);
 
 	return (
-		<div className="bg-white dark:bg-black">
-			{[...Array(numCarousel)].map((e, carouselIndex) => (
-				<div key={carouselIndex} className="py-5">
-					<Skeleton className="flex flex-row h-10 w-full my-2" baseColor="#202020" />
-					<CoverSkeleton />
+		<div className="flex flex-row flex-wrap overflow-hidden items-center justify-evenly gap-2 md:h-72 md:w-full h-52 w-full bg-white dark:bg-black p-2">
+			{[...Array(numCard)].map((card, cardIndex) => (
+				<div key={cardIndex} className="md:h-full md:w-52 h-full w-36 rounded-lg ">
+					<Skeleton
+						className="flex h-full w-full items-center"
+						baseColor="#202020"
+						highlightColor="#444"
+					/>
 				</div>
 			))}
 		</div>
 	);
 };
 
-export default CarouselSkeleton;
+export default CoverSkeleton;
