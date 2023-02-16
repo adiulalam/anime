@@ -1,10 +1,9 @@
 import { getFilterCategoryResults } from "@/services/queries";
 import { useLazyQuery } from "@apollo/client";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import _ from "lodash";
 import CategoryIcons from "@/components/category/categoryIcons";
 import CategoryFilter from "@/components/category/categoryFilter";
-import Link from "next/link";
 import CategoryGrid from "@/components/category/categoryGrid";
 import CategoryCoverSkeleton from "@/components/skeleton/categoryCoverSkeleton";
 import CategoryGridSkeleton from "@/components/skeleton/categoryGridSkeleton";

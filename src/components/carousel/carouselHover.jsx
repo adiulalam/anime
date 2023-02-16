@@ -52,10 +52,23 @@ export const CarouselHover = ({ cardData, showRight }) => {
 				>
 					{!_.isEmpty(cardData.nextAiringEpisode)
 						? `Episode ${cardData.nextAiringEpisode.episode} in ${humanizeDuration(
-								(cardData.nextAiringEpisode.timeUntilAiring * 1000).toFixed(0) ?? 0,
+								cardData.nextAiringEpisode.timeUntilAiring * 1000 ?? 0,
 								{
-									units: ["d"],
-									round: true,
+									language: "shortEn",
+									languages: {
+										shortEn: {
+											y: () => "y",
+											mo: () => "mo",
+											w: () => "w",
+											d: () => "d",
+											h: () => "h",
+											m: () => "m",
+											s: () => "s",
+											ms: () => "ms",
+										},
+									},
+									largest: 2,
+									spacer: "",
 								}
 						  )}`
 						: cardData.season || cardData.seasonYear || cardData.startDate.year

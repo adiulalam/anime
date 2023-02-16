@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { seasonalMap, scoreColour } from "@/utils/constMap";
-import humanizeDuration from "humanize-duration";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Color from "color";
 import Link from "next/link";
+import { CategoryCountdown } from "./categoryCountdown";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -70,36 +70,36 @@ const CategoryGrid = ({ data }) => {
 												element.season
 													? seasonalMap[element.season]
 													: "bg-gray-300 dark:bg-gray-800"
-											}  px-2 rounded-lg`}
+											} rounded-lg overflow-hidden`}
 										>
-											<p className="flex truncate text-base sm:text-xs md:text-lg">
-												{!_.isEmpty(element.nextAiringEpisode)
-													? `Episode ${
-															element.nextAiringEpisode.episode
-													  } in ${humanizeDuration(
-															(
-																element.nextAiringEpisode
-																	.timeUntilAiring * 1000
-															).toFixed(0) ?? 0,
-															{
-																units: ["d"],
-																round: true,
-															}
-													  )}`
-													: element.season ||
-													  element.seasonYear ||
-													  element.startDate.year
-													? `${element.season ?? ""} ${
-															element.seasonYear ??
-															element.startDate.year ??
-															""
-													  } ${
-															element.episodes
-																? `(${element.episodes} Episodes)`
-																: ""
-													  }`
-													: "TBA"}
-											</p>
+											<div
+												className="flex px-2 truncate text-base sm:text-xs md:text-lg text-center 
+											items-center justify-center"
+											>
+												{!_.isEmpty(element.nextAiringEpisode) ? (
+													<CategoryCountdown
+														episode={element.nextAiringEpisode.episode}
+														remaining={
+															element.nextAiringEpisode
+																.timeUntilAiring ?? 0
+														}
+													/>
+												) : element.season ||
+												  element.seasonYear ||
+												  element.startDate.year ? (
+													`${element.season ?? ""} ${
+														element.seasonYear ??
+														element.startDate.year ??
+														""
+													} ${
+														element.episodes
+															? `(${element.episodes} Episodes)`
+															: ""
+													}`
+												) : (
+													"TBA"
+												)}
+											</div>
 										</div>
 									</div>
 								</div>
