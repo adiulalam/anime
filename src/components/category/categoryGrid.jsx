@@ -7,7 +7,7 @@ import { CategoryCountdown } from "./categoryCountdown";
 
 const CategoryGrid = ({ data }) => {
 	return (
-		<div className="flex flex-col sm:flex-row flex-wrap items-center justify-evenly h-auto w-full gap-4 p-4">
+		<div className="flex flex-col sm:flex-row flex-wrap items-center justify-evenly h-auto w-full gap-4 py-4">
 			{data?.filter?.media?.map((element, index) => (
 				<div
 					key={index}
