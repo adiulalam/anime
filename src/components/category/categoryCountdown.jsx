@@ -10,21 +10,19 @@ export const CategoryCountdown = ({ remaining, episode }) => {
 	});
 
 	useEffect(() => {
-		if (time?.remaining < 0 || remaining < 0) return;
+		if (time?.remaining < 0) return;
 
 		let interval;
 		setTimeout(() => {
-			setTime((prev) => secondsToDhms(prev.remaining ?? remaining));
+			setTime((prev) => secondsToDhms(prev.remaining));
 
-			interval = setInterval(
-				() => setTime((prev) => secondsToDhms(prev.remaining ?? remaining)),
-				5000
-			);
+			interval = setInterval(() => setTime((prev) => secondsToDhms(prev.remaining)), 5000);
 		}, 0);
 
 		return () => {
 			clearInterval(interval);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
