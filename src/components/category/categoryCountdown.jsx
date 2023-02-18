@@ -21,12 +21,17 @@ export const CategoryCountdown = ({ remaining, episode }) => {
 	}, [time, remaining]);
 
 	return (
-		<div className="flex gap-2 sm:gap-1 md:gap-2 w-full text-center items-center justify-center">
+		<div
+			className="flex gap-2 sm:gap-1 md:gap-2 w-full text-center items-center 
+		justify-center tracking-tighter md:tracking-normal"
+		>
 			<div>
-				<span className="text-sm sm:text-xs md:text-lg">Ep. {episode ?? 0} in </span>
+				<span className="text-sm sm:text-xs md:text-lg leading-3">
+					Ep. {episode ?? 0} in
+				</span>
 			</div>
 			<div>
-				<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
+				<span className="countdown font-mono text-sm sm:text-sm md:text-lg ">
 					<span style={{ "--value": time.days }}></span>
 				</span>
 				<span className="text-xs sm:text-xs md:text-sm">d</span>
