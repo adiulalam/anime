@@ -30,18 +30,22 @@ export const CategoryCountdown = ({ remaining, episode }) => {
 					Ep. {episode ?? 0} in
 				</span>
 			</div>
-			<div>
-				<span className="countdown font-mono text-sm sm:text-sm md:text-lg ">
-					<span style={{ "--value": time.days }}></span>
-				</span>
-				<span className="text-xs sm:text-xs md:text-sm">d</span>
-			</div>
-			<div>
-				<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
-					<span style={{ "--value": time.hours }}></span>
-				</span>
-				<span className="text-xs sm:text-xs md:text-sm">h</span>
-			</div>
+			{time.days > 0 && (
+				<div>
+					<span className="countdown font-mono text-sm sm:text-sm md:text-lg ">
+						<span style={{ "--value": time.days }}></span>
+					</span>
+					<span className="text-xs sm:text-xs md:text-sm">d</span>
+				</div>
+			)}
+			{time.hours > 0 && (
+				<div>
+					<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
+						<span style={{ "--value": time.hours }}></span>
+					</span>
+					<span className="text-xs sm:text-xs md:text-sm">h</span>
+				</div>
+			)}
 			<div>
 				<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
 					<span style={{ "--value": time.minutes }}></span>
