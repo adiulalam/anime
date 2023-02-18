@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const CategoryCountdown = ({ remaining, episode }) => {
+export const CategoryCountdown = ({ remaining, episode, containerClass, labelClass }) => {
 	const [time, setTime] = useState({
 		days: 0,
 		hours: 0,
@@ -30,38 +30,38 @@ export const CategoryCountdown = ({ remaining, episode }) => {
 			className="flex gap-1 sm:gap-1 md:gap-2 w-full text-center items-center 
 		justify-center tracking-tighter md:tracking-normal"
 		>
-			<div>
-				<span className="text-xs sm:text-xs md:text-sm leading-3">
+			<div className={containerClass}>
+				<span>
 					Ep. <b>{episode ?? 0}</b> in
 				</span>
 			</div>
 			{time.days > 0 && (
-				<div>
-					<span className="countdown font-mono text-sm sm:text-sm md:text-lg ">
+				<div className={containerClass}>
+					<span className={labelClass}>
 						<span style={{ "--value": time.days }}></span>
 					</span>
-					<span className="text-xs sm:text-xs md:text-sm">d</span>
+					<span>d</span>
 				</div>
 			)}
 			{time.hours > 0 && (
-				<div>
-					<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
+				<div className={containerClass}>
+					<span className={labelClass}>
 						<span style={{ "--value": time.hours }}></span>
 					</span>
-					<span className="text-xs sm:text-xs md:text-sm">h</span>
+					<span>h</span>
 				</div>
 			)}
-			<div>
-				<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
+			<div className={containerClass}>
+				<span className={labelClass}>
 					<span style={{ "--value": time.minutes }}></span>
 				</span>
-				<span className="text-xs sm:text-xs md:text-sm">m</span>
+				<span>m</span>
 			</div>
-			<div>
-				<span className="countdown font-mono text-sm sm:text-sm md:text-lg">
+			<div className={containerClass}>
+				<span className={labelClass}>
 					<span style={{ "--value": time.seconds }}></span>
 				</span>
-				<span className="text-xs sm:text-xs md:text-sm">s</span>
+				<span>s</span>
 			</div>
 		</div>
 	);

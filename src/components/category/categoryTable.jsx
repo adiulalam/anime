@@ -14,14 +14,18 @@ const CategoryTable = ({ data }) => {
 					startColour={element.coverImage.color ?? "#ee7752"}
 					className="flex flex-row w-full h-28 rounded-md"
 				>
-					<Image
-						alt={element.title.userPreferred}
-						width={80}
-						height={110}
-						src={element.coverImage.large}
-						className="object-contain rounded-md"
-					/>
-
+					<Link
+						href={`/anime/${element.id}`}
+						className="relative w-20 h-full aspect-video"
+					>
+						<Image
+							alt={element.title.userPreferred}
+							fill
+							sizes="100%"
+							src={element.coverImage.large}
+							className="object-contain rounded-md"
+						/>
+					</Link>
 					<div className="flex flex-col flex-grow md:flex-row overflow-hidden ">
 						<div className="flex flex-col h-full w-full text-base md:text-2xl">
 							<Link
@@ -94,13 +98,19 @@ const CategoryTable = ({ data }) => {
 											element.season
 												? seasonalMap[element.season]
 												: "bg-gray-300 dark:bg-gray-800"
-										}  px-2 p-1 rounded-lg`}
+										} px-2 p-2 rounded-lg`}
 									>
 										{!_.isEmpty(element.nextAiringEpisode) ? (
 											<CategoryCountdown
 												episode={element.nextAiringEpisode.episode}
 												remaining={
 													element.nextAiringEpisode.timeUntilAiring ?? 0
+												}
+												containerClass={
+													"text-xs md:text-base lg:text-lg tracking-tight md:tracking-tighter"
+												}
+												labelClass={
+													"countdown font-mono text-xs md:text-base lg:text-lg tracking-tight md:tracking-tighter"
 												}
 											/>
 										) : element.season ||
@@ -129,14 +139,14 @@ const CategoryTable = ({ data }) => {
 									</p>
 								</div>
 								<div
-									className={` flex basis-1/2 items-center justify-center 
+									className={`flex basis-1/2 items-center justify-center 
 								text-center `}
 								>
 									<p
 										className={`${
 											statusMap[element.status].style ??
 											"bg-gray-300 dark:bg-gray-800"
-										} p-1 md:p-2 rounded-lg`}
+										} p-1 md:p-2 rounded-lg mr-1`}
 									>
 										{statusMap[element.status].name}
 									</p>

@@ -85,6 +85,12 @@ const CategoryGrid = ({ data }) => {
 															element.nextAiringEpisode
 																.timeUntilAiring ?? 0
 														}
+														containerClass={
+															"text-xs sm:text-xs md:text-sm"
+														}
+														labelClass={
+															"countdown font-mono text-sm sm:text-sm md:text-lg"
+														}
 													/>
 												) : element.season ||
 												  element.seasonYear ||
