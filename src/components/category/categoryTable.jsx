@@ -3,6 +3,7 @@ import { Gradient } from "@/utils/getAnimationStyle";
 import Color from "color";
 import Image from "next/image";
 import Link from "next/link";
+import { Title } from "../atomicComponents/molecules/title";
 import { CategoryCountdown } from "./categoryCountdown";
 
 const CategoryTable = ({ data }) => {
@@ -29,15 +30,13 @@ const CategoryTable = ({ data }) => {
 					<div className="flex flex-col flex-grow md:flex-row overflow-hidden ">
 						<div className="flex flex-col h-full w-full text-base md:text-2xl">
 							<Link href={`/anime/${element.id}`} className="flex md:h-3/5 h-12">
-								<div className="flex h-full w-full overflow-hidden items-center justify-center">
-									<p
-										className="flex px-2 max-h-full overflow-hidden rounded-md text-ellipsis backdrop-blur-md 
-													backdrop-contrast-75 backdrop-saturate-100 backdrop-brightness-200 
-													dark:backdrop-brightness-50  text-center"
-									>
-										{element.title.userPreferred}
-									</p>
-								</div>
+								<Title
+									label={element.title.userPreferred}
+									containerClass={`flex h-full w-full overflow-hidden items-center justify-center`}
+									labelClass={`flex px-2 max-h-full overflow-hidden rounded-md text-ellipsis backdrop-blur-md 
+											backdrop-contrast-75 backdrop-saturate-100 backdrop-brightness-200 
+											dark:backdrop-brightness-50 text-center`}
+								/>
 							</Link>
 							<div className="flex md:h-2/5 h-6 items-center ">
 								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
@@ -75,10 +74,10 @@ const CategoryTable = ({ data }) => {
 						</div>
 						<div className="flex flex-row h-full w-full text-xs sm:text-sm md:text-xl">
 							<div className="flex basis-4/6 md:basis-1/2 md:flex-col flex-row">
-								<div
-									className={`flex basis-1/5 md:basis-1/2 items-center justify-center`}
-								>
-									{element.averageScore && (
+								{element.averageScore && (
+									<div
+										className={`flex basis-1/5 md:basis-1/2 items-center justify-center`}
+									>
 										<p
 											className={`${scoreColour(
 												element.averageScore
@@ -86,8 +85,8 @@ const CategoryTable = ({ data }) => {
 										>
 											{element.averageScore}
 										</p>
-									)}
-								</div>
+									</div>
+								)}
 								<div
 									className="flex basis-4/5 md:basis-1/2 h-1/1 items-center justify-center 
 								text-center"

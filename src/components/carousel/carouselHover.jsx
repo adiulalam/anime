@@ -32,10 +32,11 @@ export const CarouselHover = ({ cardData, showRight }) => {
 						<div
 							className={`${scoreColour(
 								cardData.averageScore
-							)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full
-														text-black dark:text-white text-xs md:text-base`}
+							)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full`}
 						>
-							{cardData.averageScore}
+							<p className="text-black dark:text-white text-xs md:text-base">
+								{cardData.averageScore}
+							</p>
 						</div>
 					)}
 				</div>
