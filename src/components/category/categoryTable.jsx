@@ -12,18 +12,22 @@ const CategoryTable = ({ data }) => {
 				<Gradient
 					key={index}
 					startColour={element.coverImage.color ?? "#ee7752"}
-					className="flex flex-row w-full h-28"
+					className="flex flex-row w-full h-28 rounded-md"
 				>
 					<Image
 						alt={element.title.userPreferred}
-						width={100}
-						height={100}
+						width={80}
+						height={110}
 						src={element.coverImage.large}
-						className="object-contain"
+						className="object-contain rounded-md"
 					/>
+
 					<div className="flex flex-col flex-grow md:flex-row overflow-hidden ">
 						<div className="flex flex-col h-full w-full text-base md:text-2xl">
-							<div className="flex md:h-3/5 h-12 overflow-hidden items-center justify-center">
+							<Link
+								href={`/anime/${element.id}`}
+								className="flex md:h-3/5 h-12 overflow-hidden items-center justify-center"
+							>
 								<p
 									className="flex px-2 max-h-full overflow-hidden rounded-md text-ellipsis backdrop-blur-md 
 													backdrop-contrast-75 backdrop-saturate-100 backdrop-brightness-200 
@@ -31,7 +35,7 @@ const CategoryTable = ({ data }) => {
 								>
 									{element.title.userPreferred}
 								</p>
-							</div>
+							</Link>
 							<div className="flex md:h-2/5 h-6 items-center ">
 								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
 									{element?.genres?.map((genre, i) => (
@@ -71,13 +75,15 @@ const CategoryTable = ({ data }) => {
 								<div
 									className={`flex basis-1/5 md:basis-1/2 items-center justify-center`}
 								>
-									<p
-										className={`${scoreColour(
-											element.averageScore
-										)} flex p-2 rounded-lg`}
-									>
-										{element.averageScore}
-									</p>
+									{element.averageScore && (
+										<p
+											className={`${scoreColour(
+												element.averageScore
+											)} flex p-2 rounded-lg`}
+										>
+											{element.averageScore}
+										</p>
+									)}
 								</div>
 								<div
 									className="flex basis-4/5 md:basis-1/2 h-1/1 items-center justify-center 

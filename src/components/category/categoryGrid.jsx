@@ -29,19 +29,21 @@ const CategoryGrid = ({ data }) => {
 										className="rounded-l-xl"
 									/>
 
-									<div
-										className={`${scoreColour(
-											element.averageScore
-										)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg 
+									{element.averageScore && (
+										<div
+											className={`${scoreColour(
+												element.averageScore
+											)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg 
 										sm:text-sm md:text-xl ring-1 ring-black dark:ring-white`}
-									>
-										<p
-											className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center 
-											justify-center text-center`}
 										>
-											{element.averageScore}
-										</p>
-									</div>
+											<p
+												className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center 
+											justify-center text-center`}
+											>
+												{element.averageScore}
+											</p>
+										</div>
+									)}
 								</div>
 							</Link>
 						</div>
@@ -105,15 +107,19 @@ const CategoryGrid = ({ data }) => {
 								</div>
 							</div>
 
-							<div
-								className="flex flex-wrap h-[45%] w-full bg-gray-300 dark:bg-gray-600 overflow-hidden hover:overflow-auto 
+							{element.description && (
+								<div
+									className="flex flex-wrap h-[45%] w-full bg-gray-300 dark:bg-gray-600 overflow-hidden hover:overflow-auto 
 							text-sm sm:text-xs md:text-base rounded-md"
-							>
-								<p
-									className="leading-4 sm:leading-4 md:leading-5 ml-1 "
-									dangerouslySetInnerHTML={{ __html: element.description ?? "" }}
-								/>
-							</div>
+								>
+									<p
+										className="leading-4 sm:leading-4 md:leading-5 ml-1 "
+										dangerouslySetInnerHTML={{
+											__html: element.description ?? "",
+										}}
+									/>
+								</div>
+							)}
 
 							<div className="flex w-full h-[13%] overflow-hidden rounded-br-xl py-1 sm:py-0 md:py-1">
 								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
