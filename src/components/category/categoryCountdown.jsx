@@ -28,7 +28,7 @@ export const CategoryCountdown = ({ remaining, episode, containerClass, labelCla
 	return (
 		<div
 			className="flex gap-1 sm:gap-1 md:gap-2 w-full text-center items-center 
-		justify-center tracking-tighter md:tracking-normal"
+		justify-center"
 		>
 			<div className={containerClass}>
 				<span>

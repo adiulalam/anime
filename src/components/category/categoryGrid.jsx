@@ -75,7 +75,7 @@ const CategoryGrid = ({ data }) => {
 											} rounded-lg overflow-hidden`}
 										>
 											<div
-												className="flex px-2 truncate text-base sm:text-xs md:text-lg text-center 
+												className="flex px-2 md:p-1 truncate text-base sm:text-xs md:text-lg text-center 
 											items-center justify-center"
 											>
 												{!_.isEmpty(element.nextAiringEpisode) ? (
@@ -86,7 +86,7 @@ const CategoryGrid = ({ data }) => {
 																.timeUntilAiring ?? 0
 														}
 														containerClass={
-															"text-xs sm:text-xs md:text-sm"
+															"text-sm sm:text-xs md:text-sm"
 														}
 														labelClass={
 															"countdown font-mono text-sm sm:text-sm md:text-lg"
