@@ -40,12 +40,12 @@ export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 											text-ellipsis overflow-hidden rounded-lg backdrop-blur-md backdrop-contrast-50
 											backdrop-saturate-200 backdrop-brightness-200 dark:backdrop-brightness-75`}
 						>
-							<h3
+							<p
 								className="px-2 text-center text-black [text-shadow:_0_1px_0_rgb(255_255_255_/_40%)]
 											dark:text-white dark:[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]"
 							>
 								{cardData.title.userPreferred}
-							</h3>
+							</p>
 						</div>
 					</div>
 				</Link>

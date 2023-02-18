@@ -4,6 +4,7 @@ import { Gradient } from "@/utils/getAnimationStyle";
 import Color from "color";
 import Link from "next/link";
 import { CategoryCountdown } from "./categoryCountdown";
+import { Title } from "../atomicComponents/molecules/title";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -51,20 +52,14 @@ const CategoryGrid = ({ data }) => {
 							<div className="flex w-full h-2/5">
 								<div className="flex flex-col items-center justify-evenly flex-wrap w-full h-full gap-1">
 									<Link href={`/anime/${element.id}`}>
-										<div
-											className="flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl 
-										justify-center overflow-hidden"
-										>
-											<div className="leading-[1.4rem] sm:leading-[1.2rem] md:leading-[1.6rem] font-medium">
-												<p
-													className="flex px-2 w-full h-full rounded-md text-ellipsis backdrop-blur-md 
+										<Title
+											label={element.title.userPreferred}
+											containerClass={`flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl 
+										justify-center overflow-hidden leading-[1.4rem] sm:leading-[1.2rem] md:leading-[1.6rem] font-medium`}
+											labelClass={`flex px-2 w-full h-full rounded-md text-ellipsis backdrop-blur-md 
 													backdrop-contrast-75 backdrop-saturate-100 backdrop-brightness-200 
-													dark:backdrop-brightness-50 "
-												>
-													{element.title.userPreferred}
-												</p>
-											</div>
-										</div>
+													dark:backdrop-brightness-50`}
+										/>
 									</Link>
 									<div className="flex w-full max-h-4 sm:max-h-4 md:max-h-6 items-center justify-center">
 										<div

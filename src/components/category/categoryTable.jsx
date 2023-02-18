@@ -28,17 +28,16 @@ const CategoryTable = ({ data }) => {
 					</Link>
 					<div className="flex flex-col flex-grow md:flex-row overflow-hidden ">
 						<div className="flex flex-col h-full w-full text-base md:text-2xl">
-							<Link
-								href={`/anime/${element.id}`}
-								className="flex md:h-3/5 h-12 overflow-hidden items-center justify-center"
-							>
-								<p
-									className="flex px-2 max-h-full overflow-hidden rounded-md text-ellipsis backdrop-blur-md 
+							<Link href={`/anime/${element.id}`} className="flex md:h-3/5 h-12">
+								<div className="flex h-full w-full overflow-hidden items-center justify-center">
+									<p
+										className="flex px-2 max-h-full overflow-hidden rounded-md text-ellipsis backdrop-blur-md 
 													backdrop-contrast-75 backdrop-saturate-100 backdrop-brightness-200 
 													dark:backdrop-brightness-50  text-center"
-								>
-									{element.title.userPreferred}
-								</p>
+									>
+										{element.title.userPreferred}
+									</p>
+								</div>
 							</Link>
 							<div className="flex md:h-2/5 h-6 items-center ">
 								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
