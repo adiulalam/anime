@@ -11,14 +11,21 @@ export const CategoryCountdown = ({ remaining, episode }) => {
 
 	useEffect(() => {
 		if (time?.remaining < 0 || remaining < 0) return;
-		const interval = setInterval(
-			() => setTime((prev) => secondsToDhms(prev.remaining ?? remaining)),
-			1000
-		);
+
+		let interval;
+		setTimeout(() => {
+			setTime((prev) => secondsToDhms(prev.remaining ?? remaining));
+
+			interval = setInterval(
+				() => setTime((prev) => secondsToDhms(prev.remaining ?? remaining)),
+				5000
+			);
+		}, 0);
+
 		return () => {
 			clearInterval(interval);
 		};
-	}, [time, remaining]);
+	}, []);
 
 	return (
 		<div
@@ -27,7 +34,7 @@ export const CategoryCountdown = ({ remaining, episode }) => {
 		>
 			<div>
 				<span className="text-xs sm:text-xs md:text-sm leading-3">
-					Ep. {episode ?? 0} in
+					Ep. <b>{episode ?? 0}</b> in
 				</span>
 			</div>
 			{time.days > 0 && (
@@ -68,7 +75,6 @@ function secondsToDhms(seconds) {
 	const h = Math.floor((seconds % (3600 * 24)) / 3600);
 	const m = Math.floor((seconds % 3600) / 60);
 	const s = Math.floor(seconds % 60);
-	seconds--;
 
-	return { days: d, hours: h, minutes: m, seconds: s, remaining: seconds };
+	return { days: d, hours: h, minutes: m, seconds: s, remaining: seconds - 5 };
 }
