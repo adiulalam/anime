@@ -5,6 +5,7 @@ import Color from "color";
 import Link from "next/link";
 import { CategoryCountdown } from "./categoryCountdown";
 import { Title } from "../atomicComponents/molecules/title";
+import { Score } from "../atomicComponents/molecules/score";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -31,19 +32,13 @@ const CategoryGrid = ({ data }) => {
 									/>
 
 									{element.averageScore && (
-										<div
-											className={`${scoreColour(
-												element.averageScore
-											)} absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg 
-										sm:text-sm md:text-xl ring-1 ring-black dark:ring-white`}
-										>
-											<p
-												className={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center 
-											justify-center text-center`}
-											>
-												{element.averageScore}
-											</p>
-										</div>
+										<Score
+											label={element.averageScore}
+											containerClass={`absolute w-10 sm:w-8 md:w-10 h-10 sm:h-8 md:h-10 rounded-full m-1 text-lg 
+											sm:text-sm md:text-xl ring-1 ring-black dark:ring-white`}
+											labelClass={`flex w-full h-full text-lg sm:text-sm md:text-xl items-center justify-center 
+											text-center`}
+										/>
 									)}
 								</div>
 							</Link>

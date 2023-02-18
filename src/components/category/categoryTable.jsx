@@ -3,6 +3,7 @@ import { Gradient } from "@/utils/getAnimationStyle";
 import Color from "color";
 import Image from "next/image";
 import Link from "next/link";
+import { Score } from "../atomicComponents/molecules/score";
 import { Title } from "../atomicComponents/molecules/title";
 import { CategoryCountdown } from "./categoryCountdown";
 
@@ -75,17 +76,12 @@ const CategoryTable = ({ data }) => {
 						<div className="flex flex-row h-full w-full text-xs sm:text-sm md:text-xl">
 							<div className="flex basis-4/6 md:basis-1/2 md:flex-col flex-row">
 								{element.averageScore && (
-									<div
-										className={`flex basis-1/5 md:basis-1/2 items-center justify-center`}
-									>
-										<p
-											className={`${scoreColour(
-												element.averageScore
-											)} flex p-2 rounded-lg`}
-										>
-											{element.averageScore}
-										</p>
-									</div>
+									<Score
+										label={element.averageScore}
+										containerClass={`flex basis-1/5 md:basis-1/2 items-center justify-center`}
+										labelClass={`flex p-2 rounded-lg`}
+										switchColour={true}
+									/>
 								)}
 								<div
 									className="flex basis-4/5 md:basis-1/2 h-1/1 items-center justify-center 

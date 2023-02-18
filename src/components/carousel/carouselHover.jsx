@@ -2,6 +2,7 @@ import { Gradient } from "@/utils/getAnimationStyle";
 import humanizeDuration from "humanize-duration";
 import { seasonalMap, scoreColour, statusMap } from "@/utils/constMap";
 import _ from "lodash";
+import { Score } from "../atomicComponents/molecules/score";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (
@@ -29,15 +30,11 @@ export const CarouselHover = ({ cardData, showRight }) => {
 						</div>
 					)}
 					{cardData.averageScore && (
-						<div
-							className={`${scoreColour(
-								cardData.averageScore
-							)} flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full`}
-						>
-							<p className="text-black dark:text-white text-xs md:text-base">
-								{cardData.averageScore}
-							</p>
-						</div>
+						<Score
+							label={cardData.averageScore}
+							containerClass={`flex w-8 h-8 md:w-12 md:h-12 items-center justify-center rounded-full`}
+							labelClass={`text-black dark:text-white text-xs md:text-base`}
+						/>
 					)}
 				</div>
 			)}
