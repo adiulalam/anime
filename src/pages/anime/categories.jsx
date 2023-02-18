@@ -11,6 +11,7 @@ import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 import CategoryCover from "@/components/category/categoryCover";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CategoryTable from "@/components/category/categoryTable";
+import CategoryTableSkeleton from "@/components/skeleton/categoryTableSkeleton";
 
 // todo Error handling and empty data..
 const Categories = () => {
@@ -64,7 +65,7 @@ const Categories = () => {
 				categoryView === "cover" ? (
 					<CategoryCoverSkeleton />
 				) : categoryView === "table" ? (
-					<></>
+					<CategoryTableSkeleton />
 				) : (
 					<CategoryGridSkeleton />
 				)
@@ -75,11 +76,11 @@ const Categories = () => {
 					hasMore={data?.filter?.pageInfo?.hasNextPage}
 					loader={
 						categoryView === "cover" ? (
-							<CategoryCoverSkeleton overflow={false} />
+							<CategoryCoverSkeleton showOverflow={false} />
 						) : categoryView === "table" ? (
-							<></>
+							<CategoryTableSkeleton showOverflow={false} />
 						) : (
-							<CategoryGridSkeleton overflow={false} />
+							<CategoryGridSkeleton showOverflow={false} />
 						)
 					}
 				>

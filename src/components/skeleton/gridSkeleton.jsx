@@ -3,14 +3,14 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
 
-const GridSkeleton = ({ overflow = true }) => {
+const GridSkeleton = ({ showOverflow = true }) => {
 	const { width } = useWindowDimensions();
 
 	const [numCard, setNumCard] = useState(0);
 
 	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 	useIsomorphicEffect(() => {
-		overflow && document.body.classList.add("overflow-hidden");
+		showOverflow && document.body.classList.add("overflow-hidden");
 
 		setNumCard(Math.ceil(width / 448));
 

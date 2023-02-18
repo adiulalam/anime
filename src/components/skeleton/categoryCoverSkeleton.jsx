@@ -2,13 +2,13 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { useEffect, useLayoutEffect, useState } from "react";
 import CoverSkeleton from "./coverSkeleton";
 
-const CategoryCoverSkeleton = ({ overflow = true }) => {
+const CategoryCoverSkeleton = ({ showOverflow = true }) => {
 	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
 	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 	useIsomorphicEffect(() => {
-		overflow && document.body.classList.add("overflow-hidden");
+		showOverflow && document.body.classList.add("overflow-hidden");
 
 		setNumCarousel(Math.ceil(height / 288));
 
@@ -21,7 +21,7 @@ const CategoryCoverSkeleton = ({ overflow = true }) => {
 		<div className="bg-white dark:bg-black">
 			{[...Array(numCarousel)].map((e, carouselIndex) => (
 				<div key={carouselIndex} className="p-4">
-					<CoverSkeleton overflow={overflow} />
+					<CoverSkeleton showOverflow={showOverflow} />
 				</div>
 			))}
 		</div>
