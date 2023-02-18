@@ -124,27 +124,31 @@ const CategoryTable = ({ data }) => {
 								</div>
 							</div>
 							<div className="flex basis-2/6 md:basis-1/2 md:flex-col flex-row ">
-								<div
-									className="flex basis-1/2 items-center justify-center 
+								{element.format && (
+									<div
+										className="flex basis-1/2 items-center justify-center 
 								text-center "
-								>
-									<p className="bg-gray-300 dark:bg-gray-600 p-1 md:p-2 rounded-lg">
-										{formatMap[element.format]}
-									</p>
-								</div>
-								<div
-									className={`flex basis-1/2 items-center justify-center 
-								text-center `}
-								>
-									<p
-										className={`${
-											statusMap[element.status].style ??
-											"bg-gray-300 dark:bg-gray-800"
-										} p-1 md:p-2 rounded-lg mr-1`}
 									>
-										{statusMap[element.status].name}
-									</p>
-								</div>
+										<p className="bg-gray-300 dark:bg-gray-600 p-1 md:p-2 rounded-lg">
+											{formatMap[element.format]}
+										</p>
+									</div>
+								)}
+								{element.status && (
+									<div
+										className={`flex basis-1/2 items-center justify-center 
+								text-center `}
+									>
+										<p
+											className={`${
+												statusMap[element.status].style ??
+												"bg-gray-300 dark:bg-gray-800"
+											} p-1 md:p-2 rounded-lg mr-1`}
+										>
+											{statusMap[element.status].name}
+										</p>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
