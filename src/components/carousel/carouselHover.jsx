@@ -3,6 +3,7 @@ import humanizeDuration from "humanize-duration";
 import { seasonalMap, scoreColour, statusMap } from "@/utils/constMap";
 import _ from "lodash";
 import { Score } from "../atomicComponents/molecules/score";
+import { Status } from "../atomicComponents/molecules/status";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (
@@ -20,14 +21,11 @@ export const CarouselHover = ({ cardData, showRight }) => {
 			{(cardData?.status || cardData?.averageScore) && (
 				<div className="flex flex-row w-full h-auto justify-center items-center gap-2 ">
 					{cardData.status && (
-						<div
-							className={`${
-								statusMap[cardData.status].style ?? "bg-gray-300 dark:bg-gray-800"
-							} flex w-auto py-1 px-2 h-auto items-center justify-center break-normal rounded-lg
-														text-black dark:text-white text-xs md:text-base`}
-						>
-							{statusMap[cardData.status].name}
-						</div>
+						<Status
+							label={cardData.status}
+							containerClass={`flex w-auto py-1 px-2 h-auto items-center justify-center break-normal rounded-lg`}
+							labelClass={`text-black dark:text-white text-xs md:text-base`}
+						/>
 					)}
 					{cardData.averageScore && (
 						<Score

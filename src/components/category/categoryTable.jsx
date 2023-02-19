@@ -4,6 +4,7 @@ import Color from "color";
 import Image from "next/image";
 import Link from "next/link";
 import { Score } from "../atomicComponents/molecules/score";
+import { Status } from "../atomicComponents/molecules/status";
 import { Title } from "../atomicComponents/molecules/title";
 import { CategoryCountdown } from "./categoryCountdown";
 
@@ -135,19 +136,14 @@ const CategoryTable = ({ data }) => {
 									</div>
 								)}
 								{element.status && (
-									<div
-										className={`flex basis-1/2 items-center justify-center 
-								text-center `}
-									>
-										<p
-											className={`${
-												statusMap[element.status].style ??
-												"bg-gray-300 dark:bg-gray-800"
-											} p-1 md:p-2 rounded-lg mr-1`}
-										>
-											{statusMap[element.status].name}
-										</p>
-									</div>
+									<Status
+										label={element.status}
+										containerClass={`flex basis-1/2 items-center justify-center 
+									text-center`}
+										labelClass={`bg-gray-300 dark:bg-gray-800"
+								} p-1 md:p-2 rounded-lg mr-1`}
+										switchColour={true}
+									/>
 								)}
 							</div>
 						</div>
