@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CategoryCountdown } from "./categoryCountdown";
 import { Title } from "../atomicComponents/molecules/title";
 import { Score } from "../atomicComponents/molecules/score";
+import { Season } from "../atomicComponents/molecules/season";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -56,44 +57,19 @@ const CategoryGrid = ({ data }) => {
 													dark:backdrop-brightness-50`}
 										/>
 									</Link>
-									<div className="flex w-full max-h-4 sm:max-h-4 md:max-h-6 items-center justify-center">
-										<div
-											className={`${
-												element.season
-													? seasonalMap[element.season]
-													: "bg-gray-300 dark:bg-gray-800"
-											} flex px-2 md:p-1 truncate 
-											items-center justify-center rounded-lg overflow-hidden text-base sm:text-xs md:text-lg text-center`}
-										>
-											{!_.isEmpty(element.nextAiringEpisode) ? (
-												<CategoryCountdown
-													episode={element.nextAiringEpisode.episode}
-													remaining={
-														element.nextAiringEpisode.timeUntilAiring ??
-														0
-													}
-													containerClass={"text-sm sm:text-xs md:text-sm"}
-													labelClass={
-														"countdown font-mono text-sm sm:text-sm md:text-lg"
-													}
-												/>
-											) : element.season ||
-											  element.seasonYear ||
-											  element.startDate.year ? (
-												`${element.season ?? ""} ${
-													element.seasonYear ??
-													element.startDate.year ??
-													""
-												} ${
-													element.episodes
-														? `(${element.episodes} Episodes)`
-														: ""
-												}`
-											) : (
-												"TBA"
-											)}
-										</div>
-									</div>
+									<Season
+										nextAiringEpisode={element.nextAiringEpisode}
+										season={element.season}
+										seasonYear={element.seasonYear}
+										startDate={element.startDate}
+										episodes={element.episodes}
+										containerClass={`flex w-full max-h-4 sm:max-h-4 md:max-h-6 items-center justify-center`}
+										labelClass={`flex px-2 md:p-1 truncate items-center justify-center rounded-lg 
+										overflow-hidden text-base sm:text-xs md:text-lg text-center`}
+										countdownContainerClass={`text-sm sm:text-xs md:text-sm`}
+										countdownLabelClass={`countdown font-mono text-sm sm:text-sm md:text-lg`}
+										countdown={true}
+									/>
 								</div>
 							</div>
 

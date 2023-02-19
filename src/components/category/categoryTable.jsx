@@ -4,6 +4,7 @@ import Color from "color";
 import Image from "next/image";
 import Link from "next/link";
 import { Score } from "../atomicComponents/molecules/score";
+import { Season } from "../atomicComponents/molecules/season";
 import { Status } from "../atomicComponents/molecules/status";
 import { Title } from "../atomicComponents/molecules/title";
 import { CategoryCountdown } from "./categoryCountdown";
@@ -84,45 +85,19 @@ const CategoryTable = ({ data }) => {
 										switchColour={true}
 									/>
 								)}
-								<div
-									className="flex basis-4/5 md:basis-1/2 h-1/1 items-center justify-center 
-								text-center"
-								>
-									<div
-										className={`${
-											element.season
-												? seasonalMap[element.season]
-												: "bg-gray-300 dark:bg-gray-800"
-										} px-2 p-2 rounded-lg`}
-									>
-										{!_.isEmpty(element.nextAiringEpisode) ? (
-											<CategoryCountdown
-												episode={element.nextAiringEpisode.episode}
-												remaining={
-													element.nextAiringEpisode.timeUntilAiring ?? 0
-												}
-												containerClass={
-													"text-xs md:text-base lg:text-lg tracking-tight md:tracking-tighter"
-												}
-												labelClass={
-													"countdown font-mono text-xs md:text-base lg:text-lg tracking-tight md:tracking-tighter"
-												}
-											/>
-										) : element.season ||
-										  element.seasonYear ||
-										  element.startDate.year ? (
-											`${element.season ?? ""} ${
-												element.seasonYear ?? element.startDate.year ?? ""
-											} ${
-												element.episodes
-													? `(${element.episodes} Episodes)`
-													: ""
-											}`
-										) : (
-											"TBA"
-										)}
-									</div>
-								</div>
+								<Season
+									nextAiringEpisode={element.nextAiringEpisode}
+									season={element.season}
+									seasonYear={element.seasonYear}
+									startDate={element.startDate}
+									episodes={element.episodes}
+									containerClass={`flex basis-4/5 md:basis-1/2 h-1/1 items-center justify-center 
+									text-center`}
+									labelClass={`px-2 p-2 rounded-lg`}
+									countdownContainerClass={`text-xs md:text-base lg:text-lg tracking-tight md:tracking-tighter`}
+									countdownLabelClass={`countdown font-mono text-xs md:text-base lg:text-lg tracking-tight md:tracking-tighter`}
+									countdown={true}
+								/>
 							</div>
 							<div className="flex basis-2/6 md:basis-1/2 md:flex-col flex-row ">
 								{element.format && (

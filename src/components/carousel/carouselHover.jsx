@@ -4,6 +4,7 @@ import { seasonalMap, scoreColour, statusMap } from "@/utils/constMap";
 import _ from "lodash";
 import { Score } from "../atomicComponents/molecules/score";
 import { Status } from "../atomicComponents/molecules/status";
+import { Season } from "../atomicComponents/molecules/season";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (
@@ -37,43 +38,17 @@ export const CarouselHover = ({ cardData, showRight }) => {
 				</div>
 			)}
 
-			<div className="flex w-full h-auto justify-center items-center">
-				<div
-					className={`${
-						cardData.season
-							? seasonalMap[cardData.season]
-							: "bg-gray-300 dark:bg-gray-800"
-					} flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black
-												dark:text-white py-1 px-2 text-xs md:text-base`}
-				>
-					{!_.isEmpty(cardData.nextAiringEpisode)
-						? `Episode ${cardData.nextAiringEpisode.episode} in ${humanizeDuration(
-								cardData.nextAiringEpisode.timeUntilAiring * 1000 ?? 0,
-								{
-									language: "shortEn",
-									languages: {
-										shortEn: {
-											y: () => "y",
-											mo: () => "mo",
-											w: () => "w",
-											d: () => "d",
-											h: () => "h",
-											m: () => "m",
-											s: () => "s",
-											ms: () => "ms",
-										},
-									},
-									largest: 2,
-									spacer: "",
-								}
-						  )}`
-						: cardData.season || cardData.seasonYear || cardData.startDate.year
-						? `${cardData.season ?? ""} ${
-								cardData.seasonYear ?? cardData.startDate.year ?? ""
-						  }`
-						: "TBA"}
-				</div>
-			</div>
+			<Season
+				nextAiringEpisode={cardData.nextAiringEpisode}
+				season={cardData.season}
+				seasonYear={cardData.seasonYear}
+				startDate={cardData.startDate}
+				episodes={null}
+				containerClass={`flex w-full h-auto justify-center items-center`}
+				labelClass={`flex w-auto h-auto items-center justify-center break-normal rounded-lg text-black
+				dark:text-white py-1 px-2 text-xs md:text-base`}
+				countdown={false}
+			/>
 
 			{cardData.episodes && (
 				<div className="flex w-full h-auto justify-center items-center">
