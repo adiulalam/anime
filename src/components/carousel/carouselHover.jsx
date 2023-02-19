@@ -1,10 +1,10 @@
 import { Gradient } from "@/utils/getAnimationStyle";
 import _ from "lodash";
-import { Score } from "../atomicComponents/molecules/score";
-import { Status } from "../atomicComponents/molecules/status";
-import { Season } from "../atomicComponents/molecules/season";
-import { Genre } from "../atomicComponents/molecules/genre";
-import { Episode } from "../atomicComponents/molecules/episode";
+import { Score } from "../molecules/score";
+import { Status } from "../molecules/status";
+import { Season } from "../molecules/season";
+import { Genre } from "../molecules/genre";
+import { Episode } from "../molecules/episode";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (

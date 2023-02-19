@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CarouselHover } from "./carouselHover";
 import _ from "lodash";
-import { Title } from "../atomicComponents/molecules/title";
+import { Title } from "../molecules/title";
 
 export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 	const [showRight, setShowRight] = useState(false);

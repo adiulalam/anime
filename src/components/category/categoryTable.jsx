@@ -2,12 +2,12 @@ import { formatMap } from "@/utils/constMap";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Image from "next/image";
 import Link from "next/link";
-import { Format } from "../atomicComponents/molecules/format";
-import { Genre } from "../atomicComponents/molecules/genre";
-import { Score } from "../atomicComponents/molecules/score";
-import { Season } from "../atomicComponents/molecules/season";
-import { Status } from "../atomicComponents/molecules/status";
-import { Title } from "../atomicComponents/molecules/title";
+import { Format } from "../molecules/format";
+import { Genre } from "../molecules/genre";
+import { Score } from "../molecules/score";
+import { Season } from "../molecules/season";
+import { Status } from "../molecules/status";
+import { Title } from "../molecules/title";
 
 const CategoryTable = ({ data }) => {
 	return (
