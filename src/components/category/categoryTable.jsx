@@ -1,13 +1,12 @@
-import { scoreColour, seasonalMap, statusMap, formatMap } from "@/utils/constMap";
+import { formatMap } from "@/utils/constMap";
 import { Gradient } from "@/utils/getAnimationStyle";
-import Color from "color";
 import Image from "next/image";
 import Link from "next/link";
+import { Genre } from "../atomicComponents/molecules/genre";
 import { Score } from "../atomicComponents/molecules/score";
 import { Season } from "../atomicComponents/molecules/season";
 import { Status } from "../atomicComponents/molecules/status";
 import { Title } from "../atomicComponents/molecules/title";
-import { CategoryCountdown } from "./categoryCountdown";
 
 const CategoryTable = ({ data }) => {
 	return (
@@ -41,39 +40,15 @@ const CategoryTable = ({ data }) => {
 											dark:backdrop-brightness-50 text-center`}
 								/>
 							</Link>
-							<div className="flex md:h-2/5 h-6 items-center ">
-								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
-									{element?.genres?.map((genre, i) => (
-										<Link
-											key={i}
-											href={{
-												pathname: "/anime/categories",
-												query: { genre_in: [genre] },
-											}}
-										>
-											<p
-												className={`${
-													Color(element.coverImage.color ?? "#ee7752")
-														.rotate(45)
-														.isDark()
-														? `text-white`
-														: `text-black`
-												} flex text-xs sm:text-xs md:text-sm px-2 rounded-xl ring-1 ring-black 
-												dark:ring-white font-medium`}
-												style={{
-													backgroundColor: Color(
-														element.coverImage.color ?? "#ee7752"
-													)
-														.rotate(45)
-														.hex(),
-												}}
-											>
-												{genre}
-											</p>
-										</Link>
-									))}
-								</div>
-							</div>
+							<Genre
+								genres={element?.genres}
+								color={element?.coverImage?.color}
+								containerClass={`flex md:h-2/5 h-6 items-center`}
+								childClass={`flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee`}
+								labelClass={`flex text-xs sm:text-xs md:text-sm px-2 rounded-xl ring-1 ring-black 
+								dark:ring-white font-medium`}
+								uniqueColor={true}
+							/>
 						</div>
 						<div className="flex flex-row h-full w-full text-xs sm:text-sm md:text-xl">
 							<div className="flex basis-4/6 md:basis-1/2 md:flex-col flex-row">

@@ -1,10 +1,9 @@
 import { Gradient } from "@/utils/getAnimationStyle";
-import humanizeDuration from "humanize-duration";
-import { seasonalMap, scoreColour, statusMap } from "@/utils/constMap";
 import _ from "lodash";
 import { Score } from "../atomicComponents/molecules/score";
 import { Status } from "../atomicComponents/molecules/status";
 import { Season } from "../atomicComponents/molecules/season";
+import { Genre } from "../atomicComponents/molecules/genre";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (
@@ -62,18 +61,14 @@ export const CarouselHover = ({ cardData, showRight }) => {
 					</div>
 				</div>
 			)}
-
-			<div className="flex flex-row flex-wrap w-auto h-auto justify-center items-center ">
-				{cardData?.genres?.slice(0, 5)?.map((genre, i) => (
-					<div
-						key={i}
-						className="flex w-auto h-auto items-center justify-center bg-gray-300 dark:bg-gray-700 text-black 
-						dark:text-white break-normal rounded-3xl m-1 px-2 text-xs md:text-base"
-					>
-						{genre}
-					</div>
-				))}
-			</div>
+			<Genre
+				genres={cardData?.genres}
+				containerClass={``}
+				childClass={`flex flex-row flex-wrap w-auto h-auto justify-center items-center`}
+				labelClass={`flex w-auto h-auto items-center justify-center bg-gray-300 dark:bg-gray-700 text-black 
+				dark:text-white break-normal rounded-3xl m-1 px-2 text-xs md:text-base`}
+				limit={5}
+			/>
 		</Gradient>
 	);
 };

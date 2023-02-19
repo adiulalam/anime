@@ -1,12 +1,10 @@
 import Image from "next/image";
-import { seasonalMap, scoreColour } from "@/utils/constMap";
 import { Gradient } from "@/utils/getAnimationStyle";
-import Color from "color";
 import Link from "next/link";
-import { CategoryCountdown } from "./categoryCountdown";
 import { Title } from "../atomicComponents/molecules/title";
 import { Score } from "../atomicComponents/molecules/score";
 import { Season } from "../atomicComponents/molecules/season";
+import { Genre } from "../atomicComponents/molecules/genre";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -86,40 +84,15 @@ const CategoryGrid = ({ data }) => {
 									/>
 								</div>
 							)}
-
-							<div className="flex w-full h-[13%] overflow-hidden rounded-br-xl py-1 sm:py-0 md:py-1">
-								<div className="flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee">
-									{element?.genres?.map((genre, i) => (
-										<Link
-											key={i}
-											href={{
-												pathname: "/anime/categories",
-												query: { genre_in: [genre] },
-											}}
-										>
-											<p
-												className={`${
-													Color(element.coverImage.color ?? "#ee7752")
-														.rotate(45)
-														.isDark()
-														? `text-white`
-														: `text-black`
-												} flex text-xs sm:text-xs md:text-sm px-2 rounded-xl ring-1 ring-black 
-												dark:ring-white font-medium`}
-												style={{
-													backgroundColor: Color(
-														element.coverImage.color ?? "#ee7752"
-													)
-														.rotate(45)
-														.hex(),
-												}}
-											>
-												{genre}
-											</p>
-										</Link>
-									))}
-								</div>
-							</div>
+							<Genre
+								genres={element?.genres}
+								color={element?.coverImage?.color}
+								containerClass={`flex w-full h-[13%] overflow-hidden rounded-br-xl py-1 sm:py-0 md:py-1`}
+								childClass={`flex flex-row whitespace-nowrap gap-2 px-2 hover:animate-marquee`}
+								labelClass={`flex text-xs sm:text-xs md:text-sm px-2 rounded-xl ring-1 ring-black 
+								dark:ring-white font-medium`}
+								uniqueColor={true}
+							/>
 						</div>
 					</Gradient>
 				</div>
