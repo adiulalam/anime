@@ -12,6 +12,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import CategoryTable from "@/components/category/categoryTable";
 import CategoryTableSkeleton from "@/components/skeleton/categoryTableSkeleton";
 import { Icon } from "@/components/molecules/icon";
+import Head from "next/head";
 
 // todo Error handling and empty data..
 const Categories = () => {
@@ -55,6 +56,9 @@ const Categories = () => {
 
 	return (
 		<div className="bg-white dark:bg-black">
+			<Head>
+				<title>Category</title>
+			</Head>
 			<div className="flex items-center justify-center h-16 p-2">
 				<CategoryFilter data={data} loading={loading} searchQuery={searchQuery} />
 			</div>

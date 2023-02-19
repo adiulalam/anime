@@ -10,6 +10,7 @@ import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
 import { Icon } from "@/components/molecules/icon";
+import Head from "next/head";
 
 export default function Home({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +43,9 @@ export default function Home({ data, isError }) {
 
 	return (
 		<div className="bg-white dark:bg-black">
+			<Head>
+				<title>Home</title>
+			</Head>
 			<div className="flex items-center justify-center h-16 p-2">
 				<Filter />
 			</div>
