@@ -5,6 +5,7 @@ import { Title } from "../atomicComponents/molecules/title";
 import { Score } from "../atomicComponents/molecules/score";
 import { Season } from "../atomicComponents/molecules/season";
 import { Genre } from "../atomicComponents/molecules/genre";
+import { Description } from "../atomicComponents/molecules/description";
 
 const CategoryGrid = ({ data }) => {
 	return (
@@ -72,17 +73,12 @@ const CategoryGrid = ({ data }) => {
 							</div>
 
 							{element.description && (
-								<div
-									className="flex flex-wrap h-[45%] w-full bg-gray-300 dark:bg-gray-600 overflow-hidden hover:overflow-auto 
-							text-sm sm:text-xs md:text-base rounded-md"
-								>
-									<p
-										className="leading-4 sm:leading-4 md:leading-5 ml-1 "
-										dangerouslySetInnerHTML={{
-											__html: element.description ?? "",
-										}}
-									/>
-								</div>
+								<Description
+									containerClass={`flex flex-wrap h-[45%] w-full bg-gray-300 dark:bg-gray-600 overflow-hidden hover:overflow-auto 
+									text-sm sm:text-xs md:text-base rounded-md`}
+									labelClass={`leading-4 sm:leading-4 md:leading-5 ml-1`}
+									label={element.description}
+								/>
 							)}
 							<Genre
 								genres={element?.genres}
