@@ -2,6 +2,8 @@ import Image from "next/image";
 import zoro from "../assets/zoro.png";
 import Switcher from "@/components/switcher";
 import { Fade } from "@/utils/getAnimationStyle";
+import Link from "next/link";
+import { FaHome as Home } from "react-icons/fa";
 
 export const PageError = ({ message, statuscode }) => {
 	return (
@@ -9,7 +11,12 @@ export const PageError = ({ message, statuscode }) => {
 			className="flex items-center flex-col flex-wrap gap-2 px-4 justify-center h-screen m-0 text-center 
 		w-full font-bold text-8xl text-neutral-600 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-600"
 		>
-			<Switcher />
+			<div className="flex flex-row items-center gap-2">
+				<Link href={"/"}>
+					<Home size={18} className="dark:fill-white fill-black" />
+				</Link>
+				<Switcher />
+			</div>
 			<div className="flex h-64 w-80 md:w-96 md:h-80 relative">
 				<Image alt="zoro" src={zoro} fill className="rounded-lg" />
 			</div>
