@@ -1,16 +1,14 @@
 import Image from "next/image";
 import zoro from "../assets/zoro.png";
-import Switcher from "@/components/switcher";
 import { Fade } from "@/utils/getAnimationStyle";
-import Link from "next/link";
-import { FaHome as Home } from "react-icons/fa";
 import { Icon } from "./molecules/icon";
 
 export const PageError = ({ message, statuscode }) => {
 	return (
 		<div
 			className="flex items-center flex-col flex-wrap gap-2 px-4 justify-center h-screen m-0 text-center 
-		w-full font-bold text-8xl text-neutral-600 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-600"
+			w-full font-bold text-8xl text-neutral-600 dark:text-neutral-200 bg-neutral-200 
+			dark:bg-neutral-600"
 		>
 			<div className="flex flex-row items-center gap-2">
 				<Icon home={true} />

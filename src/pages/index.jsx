@@ -1,6 +1,5 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Switcher from "@/components/switcher";
 import { CarouselBox } from "@/components/carousel/carouselBox";
 import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
