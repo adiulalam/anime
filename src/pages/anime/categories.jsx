@@ -2,7 +2,6 @@ import { getFilterCategoryResults } from "@/services/queries";
 import { useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import _ from "lodash";
-import CategoryIcons from "@/components/category/categoryIcons";
 import CategoryFilter from "@/components/category/categoryFilter";
 import CategoryGrid from "@/components/category/categoryGrid";
 import CategoryCoverSkeleton from "@/components/skeleton/categoryCoverSkeleton";
@@ -12,6 +11,7 @@ import CategoryCover from "@/components/category/categoryCover";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CategoryTable from "@/components/category/categoryTable";
 import CategoryTableSkeleton from "@/components/skeleton/categoryTableSkeleton";
+import { Icon } from "@/components/molecules/icon";
 
 // todo Error handling and empty data..
 const Categories = () => {
@@ -59,7 +59,7 @@ const Categories = () => {
 				<CategoryFilter data={data} loading={loading} searchQuery={searchQuery} />
 			</div>
 			<div className="flex items-center justify-end px-2">
-				<CategoryIcons categoryView={categoryView} setCategoryView={setCategoryView} />
+				<Icon categoryView={categoryView} setCategoryView={setCategoryView} home={true} />
 			</div>
 			{loading ? (
 				categoryView === "cover" ? (

@@ -4,6 +4,7 @@ import Switcher from "@/components/switcher";
 import { Fade } from "@/utils/getAnimationStyle";
 import Link from "next/link";
 import { FaHome as Home } from "react-icons/fa";
+import { Icon } from "./molecules/icon";
 
 export const PageError = ({ message, statuscode }) => {
 	return (
@@ -12,10 +13,7 @@ export const PageError = ({ message, statuscode }) => {
 		w-full font-bold text-8xl text-neutral-600 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-600"
 		>
 			<div className="flex flex-row items-center gap-2">
-				<Link href={"/"}>
-					<Home size={18} className="dark:fill-white fill-black" />
-				</Link>
-				<Switcher />
+				<Icon home={true} />
 			</div>
 			<div className="flex h-64 w-80 md:w-96 md:h-80 relative">
 				<Image alt="zoro" src={zoro} fill className="rounded-lg" />

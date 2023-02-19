@@ -10,6 +10,7 @@ import { PageError } from "@/components/error";
 import CarouselSkeleton from "@/components/skeleton/carouselSkeleton";
 import Filter from "@/components/filters/filterBar";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
+import { Icon } from "@/components/molecules/icon";
 
 export default function Home({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +47,7 @@ export default function Home({ data, isError }) {
 				<Filter />
 			</div>
 			<div className="flex items-center justify-end px-2">
-				<Switcher />
+				<Icon />
 			</div>
 			{Object.entries(data).map(([key, value], index) => (
 				<CarouselBox
