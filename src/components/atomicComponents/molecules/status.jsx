@@ -1,11 +1,6 @@
 import { statusMap } from "@/utils/constMap";
 
-export const Status = ({
-	label = 0,
-	containerClass = "",
-	labelClass = "",
-	switchColour = false,
-}) => {
+export const Status = ({ label, containerClass = "", labelClass = "", switchColour = false }) => {
 	return (
 		<div
 			className={`${containerClass} ${

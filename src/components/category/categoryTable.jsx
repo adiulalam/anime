@@ -78,7 +78,7 @@ const CategoryTable = ({ data }) => {
 								{element.format && (
 									<div
 										className="flex basis-1/2 items-center justify-center 
-								text-center "
+										text-center "
 									>
 										<p className="bg-gray-300 dark:bg-gray-600 p-1 md:p-2 rounded-lg">
 											{formatMap[element.format]}
@@ -89,9 +89,8 @@ const CategoryTable = ({ data }) => {
 									<Status
 										label={element.status}
 										containerClass={`flex basis-1/2 items-center justify-center 
-									text-center`}
-										labelClass={`bg-gray-300 dark:bg-gray-800"
-								} p-1 md:p-2 rounded-lg mr-1`}
+										text-center`}
+										labelClass={`p-1 md:p-2 rounded-lg mr-1`}
 										switchColour={true}
 									/>
 								)}
