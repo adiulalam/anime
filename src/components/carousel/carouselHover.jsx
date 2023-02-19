@@ -4,6 +4,7 @@ import { Score } from "../atomicComponents/molecules/score";
 import { Status } from "../atomicComponents/molecules/status";
 import { Season } from "../atomicComponents/molecules/season";
 import { Genre } from "../atomicComponents/molecules/genre";
+import { Episode } from "../atomicComponents/molecules/episode";
 
 export const CarouselHover = ({ cardData, showRight }) => {
 	return (
@@ -50,16 +51,13 @@ export const CarouselHover = ({ cardData, showRight }) => {
 			/>
 
 			{cardData.episodes && (
-				<div className="flex w-full h-auto justify-center items-center">
-					<div
-						className="flex py-1 px-2 md:px-4 h-auto items-center justify-center bg-slate-400 dark:bg-slate-800 
-					text-black dark:text-white break-normal rounded-lg text-xs md:text-base"
-					>
-						{cardData.episodes > 1
-							? `Total Episodes: ${cardData.episodes}`
-							: cardData.format ?? "Unknown"}
-					</div>
-				</div>
+				<Episode
+					episodes={cardData?.episodes}
+					format={cardData?.format}
+					containerClass={`flex w-full h-auto justify-center items-center`}
+					labelClass={`flex py-1 px-2 md:px-4 h-auto items-center justify-center bg-slate-400 dark:bg-slate-800 
+					text-black dark:text-white break-normal rounded-lg text-xs md:text-base`}
+				/>
 			)}
 			<Genre
 				genres={cardData?.genres}
