@@ -2,6 +2,7 @@ import { formatMap } from "@/utils/constMap";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Image from "next/image";
 import Link from "next/link";
+import { Format } from "../atomicComponents/molecules/format";
 import { Genre } from "../atomicComponents/molecules/genre";
 import { Score } from "../atomicComponents/molecules/score";
 import { Season } from "../atomicComponents/molecules/season";
@@ -76,14 +77,12 @@ const CategoryTable = ({ data }) => {
 							</div>
 							<div className="flex basis-2/6 md:basis-1/2 md:flex-col flex-row ">
 								{element.format && (
-									<div
-										className="flex basis-1/2 items-center justify-center 
-										text-center "
-									>
-										<p className="bg-gray-300 dark:bg-gray-600 p-1 md:p-2 rounded-lg">
-											{formatMap[element.format]}
-										</p>
-									</div>
+									<Format
+										label={element.format}
+										containerClass={`flex basis-1/2 items-center justify-center 
+										text-center`}
+										labelClass={`bg-gray-300 dark:bg-gray-600 p-1 md:p-2 rounded-lg`}
+									/>
 								)}
 								{element.status && (
 									<Status
