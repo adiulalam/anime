@@ -14,7 +14,7 @@ export const PageError = ({ message, statuscode }) => {
 				<Icon home={true} />
 			</div>
 			<div className="flex h-64 w-80 md:w-96 md:h-80 relative">
-				<Image alt="zoro" src={zoro} fill className="rounded-lg" />
+				<Image alt="zoro" src={zoro} fill sizes="100%" className="rounded-lg" />
 			</div>
 			<Fade className="text-5xl md:text-8xl pr-3 w-fit h-auto text-clip">{`Error ${
 				statuscode ? `${statuscode}` : "Unknown"

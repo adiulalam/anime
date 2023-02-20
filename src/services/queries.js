@@ -356,3 +356,43 @@ export const getFilterCategoryResults = gql`
 		}
 	}
 `;
+
+export const getAnimePage = gql`
+	query getAnimePage($id: Int!) {
+		anime: Page(page: 1, perPage: 1) {
+			pageInfo {
+				total
+				perPage
+				currentPage
+				hasNextPage
+			}
+			media(type: ANIME, isAdult: false, id: $id) {
+				id
+				title {
+					userPreferred
+				}
+				coverImage {
+					large
+					color
+				}
+				bannerImage
+				description
+				averageScore
+				episodes
+				genres
+				format
+				status
+				seasonYear
+				startDate {
+					year
+				}
+				season
+				nextAiringEpisode {
+					id
+					episode
+					timeUntilAiring
+				}
+			}
+		}
+	}
+`;
