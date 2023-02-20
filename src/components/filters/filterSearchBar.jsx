@@ -1,5 +1,6 @@
 import _ from "lodash";
 import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { FilterSearchList } from "./filterSearchList";
 import { BsSearch } from "react-icons/bs";
 import Link from "next/link";

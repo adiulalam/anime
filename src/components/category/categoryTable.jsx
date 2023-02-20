@@ -1,4 +1,3 @@
-import { formatMap } from "@/utils/constMap";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Image from "next/image";
 import Link from "next/link";
