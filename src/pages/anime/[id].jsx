@@ -50,7 +50,7 @@ const AnimeTab = () => {
 		<Tab.Group>
 			<Tab.List
 				className={`flex flex-row flex-wrap items-center justify-evenly gap-1 rounded-xl 
-				bg-blue-500 p-1`}
+				bg-blue-500 p-1 my-2`}
 			>
 				{Object.keys(categories).map((category) => (
 					<Tab
@@ -60,14 +60,14 @@ const AnimeTab = () => {
 								selected
 									? "bg-white shadow"
 									: "text-blue-100 hover:bg-slate-600 hover:text-white"
-							} rounded-lg p-3 text-sm font-medium leading-5 text-blue-700`
+							} rounded-lg p-1 md:p-3 text-sm font-medium leading-5 text-blue-700`
 						}
 					>
 						{category}
 					</Tab>
 				))}
 			</Tab.List>
-			<Tab.Panels className="mt-2">
+			<Tab.Panels className="">
 				{Object.values(categories).map((posts, idx) => (
 					<Tab.Panel key={idx} className={`rounded-xl bg-white p-3 `}>
 						<div>{posts}</div>
