@@ -9,8 +9,6 @@ import { getAnimePage } from "@/services/queries";
 import _ from "lodash";
 
 export default function Anime({ data, isError }) {
-	console.log("🚀 ~ file: [id].jsx:11 ~ Anime ~ data:", data);
-
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		setIsLoading(false);

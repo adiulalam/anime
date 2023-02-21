@@ -386,6 +386,7 @@ export const getAnimePage = gql`
 				format
 				status
 				seasonYear
+				season
 				duration
 				source
 				startDate {
@@ -398,11 +399,35 @@ export const getAnimePage = gql`
 					month
 					year
 				}
-				season
 				nextAiringEpisode {
 					id
 					episode
 					timeUntilAiring
+				}
+				characters(sort: [ROLE, RELEVANCE, ID], role: MAIN) {
+					edges {
+						id
+						role
+						voiceActors(language: JAPANESE, sort: [RELEVANCE, ID]) {
+							id
+							name {
+								userPreferred
+							}
+							language: languageV2
+							image {
+								large
+							}
+						}
+						node {
+							id
+							name {
+								userPreferred
+							}
+							image {
+								large
+							}
+						}
+					}
 				}
 			}
 		}

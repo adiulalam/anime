@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
-import { formatMap, statusMap } from "@/utils/constMap";
-import humanizeDuration from "humanize-duration";
-import dayjs from "dayjs";
 import { TabOverview } from "./tabOverview";
 
 export const AnimeTab = ({ data }) => {
@@ -37,7 +34,7 @@ export const AnimeTab = ({ data }) => {
 			</Tab.List>
 			<Tab.Panels className="">
 				{Object.values(categories).map((posts, idx) => (
-					<Tab.Panel key={idx} className={`rounded-xl bg-white p-3 `}>
+					<Tab.Panel key={idx} className={``}>
 						<div>{posts}</div>
 					</Tab.Panel>
 				))}
