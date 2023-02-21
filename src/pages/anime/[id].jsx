@@ -16,7 +16,7 @@ export default function Anime({ data, isError }) {
 		setIsLoading(false);
 	}, [data]);
 
-	if (isError) {
+	if (isError || _.isEmpty(data)) {
 		return (
 			<PageError
 				message={isError?.message}
@@ -24,7 +24,9 @@ export default function Anime({ data, isError }) {
 					isError?.clientErrors?.[0]?.status ??
 					isError?.graphQLErrors?.[0]?.status ??
 					isError?.networkError?.[0]?.status ??
-					"Unknown"
+					_.isEmpty(data)
+						? " - No Anime found"
+						: "Unknown"
 				}
 			/>
 		);

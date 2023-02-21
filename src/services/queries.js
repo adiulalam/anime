@@ -369,6 +369,9 @@ export const getAnimePage = gql`
 			media(type: ANIME, isAdult: false, id: $id) {
 				id
 				title {
+					romaji
+					english
+					native
 					userPreferred
 				}
 				coverImage {
@@ -383,7 +386,16 @@ export const getAnimePage = gql`
 				format
 				status
 				seasonYear
+				duration
+				source
 				startDate {
+					day
+					month
+					year
+				}
+				endDate {
+					day
+					month
 					year
 				}
 				season
