@@ -59,14 +59,17 @@ export const TabOverviewInfo = ({ data }) => {
 	return (
 		<div
 			className="flex flex-row flex-wrap w-full h-full gap-2  
-		text-center items-center justify-evenly rounded-xl bg-white p-3 "
+		text-center items-center justify-evenly rounded-xl bg-white dark:bg-black p-3 border-2 border-black dark:border-white"
 		>
 			{Object.entries(overviewTabInfoMap).map(
 				([key, value], index) =>
 					value && (
-						<div key={index} className="flex flex-col w-auto h-auto px-2 border-b-2">
-							<h1 className="text-black text-lg font-medium">{key}</h1>
-							<h1 className="text-black">{value.toString()}</h1>
+						<div
+							key={index}
+							className="flex flex-col w-auto h-auto px-2 border-b-2 text-black dark:text-white"
+						>
+							<h1 className="text-lg font-medium">{key}</h1>
+							<h1 className="text-base">{value.toString()}</h1>
 						</div>
 					)
 			)}

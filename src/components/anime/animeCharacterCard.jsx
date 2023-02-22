@@ -1,13 +1,18 @@
 import Image from "next/image";
 
-export const AnimeCharacterCard = ({ data, showDual = false }) => {
-	console.log("🚀 ~ file: animeCard.jsx:4 ~ AnimeCard ~ data:", data);
+export const AnimeCharacterCard = ({ data, showDual = false, label }) => {
 	return (
-		<div className="flex flex-col w-full rounded-xl bg-white p-3 ">
-			<p className="text-black">Main Characters</p>
-			<div className="flex flex-col w-full h-auto md:flex-row flex-wrap items-center justify-evenly gap-2">
+		<div
+			className="flex flex-col w-full rounded-xl border-2 border-black dark:border-white bg-white 
+		dark:bg-black"
+		>
+			<p className="text-black dark:text-white text-xl font-medium p-2">{label}</p>
+			<div
+				className="flex flex-col w-full h-auto md:flex-row flex-wrap items-center justify-evenly gap-2 
+			text-white dark:text-black"
+			>
 				{data.map((element, index) => (
-					<div key={index} className="flex w-full sm:w-80 h-24 bg-black">
+					<div key={index} className="flex w-full sm:w-80 h-24 bg-black dark:bg-white">
 						<div
 							className={`${
 								!_.isEmpty(element.voiceActors) && showDual ? "w-1/2" : "w-full"
@@ -23,23 +28,29 @@ export const AnimeCharacterCard = ({ data, showDual = false }) => {
 									priority={true}
 								/>
 							</div>
-							<div className="flex flex-col flex-wrap h-full w-full text-ellipsis overflow-hidden">
-								<div className="flex bg-red-500 h-1/2 w-full ">
-									<p>{element.node.name.userPreferred}</p>
+							<div className="flex flex-col flex-wrap h-full w-full text-ellipsis overflow-hidden text-start ml-1">
+								<div className="flex h-1/2 w-full">
+									<p className="text-sm font-medium ">
+										{element.node.name.userPreferred}
+									</p>
 								</div>
-								<div className="flex bg-red-700 h-1/2 w-full items-end">
-									<p>{element.role}</p>
+								<div className="flex h-1/2 w-full items-end">
+									<p className="text-xs">{element.role}</p>
 								</div>
 							</div>
 						</div>
 						{!_.isEmpty(element.voiceActors) && showDual && (
 							<div className="flex flex-row relative justify-end h-full w-1/2 overflow-none z-1">
-								<div className="flex flex-col flex-wrap h-full w-full text-ellipsis overflow-hidden ">
-									<div className="flex bg-red-600 h-1/2 w-full justify-end">
-										<p>{element?.voiceActors?.[0]?.name?.userPreferred}</p>
+								<div className="flex flex-col flex-wrap h-full w-full text-ellipsis overflow-hidden text-end mr-1">
+									<div className="flex h-1/2 w-full justify-end">
+										<p className="text-sm font-medium">
+											{element?.voiceActors?.[0]?.name?.userPreferred}
+										</p>
 									</div>
-									<div className="flex bg-red-800 h-1/2 w-full justify-end items-end">
-										<p>{element?.voiceActors?.[0]?.language}</p>
+									<div className="flex h-1/2 w-full justify-end items-end">
+										<p className="text-xs">
+											{element?.voiceActors?.[0]?.language}
+										</p>
 									</div>
 								</div>
 								<div className="flex relative h-full w-auto aspect-[2/3]">

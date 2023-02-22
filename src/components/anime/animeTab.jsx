@@ -1,21 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
 import { TabOverview } from "./tabOverview";
 
 export const AnimeTab = ({ data }) => {
-	const [categories] = useState({
-		Overview: <TabOverview data={data} />,
-		Characters: <h1 className="text-black">Characters</h1>,
-		Staff: <h1 className="text-black">Staff</h1>,
-		Reviews: <h1 className="text-black">Reviews</h1>,
-		Related: <h1 className="text-black">Reviews</h1>,
-	});
+	const [categories, setCategories] = useState({});
+
+	useEffect(() => {
+		setCategories({
+			Overview: <TabOverview data={data} />,
+			Characters: <h1 className="text-black">Characters</h1>,
+			Staff: <h1 className="text-black">Staff</h1>,
+			Reviews: <h1 className="text-black">Reviews</h1>,
+			Related: <h1 className="text-black">Reviews</h1>,
+		});
+	}, [data]);
 
 	return (
 		<Tab.Group>
 			<Tab.List
 				className={`flex flex-row flex-wrap items-center justify-evenly gap-1 rounded-xl 
-				bg-blue-400 p-1 my-2`}
+				bg-black dark:bg-white p-1 my-2`}
 			>
 				{Object.keys(categories).map((category) => (
 					<Tab
@@ -23,9 +27,9 @@ export const AnimeTab = ({ data }) => {
 						className={({ selected }) =>
 							`${
 								selected
-									? "bg-white shadow"
-									: "text-blue-100 hover:bg-slate-600 hover:text-white"
-							} rounded-lg p-1 md:p-3 text-sm font-medium leading-5 text-blue-900`
+									? "bg-white dark:bg-black shadow"
+									: "text-white dark:text-black hover:bg-stone-700 dark:hover:bg-stone-400 hover:text-white"
+							} rounded-lg p-1 md:p-3 text-sm font-medium leading-5 text-black dark:text-white`
 						}
 					>
 						{category}

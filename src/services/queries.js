@@ -429,6 +429,54 @@ export const getAnimePage = gql`
 						}
 					}
 				}
+				staff(perPage: 4, sort: [RELEVANCE, ID]) {
+					edges {
+						id
+						role
+						node {
+							id
+							name {
+								userPreferred
+							}
+							language: languageV2
+							image {
+								large
+							}
+						}
+					}
+				}
+				recommendations(perPage: 10, sort: [RATING_DESC, ID]) {
+					pageInfo {
+						total
+					}
+					nodes {
+						mediaRecommendation {
+							id
+							title {
+								userPreferred
+							}
+							coverImage {
+								large
+								color
+							}
+							averageScore
+							episodes
+							genres
+							format
+							status
+							seasonYear
+							startDate {
+								year
+							}
+							season
+							nextAiringEpisode {
+								id
+								episode
+								timeUntilAiring
+							}
+						}
+					}
+				}
 			}
 		}
 	}
