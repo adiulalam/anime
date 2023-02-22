@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const AnimeCard = ({ data, showDual = false }) => {
+export const AnimeCharacterCard = ({ data, showDual = false }) => {
 	console.log("🚀 ~ file: animeCard.jsx:4 ~ AnimeCard ~ data:", data);
 	return (
 		<div className="flex flex-col w-full rounded-xl bg-white p-3 ">

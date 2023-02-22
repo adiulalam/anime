@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Title } from "../molecules/title";
-import { AnimeCard } from "./animeCard";
+import { AnimeCharacterCard } from "./animeCharacterCard";
 import { TabOverviewInfo } from "./tabOverviewInfo";
 
 export const TabOverview = ({ data }) => {
@@ -11,7 +11,7 @@ export const TabOverview = ({ data }) => {
 		>
 			<TabOverviewInfo data={data} />
 
-			<AnimeCard data={data?.characters?.edges} showDual={true} />
+			<AnimeCharacterCard data={data?.characters?.edges} showDual={true} />
 		</div>
 	);
 };
