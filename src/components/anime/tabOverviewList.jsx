@@ -20,10 +20,14 @@ export const TabOverviewList = ({ data, label, link = false, tags = false }) => 
 							<Link
 								href={{
 									pathname: "/anime/categories",
-									query: { genre_in: [element] },
+									query: {
+										[tags ? "tag_in" : "genre_in"]: [
+											tags ? element.name : element,
+										],
+									},
 								}}
 							>
-								<h1 className="text-base">{element}</h1>
+								<h1 className="text-base">{tags ? element.name : element}</h1>
 							</Link>
 						) : (
 							<h1 className="text-base">{tags ? element.name : element}</h1>

@@ -24,7 +24,7 @@ export const TabOverview = ({ data }) => {
 
 			<AnimeRecommendation data={data?.recommendations?.nodes} label={"Recommendation"} />
 
-			<TabOverviewList data={data?.tags} label={"Tags"} tags={true} />
+			<TabOverviewList data={data?.tags} label={"Tags"} link={true} tags={true} />
 		</div>
 	);
 };
