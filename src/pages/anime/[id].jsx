@@ -8,6 +8,8 @@ import { client } from "@/services/client";
 import { getAnimePage } from "@/services/queries";
 import _ from "lodash";
 import Head from "next/head";
+import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
+import AnimeSkeleton from "@/components/skeleton/animeSkeleton";
 
 export default function Anime({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +34,14 @@ export default function Anime({ data, isError }) {
 	}
 
 	if (isLoading) {
-		return <p>loading...</p>;
+		return (
+			<>
+				<div className="h-28 md:h-40 bg-white dark:bg-black">
+					<FilterSkeleton />
+				</div>
+				<AnimeSkeleton />
+			</>
+		);
 	}
 
 	return (
