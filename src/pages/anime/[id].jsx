@@ -7,6 +7,7 @@ import { PageError } from "@/components/error";
 import { client } from "@/services/client";
 import { getAnimePage } from "@/services/queries";
 import _ from "lodash";
+import Head from "next/head";
 
 export default function Anime({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,9 @@ export default function Anime({ data, isError }) {
 
 	return (
 		<div className="bg-white dark:bg-black">
+			<Head>
+				<title>{data.title.userPreferred}</title>
+			</Head>
 			<div className="flex flex-col w-full h-full">
 				<AnimeBanner src={data.bannerImage} name={data.title.userPreferred} />
 				<div className="flex items-center justify-end px-2 py-1">
