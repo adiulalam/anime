@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
 import { TabOverview } from "./tabOverview";
+import { TabCharacter } from "./tabCharacter";
 
 export const AnimeTab = ({ data }) => {
 	const [categories, setCategories] = useState({});
@@ -8,7 +9,7 @@ export const AnimeTab = ({ data }) => {
 	useEffect(() => {
 		setCategories({
 			Overview: <TabOverview data={data} />,
-			Characters: <h1 className="text-black">Characters</h1>,
+			Characters: <TabCharacter />,
 			Staff: <h1 className="text-black">Staff</h1>,
 			Related: <h1 className="text-black">Reviews</h1>,
 		});

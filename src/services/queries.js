@@ -491,3 +491,42 @@ export const getAnimePage = gql`
 		}
 	}
 `;
+
+export const getCharacterPage = gql`
+	query getCharacterPage($id: Int, $page: Int, $language: StaffLanguage) {
+		media: Media(id: $id) {
+			characters(page: $page, sort: [ROLE, RELEVANCE, ID]) {
+				pageInfo {
+					total
+					perPage
+					currentPage
+					lastPage
+					hasNextPage
+				}
+				edges {
+					id
+					role
+					voiceActors(sort: [RELEVANCE, ID], language: $language) {
+						id
+						name {
+							userPreferred
+						}
+						language: languageV2
+						image {
+							large
+						}
+					}
+					node {
+						id
+						name {
+							userPreferred
+						}
+						image {
+							large
+						}
+					}
+				}
+			}
+		}
+	}
+`;

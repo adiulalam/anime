@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { defaultDataIdFromObject } from "@apollo/client";
 
 const cache = new InMemoryCache({
 	typePolicies: {
@@ -10,10 +11,29 @@ const cache = new InMemoryCache({
 				media: {
 					merge: true,
 				},
+				Media: {
+					merge: false,
+				},
+				characters: {
+					merge: true,
+				},
 			},
 		},
 	},
 });
+
+// const cache = new InMemoryCache({
+// 	dataIdFromObject(responseObject) {
+// 		switch (responseObject.__typename) {
+// 			case "Product":
+// 				return console.log(responseObject);
+// 			case "Person":
+// 				return console.log(responseObject);
+// 			default:
+// 				return console.log(responseObject);
+// 		}
+// 	},
+// });
 
 export const client = new ApolloClient({
 	uri: "https://graphql.anilist.co",

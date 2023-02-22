@@ -1,17 +1,19 @@
 import Image from "next/image";
 
-export const AnimeCharacterCard = ({ data, showDual = false, label }) => {
+export const AnimeCharacterCard = ({ data, showDual = false, label, hideBorder = false }) => {
 	return (
 		<div
-			className="flex flex-col w-full rounded-xl border-2 border-black dark:border-white bg-white 
-		dark:bg-black"
+			className={`${
+				hideBorder ? "" : "border-2 border-black dark:border-white"
+			} flex flex-col w-full rounded-xl  bg-white 
+		dark:bg-black items-center justify-center`}
 		>
 			<p className="text-black dark:text-white text-xl font-medium p-2">{label}</p>
 			<div
 				className="flex flex-col w-full h-auto md:flex-row flex-wrap items-center justify-evenly gap-2 
 			text-white dark:text-black py-2"
 			>
-				{data.map((element, index) => (
+				{data?.map((element, index) => (
 					<div key={index} className="flex w-full sm:w-80 h-24 bg-black dark:bg-white">
 						<div
 							className={`${
