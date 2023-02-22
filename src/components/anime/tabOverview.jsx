@@ -1,15 +1,11 @@
-import { useRef } from "react";
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import { TabOverviewInfo } from "./tabOverviewInfo";
 import { AnimeRecommendation } from "./animeRecommendation";
-import { TabOverviewList } from "./tabOverviewList";
+import { TabList } from "./tabList";
 
 export const TabOverview = ({ data }) => {
 	return (
-		<div
-			className="flex flex-col flex-wrap w-full h-full gap-6 
-		text-center items-center justify-evenly py-1"
-		>
+		<div className="flex flex-col flex-wrap w-full h-full gap-6 text-center items-center justify-evenly p-1">
 			<TabOverviewInfo data={data} />
 
 			<AnimeCharacterCard
@@ -20,11 +16,11 @@ export const TabOverview = ({ data }) => {
 
 			<AnimeCharacterCard data={data?.staff?.edges} label={"Main Staff"} showDual={false} />
 
-			<TabOverviewList data={data?.genres} label={"Genre"} link={true} />
+			<TabList data={data?.genres} label={"Genre"} link={true} />
 
 			<AnimeRecommendation data={data?.recommendations?.nodes} label={"Recommendation"} />
 
-			<TabOverviewList data={data?.tags} label={"Tags"} link={true} tags={true} />
+			<TabList data={data?.tags} label={"Tags"} link={true} tags={true} />
 		</div>
 	);
 };

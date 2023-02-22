@@ -67,7 +67,8 @@ export const TabOverviewInfo = ({ data }) => {
 					value && (
 						<div
 							key={index}
-							className="flex flex-col w-auto h-auto px-2 border-b-2 text-black dark:text-white"
+							className="flex flex-col w-auto h-auto px-2 border-b-2 dark:border-neutral-400 border-neutral-500 
+							text-black dark:text-white"
 						>
 							<h1 className="text-lg font-medium">{key}</h1>
 							<h1 className="text-base">{value.toString()}</h1>

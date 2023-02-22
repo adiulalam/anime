@@ -6,7 +6,7 @@ import { Title } from "../molecules/title";
 export const AnimePoster = ({ src, name, description, color }) => {
 	return (
 		<Gradient
-			className="flex justify-center w-full h-40 md:h-64"
+			className="flex justify-center w-full h-40 md:h-64 rounded-xl"
 			startColour={color ?? "#ee7752"}
 		>
 			<div className="flex relative justify-center w-28 h-full md:w-44 overflow-auto z-1">
@@ -14,7 +14,7 @@ export const AnimePoster = ({ src, name, description, color }) => {
 					alt={name}
 					src={src}
 					fill
-					className="object-cover"
+					className="object-cover rounded-xl"
 					sizes="100%"
 					priority={true}
 				/>
