@@ -9,7 +9,7 @@ export const AnimeCharacterCard = ({ data, showDual = false, label }) => {
 			<p className="text-black dark:text-white text-xl font-medium p-2">{label}</p>
 			<div
 				className="flex flex-col w-full h-auto md:flex-row flex-wrap items-center justify-evenly gap-2 
-			text-white dark:text-black"
+			text-white dark:text-black py-2"
 			>
 				{data.map((element, index) => (
 					<div key={index} className="flex w-full sm:w-80 h-24 bg-black dark:bg-white">

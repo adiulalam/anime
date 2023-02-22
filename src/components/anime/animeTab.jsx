@@ -10,7 +10,6 @@ export const AnimeTab = ({ data }) => {
 			Overview: <TabOverview data={data} />,
 			Characters: <h1 className="text-black">Characters</h1>,
 			Staff: <h1 className="text-black">Staff</h1>,
-			Reviews: <h1 className="text-black">Reviews</h1>,
 			Related: <h1 className="text-black">Reviews</h1>,
 		});
 	}, [data]);
