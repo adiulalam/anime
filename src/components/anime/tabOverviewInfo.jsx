@@ -54,6 +54,7 @@ export const TabOverviewInfo = ({ data }) => {
 				: null,
 		Duration: !_.isNil(data.duration) ? `${data.duration} mins` : null,
 		Source: data.source,
+		"Main Studio": data?.studios?.nodes?.[0]?.name,
 	};
 
 	return (

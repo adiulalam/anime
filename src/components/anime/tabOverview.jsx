@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import { TabOverviewInfo } from "./tabOverviewInfo";
 import { AnimeRecommendation } from "./animeRecommendation";
+import { TabOverviewList } from "./tabOverviewList";
 
 export const TabOverview = ({ data }) => {
 	return (
@@ -19,7 +20,11 @@ export const TabOverview = ({ data }) => {
 
 			<AnimeCharacterCard data={data?.staff?.edges} label={"Main Staff"} showDual={false} />
 
+			<TabOverviewList data={data?.genres} label={"Genre"} link={true} />
+
 			<AnimeRecommendation data={data?.recommendations?.nodes} label={"Recommendation"} />
+
+			<TabOverviewList data={data?.tags} label={"Tags"} tags={true} />
 		</div>
 	);
 };

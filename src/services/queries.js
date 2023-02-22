@@ -383,6 +383,10 @@ export const getAnimePage = gql`
 				averageScore
 				episodes
 				genres
+				tags {
+					id
+					name
+				}
 				format
 				status
 				seasonYear
@@ -403,6 +407,12 @@ export const getAnimePage = gql`
 					id
 					episode
 					timeUntilAiring
+				}
+				studios(isMain: true) {
+					nodes {
+						id
+						name
+					}
 				}
 				characters(sort: [ROLE, RELEVANCE, ID], role: MAIN) {
 					edges {
