@@ -4,17 +4,17 @@ import { TabOverview } from "./tabOverview";
 import { TabCharacter } from "./tabCharacter";
 import { TabStaff } from "./tabStaff";
 
-export const AnimeTab = ({ data }) => {
+export const AnimeTab = ({ data, categoryView }) => {
 	const [categories, setCategories] = useState({});
 
 	useEffect(() => {
 		setCategories({
-			Overview: <TabOverview data={data} />,
+			Overview: <TabOverview data={data} categoryView={categoryView} />,
 			Characters: <TabCharacter />,
 			Staff: <TabStaff />,
 			Related: <h1 className="text-black">Reviews</h1>,
 		});
-	}, [data]);
+	}, [data, categoryView]);
 
 	return (
 		<Tab.Group>
@@ -38,9 +38,9 @@ export const AnimeTab = ({ data }) => {
 				))}
 			</Tab.List>
 			<Tab.Panels className="">
-				{Object.values(categories).map((posts, idx) => (
-					<Tab.Panel key={idx} className={``}>
-						<div>{posts}</div>
+				{Object.values(categories).map((tab, index) => (
+					<Tab.Panel key={index} className={``}>
+						<div>{tab}</div>
 					</Tab.Panel>
 				))}
 			</Tab.Panels>

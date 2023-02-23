@@ -13,9 +13,12 @@ import AnimeSkeleton from "@/components/skeleton/animeSkeleton";
 
 export default function Anime({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);
+	const [categoryView, setCategoryView] = useState("");
+
 	useEffect(() => {
+		setCategoryView(localStorage.getItem("categoryView") ?? "grid");
 		setIsLoading(false);
-	}, [data]);
+	}, []);
 
 	if (isError || _.isEmpty(data)) {
 		return (
@@ -52,7 +55,11 @@ export default function Anime({ data, isError }) {
 			<div className="flex flex-col w-full h-full">
 				<AnimeBanner src={data.bannerImage} name={data.title.userPreferred} />
 				<div className="flex items-center justify-end px-2 py-1">
-					<Icon home={true} />
+					<Icon
+						home={true}
+						categoryView={categoryView}
+						setCategoryView={setCategoryView}
+					/>
 				</div>
 				<AnimePoster
 					src={data.coverImage.large}
@@ -60,7 +67,7 @@ export default function Anime({ data, isError }) {
 					description={data.description}
 					color={data.coverImage.color}
 				/>
-				<AnimeTab data={data} />
+				<AnimeTab data={data} categoryView={categoryView} />
 			</div>
 		</div>
 	);

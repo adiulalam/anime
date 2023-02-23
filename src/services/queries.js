@@ -465,24 +465,32 @@ export const getAnimePage = gql`
 							title {
 								userPreferred
 							}
+							format
+							averageScore
+							episodes
+							status
+							seasonYear
+							season
+							duration
+							description
+							genres
+							startDate {
+								year
+							}
 							coverImage {
 								large
 								color
 							}
-							averageScore
-							episodes
-							genres
-							format
-							status
-							seasonYear
-							startDate {
-								year
-							}
-							season
 							nextAiringEpisode {
 								id
 								episode
 								timeUntilAiring
+							}
+							studios(isMain: true) {
+								nodes {
+									id
+									name
+								}
 							}
 						}
 					}
@@ -553,6 +561,56 @@ export const getStaffPage = gql`
 						language: languageV2
 						image {
 							large
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+export const getRelatedPage = gql`
+	query getRelatedPage($id: Int) {
+		media: Media(id: $id) {
+			relations {
+				pageInfo {
+					total
+					perPage
+					currentPage
+					hasNextPage
+				}
+				edges {
+					node {
+						id
+						title {
+							userPreferred
+						}
+						format
+						averageScore
+						episodes
+						status
+						seasonYear
+						season
+						duration
+						description
+						genres
+						startDate {
+							year
+						}
+						coverImage {
+							large
+							color
+						}
+						nextAiringEpisode {
+							id
+							episode
+							timeUntilAiring
+						}
+						studios(isMain: true) {
+							nodes {
+								id
+								name
+							}
 						}
 					}
 				}

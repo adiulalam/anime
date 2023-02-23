@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { CarouselCard } from "../carousel/carouselCard";
+import CategoryCover from "../category/categoryCover";
+import CategoryGrid from "../category/categoryGrid";
+import CategoryTable from "../category/categoryTable";
 
-export const AnimeRecommendation = ({ data, label }) => {
+export const AnimeRecommendation = ({ data, label, categoryView }) => {
 	const boxWidth = useRef(null);
 
 	return (
@@ -14,13 +17,31 @@ export const AnimeRecommendation = ({ data, label }) => {
 				className="flex flex-row flex-wrap items-center justify-evenly h-auto w-full gap-y-4"
 				ref={boxWidth}
 			>
-				{data?.map((element, index) => (
-					<CarouselCard
-						key={index}
-						cardData={element?.mediaRecommendation}
-						boxWidth={boxWidth}
+				{categoryView === "cover" ? (
+					<CategoryCover
+						data={data}
+						accessorKey={true}
+						childAccessorKey={true}
+						childAccessorValue={"mediaRecommendation"}
+						accessorValue={null}
 					/>
-				))}
+				) : categoryView === "table" ? (
+					<CategoryTable
+						data={data}
+						accessorKey={true}
+						childAccessorKey={true}
+						childAccessorValue={"mediaRecommendation"}
+						accessorValue={null}
+					/>
+				) : (
+					<CategoryGrid
+						data={data}
+						accessorKey={true}
+						childAccessorKey={true}
+						childAccessorValue={"mediaRecommendation"}
+						accessorValue={null}
+					/>
+				)}
 			</div>
 		</div>
 	);

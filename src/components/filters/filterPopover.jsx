@@ -69,9 +69,7 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 													filterValue={filterValue}
 													setFilterValue={setFilterValue}
 												/>
-											) : (
-												<></>
-											))
+											) : null)
 									)}
 								</div>
 							</div>

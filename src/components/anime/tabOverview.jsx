@@ -3,7 +3,7 @@ import { TabOverviewInfo } from "./tabOverviewInfo";
 import { AnimeRecommendation } from "./animeRecommendation";
 import { TabOverviewList } from "./tabOverviewList";
 
-export const TabOverview = ({ data }) => {
+export const TabOverview = ({ data, categoryView }) => {
 	return (
 		<div className="flex flex-col flex-wrap w-full h-full gap-6 text-center items-center justify-evenly p-1">
 			<TabOverviewInfo data={data} />
@@ -18,7 +18,11 @@ export const TabOverview = ({ data }) => {
 
 			<TabOverviewList data={data?.genres} label={"Genre"} link={true} />
 
-			<AnimeRecommendation data={data?.recommendations?.nodes} label={"Recommendation"} />
+			<AnimeRecommendation
+				data={data?.recommendations?.nodes}
+				label={"Recommendation"}
+				categoryView={categoryView}
+			/>
 
 			<TabOverviewList data={data?.tags} label={"Tags"} link={true} tags={true} />
 		</div>
