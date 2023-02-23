@@ -31,12 +31,14 @@ export const AnimeCharacterCard = ({ data, showDual = false, label, hideBorder =
 							</div>
 							<div className="flex flex-col flex-wrap h-full w-full text-ellipsis overflow-hidden text-start ml-1">
 								<div className="flex h-1/2 w-full">
-									<p className="text-sm font-medium ">
+									<p className="text-sm font-medium h-auto max-h-full overflow-auto">
 										{element.node.name.userPreferred}
 									</p>
 								</div>
 								<div className="flex h-1/2 w-full items-end">
-									<p className="text-xs">{element.role}</p>
+									<p className="text-xs h-auto max-h-full overflow-auto">
+										{element.role}
+									</p>
 								</div>
 							</div>
 						</div>
@@ -44,12 +46,12 @@ export const AnimeCharacterCard = ({ data, showDual = false, label, hideBorder =
 							<div className="flex flex-row relative justify-end h-full w-1/2 overflow-none z-1">
 								<div className="flex flex-col flex-wrap h-full w-full text-ellipsis overflow-hidden text-end mr-1">
 									<div className="flex h-1/2 w-full justify-end">
-										<p className="text-sm font-medium">
+										<p className="text-sm font-medium h-auto max-h-full overflow-auto">
 											{element?.voiceActors?.[0]?.name?.userPreferred}
 										</p>
 									</div>
 									<div className="flex h-1/2 w-full justify-end items-end">
-										<p className="text-xs">
+										<p className="text-xs h-auto max-h-full overflow-auto">
 											{element?.voiceActors?.[0]?.language}
 										</p>
 									</div>
