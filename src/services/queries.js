@@ -530,3 +530,33 @@ export const getCharacterPage = gql`
 		}
 	}
 `;
+
+export const getStaffPage = gql`
+	query getStaffPage($id: Int, $page: Int) {
+		media: Media(id: $id) {
+			staff(page: $page, sort: [RELEVANCE, ID]) {
+				pageInfo {
+					total
+					perPage
+					currentPage
+					lastPage
+					hasNextPage
+				}
+				edges {
+					id
+					role
+					node {
+						id
+						name {
+							userPreferred
+						}
+						language: languageV2
+						image {
+							large
+						}
+					}
+				}
+			}
+		}
+	}
+`;

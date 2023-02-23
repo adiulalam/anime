@@ -28,7 +28,7 @@ export const TabCharacter = () => {
 	if (loading) {
 		return (
 			<>
-				<AnimeCardSkeleton />
+				<AnimeCardSkeleton banner={true} />
 			</>
 		);
 	}
