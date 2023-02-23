@@ -40,12 +40,12 @@ export const formatMap = {
 	TV_SHORT: "Short",
 	MOVIE: "Movie",
 	SPECIAL: "Special",
-	OVA: 'OVA',
-	ONA: 'ONA',
-	MUSIC: 'Music',
-	MANGA: 'Manga',
-	NOVEL: 'Novel',
-	ONE_SHOT: 'One Shot'
+	OVA: "OVA",
+	ONA: "ONA",
+	MUSIC: "Music",
+	MANGA: "Manga",
+	NOVEL: "Novel",
+	ONE_SHOT: "One Shot",
 };
 
 export const carouselMap = {
@@ -592,5 +592,34 @@ export const filterMap = {
 		type: "autocomplete",
 		advanced: true,
 		label: "Sort:",
+	},
+	language: {
+		filterArrayKeys: [
+			"JAPANESE",
+			"ENGLISH",
+			"KOREAN",
+			"ITALIAN",
+			"SPANISH",
+			"PORTUGUESE",
+			"FRENCH",
+			"GERMAN",
+			"HEBREW",
+			"HUNGARIAN",
+		],
+		filterArrayMap: {
+			JAPANESE: "Japanese",
+			ENGLISH: "English",
+			KOREAN: "Korean",
+			ITALIAN: "Italian",
+			SPANISH: "Spanish",
+			PORTUGUESE: "Portuguese",
+			FRENCH: "French",
+			GERMAN: "German",
+			HEBREW: "Hebrew",
+			HUNGARIAN: "Hungarian",
+		},
+		type: "select",
+		advanced: false,
+		label: "",
 	},
 };

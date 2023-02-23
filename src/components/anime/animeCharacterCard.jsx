@@ -5,8 +5,7 @@ export const AnimeCharacterCard = ({ data, showDual = false, label, hideBorder =
 		<div
 			className={`${
 				hideBorder ? "" : "border-2 border-black dark:border-white"
-			} flex flex-col w-full rounded-xl  bg-white 
-		dark:bg-black items-center justify-center`}
+			} flex flex-col w-full rounded-xl bg-white dark:bg-black items-center justify-center`}
 		>
 			<p className="text-black dark:text-white text-xl font-medium p-2">{label}</p>
 			<div

@@ -6,6 +6,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import _ from "lodash";
 import cleanDeep from "clean-deep";
+import { FilterAutocomplete } from "../filters/filterAutocomplete";
+import CardSkeleton from "../skeleton/cardSkeleton";
+import AnimeCardSkeleton from "../skeleton/animeCardSkeleton";
 
 export const TabCharacter = () => {
 	const router = useRouter();
@@ -22,7 +25,13 @@ export const TabCharacter = () => {
 		!_.isEmpty(characterVariables) && searchQuery(cleanDeep(characterVariables));
 	}, [characterVariables, searchQuery]);
 
-	console.log("🚀 ~ file: tabCharacter.jsx:20 ~ TabCharacter ~ data:", data);
+	if (loading) {
+		return (
+			<>
+				<AnimeCardSkeleton />
+			</>
+		);
+	}
 
 	const fetchMoreData = () => {
 		fetchMore({
@@ -49,13 +58,23 @@ export const TabCharacter = () => {
 
 	return (
 		<div>
+			<div className="flex flex-row items-center justify-end w-full bg-black dark:bg-white p-2 rounded-lg gap-2">
+				<label className="text-white dark:text-black text-sm sm:text-base font-medium">
+					Language:
+				</label>
+				<FilterAutocomplete
+					filterValue={characterVariables}
+					setFilterValue={setCharacterVariables}
+					filterKey={"language"}
+				/>
+			</div>
 			<InfiniteScroll
 				dataLength={
 					data?.media.characters.edges ? data?.media?.characters?.edges?.length : 0
 				}
 				next={() => fetchMoreData()}
 				hasMore={data?.media?.characters?.pageInfo?.hasNextPage}
-				loader={<p>loading...</p>}
+				loader={<CardSkeleton showOverflow={false} />}
 			>
 				<AnimeCharacterCard
 					data={data?.media?.characters?.edges}
