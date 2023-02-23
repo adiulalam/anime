@@ -1,8 +1,8 @@
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { useEffect, useLayoutEffect, useState } from "react";
-import TableSkeleton from "./tableSkeleton";
+import { TableSkeleton } from "./tableSkeleton";
 
-const CategoryTableSkeleton = ({ showOverflow = true }) => {
+export const CategoryTableSkeleton = ({ showOverflow = true }) => {
 	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
@@ -27,5 +27,3 @@ const CategoryTableSkeleton = ({ showOverflow = true }) => {
 		</div>
 	);
 };
-
-export default CategoryTableSkeleton;

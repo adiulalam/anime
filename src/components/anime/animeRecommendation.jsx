@@ -1,8 +1,7 @@
 import { useRef } from "react";
-import { CarouselCard } from "../carousel/carouselCard";
-import CategoryCover from "../category/categoryCover";
-import CategoryGrid from "../category/categoryGrid";
-import CategoryTable from "../category/categoryTable";
+import { CategoryCover } from "../category/categoryCover";
+import { CategoryGrid } from "../category/categoryGrid";
+import { CategoryTable } from "../category/categoryTable";
 
 export const AnimeRecommendation = ({ data, label, categoryView }) => {
 	const boxWidth = useRef(null);

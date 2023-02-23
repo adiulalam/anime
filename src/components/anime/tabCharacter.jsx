@@ -7,8 +7,8 @@ import { AnimeCharacterCard } from "./animeCharacterCard";
 import _ from "lodash";
 import cleanDeep from "clean-deep";
 import { FilterAutocomplete } from "../filters/filterAutocomplete";
-import CardSkeleton from "../skeleton/cardSkeleton";
-import AnimeCardSkeleton from "../skeleton/animeCardSkeleton";
+import { CardSkeleton } from "../skeleton/cardSkeleton";
+import { AnimeCardSkeleton } from "../skeleton/animeCardSkeleton";
 
 export const TabCharacter = () => {
 	const router = useRouter();

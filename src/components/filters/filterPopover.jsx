@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
 import { FilterSlider } from "./filterSlider";
-import FilterToggle from "./filterToggle";
+import { FilterToggle } from "./filterToggle";
 import { filterMap } from "@/utils/constMap";
 
 // todo add remove all text/array from autocomplete

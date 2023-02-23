@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { TfiViewListAlt as TableFilled } from "react-icons/tfi";
 import { FaThList as Table, FaHome as Home } from "react-icons/fa";
-import Switcher from "../switcher";
+import { Switcher } from "../switcher";
 import Link from "next/link";
 
 export const Icon = ({ categoryView, setCategoryView, home = false, darkMode = true }) => {

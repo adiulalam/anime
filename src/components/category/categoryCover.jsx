@@ -1,7 +1,7 @@
 import { CarouselCard } from "../carousel/carouselCard";
 import { useRef } from "react";
 
-const CategoryCover = ({
+export const CategoryCover = ({
 	data,
 	accessorKey = false,
 	accessorValue = "",
@@ -28,5 +28,3 @@ const CategoryCover = ({
 		</div>
 	);
 };
-
-export default CategoryCover;

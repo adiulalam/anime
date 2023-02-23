@@ -1,8 +1,8 @@
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { useEffect, useLayoutEffect, useState } from "react";
-import CoverSkeleton from "./coverSkeleton";
+import { CoverSkeleton } from "./coverSkeleton";
 
-const CategoryCoverSkeleton = ({ showOverflow = true }) => {
+export const CategoryCoverSkeleton = ({ showOverflow = true }) => {
 	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
@@ -27,5 +27,3 @@ const CategoryCoverSkeleton = ({ showOverflow = true }) => {
 		</div>
 	);
 };
-
-export default CategoryCoverSkeleton;

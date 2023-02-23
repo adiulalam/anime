@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import _ from "lodash";
-import CardSkeleton from "../skeleton/cardSkeleton";
-import AnimeCardSkeleton from "../skeleton/animeCardSkeleton";
+import { CardSkeleton } from "../skeleton/cardSkeleton";
+import { AnimeCardSkeleton } from "../skeleton/animeCardSkeleton";
 
 export const TabStaff = () => {
 	const router = useRouter();

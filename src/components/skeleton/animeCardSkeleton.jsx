@@ -2,9 +2,9 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { useEffect, useLayoutEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import CardSkeleton from "./cardSkeleton";
+import { CardSkeleton } from "./cardSkeleton";
 
-const AnimeCardSkeleton = ({ showOverflow = true, banner = false }) => {
+export const AnimeCardSkeleton = ({ showOverflow = true, banner = false }) => {
 	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
@@ -38,5 +38,3 @@ const AnimeCardSkeleton = ({ showOverflow = true, banner = false }) => {
 		</div>
 	);
 };
-
-export default AnimeCardSkeleton;

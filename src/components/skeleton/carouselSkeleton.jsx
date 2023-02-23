@@ -2,9 +2,9 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
-import CoverSkeleton from "./coverSkeleton";
+import { CoverSkeleton } from "./coverSkeleton";
 
-const CarouselSkeleton = () => {
+export const CarouselSkeleton = () => {
 	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
@@ -30,5 +30,3 @@ const CarouselSkeleton = () => {
 		</div>
 	);
 };
-
-export default CarouselSkeleton;

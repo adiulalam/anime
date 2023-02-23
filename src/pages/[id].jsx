@@ -9,7 +9,7 @@ import { getAnimePage } from "@/services/queries";
 import _ from "lodash";
 import Head from "next/head";
 import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
-import AnimeSkeleton from "@/components/skeleton/animeSkeleton";
+import { AnimeSkeleton } from "@/components/skeleton/animeSkeleton";
 
 export default function Anime({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);

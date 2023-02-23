@@ -3,15 +3,15 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import InfiniteScroll from "react-infinite-scroll-component";
 import _ from "lodash";
-import CategoryCover from "../category/categoryCover";
-import CategoryTable from "../category/categoryTable";
-import CategoryGrid from "../category/categoryGrid";
-import CategoryCoverSkeleton from "../skeleton/categoryCoverSkeleton";
-import CategoryTableSkeleton from "../skeleton/categoryTableSkeleton";
-import CategoryGridSkeleton from "../skeleton/categoryGridSkeleton";
-import CoverSkeleton from "../skeleton/coverSkeleton";
-import TableSkeleton from "../skeleton/tableSkeleton";
-import GridSkeleton from "../skeleton/gridSkeleton";
+import { CategoryCover } from "../category/categoryCover";
+import { CategoryTable } from "../category/categoryTable";
+import { CategoryGrid } from "../category/categoryGrid";
+import { CategoryCoverSkeleton } from "../skeleton/categoryCoverSkeleton";
+import { CategoryTableSkeleton } from "../skeleton/categoryTableSkeleton";
+import { CategoryGridSkeleton } from "../skeleton/categoryGridSkeleton";
+import { CoverSkeleton } from "../skeleton/coverSkeleton";
+import { TableSkeleton } from "../skeleton/tableSkeleton";
+import { GridSkeleton } from "../skeleton/gridSkeleton";
 
 export const TabRecommended = ({ categoryView }) => {
 	const router = useRouter();

@@ -1,8 +1,8 @@
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { useEffect, useLayoutEffect, useState } from "react";
-import GridSkeleton from "./gridSkeleton";
+import { GridSkeleton } from "./gridSkeleton";
 
-const CategoryGridSkeleton = ({ showOverflow = true }) => {
+export const CategoryGridSkeleton = ({ showOverflow = true }) => {
 	const { height } = useWindowDimensions();
 	const [numCarousel, setNumCarousel] = useState(0);
 
@@ -27,5 +27,3 @@ const CategoryGridSkeleton = ({ showOverflow = true }) => {
 		</div>
 	);
 };
-
-export default CategoryGridSkeleton;

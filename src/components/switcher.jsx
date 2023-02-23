@@ -1,7 +1,7 @@
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useTheme } from "next-themes";
 
-export default function Switcher() {
+export const Switcher = () => {
 	const { theme, setTheme } = useTheme();
 
 	const toggleDarkMode = (checked) => {
@@ -15,4 +15,4 @@ export default function Switcher() {
 			size={20}
 		/>
 	);
-}
+};

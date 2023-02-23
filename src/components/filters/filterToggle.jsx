@@ -1,7 +1,7 @@
 import { Switch } from "@headlessui/react";
 import { filterMap } from "@/utils/constMap";
 
-const FilterToggle = ({ enableAdvanced, setEnableAdvanced, filterKey }) => {
+export const FilterToggle = ({ enableAdvanced, setEnableAdvanced, filterKey }) => {
 	const { label, overrideClass } = filterMap[filterKey];
 	return (
 		<div className={`flex flex-col ${overrideClass}`}>
@@ -29,5 +29,3 @@ const FilterToggle = ({ enableAdvanced, setEnableAdvanced, filterKey }) => {
 		</div>
 	);
 };
-
-export default FilterToggle;

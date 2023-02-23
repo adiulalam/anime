@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useLayoutEffect, useState } from "react";
 
-const CoverSkeleton = ({ showOverflow = true }) => {
+export const CoverSkeleton = ({ showOverflow = true }) => {
 	const { width } = useWindowDimensions();
 
 	const [numCard, setNumCard] = useState(0);
@@ -33,5 +33,3 @@ const CoverSkeleton = ({ showOverflow = true }) => {
 		</div>
 	);
 };
-
-export default CoverSkeleton;

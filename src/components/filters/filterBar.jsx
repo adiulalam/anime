@@ -5,7 +5,7 @@ import { getFilterResults } from "@/services/queries";
 import { FilterPopover } from "./filterPopover";
 import cleanDeep from "clean-deep";
 
-const Filter = () => {
+export const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 	const [filterValue, setFilterValue] = useState({
 		type: "ANIME",
@@ -45,5 +45,3 @@ const Filter = () => {
 		</div>
 	);
 };
-
-export default Filter;

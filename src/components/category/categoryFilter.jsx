@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FilterPopover } from "../filters/filterPopover";
 import _ from "lodash";
 
-const CategoryFilter = ({ data, loading, searchQuery }) => {
+export const CategoryFilter = ({ data, loading, searchQuery }) => {
 	const router = useRouter();
 
 	const [filterValue, setFilterValue] = useState({});
@@ -49,5 +49,3 @@ const CategoryFilter = ({ data, loading, searchQuery }) => {
 		/>
 	);
 };
-
-export default CategoryFilter;

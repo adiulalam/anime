@@ -1,7 +1,7 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const TableSkeleton = () => {
+export const TableSkeleton = () => {
 	return (
 		<div
 			className="flex flex-col flex-wrap overflow-hidden items-center justify-evenly gap-2 h-28 w-full 
@@ -17,5 +17,3 @@ const TableSkeleton = () => {
 		</div>
 	);
 };
-
-export default TableSkeleton;

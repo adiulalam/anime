@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const AnimeSkeleton = () => {
+export const AnimeSkeleton = () => {
 	const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 	useIsomorphicEffect(() => {
@@ -48,5 +48,3 @@ const AnimeSkeleton = () => {
 		</div>
 	);
 };
-
-export default AnimeSkeleton;

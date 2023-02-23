@@ -1,6 +1,6 @@
 import { Grid } from "../organisms/Grid";
 
-const CategoryGrid = ({
+export const CategoryGrid = ({
 	data,
 	accessorKey = false,
 	accessorValue = "",
@@ -19,5 +19,3 @@ const CategoryGrid = ({
 		</div>
 	);
 };
-
-export default CategoryGrid;

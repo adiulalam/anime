@@ -1,6 +1,6 @@
 import { Table } from "../organisms/Table";
 
-const CategoryTable = ({
+export const CategoryTable = ({
 	data,
 	accessorKey = false,
 	accessorValue = "",
@@ -19,5 +19,3 @@ const CategoryTable = ({
 		</div>
 	);
 };
-
-export default CategoryTable;
