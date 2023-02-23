@@ -8,6 +8,8 @@ export const Season = ({
 	seasonYear,
 	startDate,
 	episodes,
+	format,
+	type,
 	containerClass = "",
 	labelClass = "",
 	countdownContainerClass = "",
@@ -51,8 +53,8 @@ export const Season = ({
 							}
 						)}`
 					)
-				) : season || seasonYear || startDate.year ? (
-					`${season ?? ""} ${seasonYear ?? startDate.year ?? ""} ${
+				) : season || seasonYear || format || type || episodes || startDate.year ? (
+					`${season ?? format ?? type ?? ""} ${seasonYear ?? startDate.year ?? ""} ${
 						episodes ? `(${episodes} Episodes)` : ""
 					}`
 				) : (

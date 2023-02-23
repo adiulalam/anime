@@ -8,6 +8,7 @@ import cleanDeep from "clean-deep";
 const Filter = () => {
 	const [search, { loading, data }] = useLazyQuery(getFilterResults);
 	const [filterValue, setFilterValue] = useState({
+		type: "ANIME",
 		search: null,
 		format: null,
 		status: null,

@@ -50,10 +50,11 @@ export const CarouselHover = ({ cardData, showRight }) => {
 				countdown={false}
 			/>
 
-			{cardData.episodes && (
+			{(cardData.episodes || cardData.format || cardData.type) && (
 				<Episode
 					episodes={cardData?.episodes}
 					format={cardData?.format}
+					type={cardData?.type}
 					containerClass={`flex w-full h-auto justify-center items-center`}
 					labelClass={`flex py-1 px-2 md:px-4 h-auto items-center justify-center bg-slate-400 dark:bg-slate-800 
 					text-black dark:text-white break-normal rounded-lg text-xs md:text-base`}

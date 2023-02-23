@@ -71,7 +71,7 @@ export const Table = ({ element }) => {
 					<div className="flex basis-2/6 md:basis-1/2 md:flex-col flex-row ">
 						{element.format && (
 							<Format
-								label={element.format}
+								label={element.format ?? element.type}
 								containerClass={`flex basis-1/2 items-center justify-center 
 										text-center`}
 								labelClass={`bg-gray-300 dark:bg-gray-600 p-1 md:p-2 rounded-lg`}

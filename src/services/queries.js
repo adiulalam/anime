@@ -243,6 +243,7 @@ export const getFilterResults = gql`
 		$search: String
 		$format: MediaFormat
 		$status: MediaStatus
+		$type: MediaType
 		$genre_in: [String]
 		$tag_in: [String]
 		$startDate_greater: FuzzyDateInt
@@ -256,8 +257,8 @@ export const getFilterResults = gql`
 				currentPage
 			}
 			media(
-				type: ANIME
 				isAdult: false
+				type: $type
 				sort: $sort
 				search: $search
 				format: $format
@@ -270,6 +271,7 @@ export const getFilterResults = gql`
 				averageScore_lesser: $averageScore_lesser
 			) {
 				id
+				type
 				title {
 					userPreferred
 				}
@@ -293,6 +295,7 @@ export const getFilterCategoryResults = gql`
 		$search: String
 		$format: MediaFormat
 		$status: MediaStatus
+		$type: MediaType
 		$genre_in: [String]
 		$tag_in: [String]
 		$startDate_greater: FuzzyDateInt
@@ -308,8 +311,8 @@ export const getFilterCategoryResults = gql`
 				hasNextPage
 			}
 			media(
-				type: ANIME
 				isAdult: false
+				type: $type
 				sort: $sort
 				search: $search
 				format: $format
@@ -322,6 +325,7 @@ export const getFilterCategoryResults = gql`
 				averageScore_lesser: $averageScore_lesser
 			) {
 				id
+				type
 				title {
 					userPreferred
 				}
@@ -366,7 +370,7 @@ export const getAnimePage = gql`
 				currentPage
 				hasNextPage
 			}
-			media(type: ANIME, isAdult: false, id: $id) {
+			media(isAdult: false, id: $id) {
 				id
 				title {
 					romaji

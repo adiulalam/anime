@@ -18,6 +18,7 @@ const CategoryFilter = ({ data, loading, searchQuery }) => {
 		const { ...rest } = router.query;
 
 		setFilterValue({
+			type: rest.search ?? "ANIME",
 			search: rest.search ?? null,
 			format: rest.format ?? null,
 			status: rest.status ?? null,

@@ -119,6 +119,16 @@ export const carouselMap = {
 };
 
 export const filterMap = {
+	type: {
+		filterArrayKeys: ["ANIME", "MANGA"],
+		filterArrayMap: {
+			ANIME: "Anime",
+			MANGA: "Manga",
+		},
+		type: "autocomplete",
+		advanced: false,
+		label: "Type:",
+	},
 	format: {
 		filterArrayKeys: ["TV", "TV_SHORT", "MOVIE", "SPECIAL", "OVA", "ONA"],
 		filterArrayMap: {
@@ -144,31 +154,6 @@ export const filterMap = {
 		type: "autocomplete",
 		advanced: false,
 		label: "Status:",
-	},
-	genre_in: {
-		filterArrayKeys: [
-			"Action",
-			"Adventure",
-			"Comedy",
-			"Drama",
-			"Ecchi",
-			"Fantasy",
-			"Horror",
-			"Mahou Shoujo",
-			"Mecha",
-			"Music",
-			"Mystery",
-			"Psychological",
-			"Romance",
-			"Sci-Fi",
-			"Slice of Life",
-			"Sports",
-			"Supernatural",
-			"Thriller",
-		],
-		type: "autocomplete",
-		advanced: false,
-		label: "Genres:",
 	},
 	season: {
 		filterArrayKeys: ["WINTER", "SPRING", "SUMMER", "FALL"],
@@ -228,6 +213,31 @@ export const filterMap = {
 		sliderMap: { minMap: "episodes_greater", maxMap: "episodes_lesser" },
 		isDate: false,
 		advanced: true,
+	},
+	genre_in: {
+		filterArrayKeys: [
+			"Action",
+			"Adventure",
+			"Comedy",
+			"Drama",
+			"Ecchi",
+			"Fantasy",
+			"Horror",
+			"Mahou Shoujo",
+			"Mecha",
+			"Music",
+			"Mystery",
+			"Psychological",
+			"Romance",
+			"Sci-Fi",
+			"Slice of Life",
+			"Sports",
+			"Supernatural",
+			"Thriller",
+		],
+		type: "autocomplete",
+		advanced: true,
+		label: "Genres:",
 	},
 	tag_in: {
 		filterArrayKeys: [

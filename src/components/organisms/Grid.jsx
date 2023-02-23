@@ -59,6 +59,8 @@ export const Grid = ({ element }) => {
 								seasonYear={element.seasonYear}
 								startDate={element.startDate}
 								episodes={element.episodes}
+								format={element.format}
+								type={element.type}
 								containerClass={`flex w-full max-h-4 sm:max-h-4 md:max-h-6 items-center justify-center`}
 								labelClass={`flex px-2 md:p-1 truncate items-center justify-center rounded-lg 
 							overflow-hidden text-base sm:text-xs md:text-lg text-center`}
