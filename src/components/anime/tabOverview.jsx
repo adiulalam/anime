@@ -1,7 +1,7 @@
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import { TabOverviewInfo } from "./tabOverviewInfo";
 import { AnimeRecommendation } from "./animeRecommendation";
-import { TabList } from "./tabList";
+import { TabOverviewList } from "./tabOverviewList";
 
 export const TabOverview = ({ data }) => {
 	return (
@@ -16,11 +16,11 @@ export const TabOverview = ({ data }) => {
 
 			<AnimeCharacterCard data={data?.staff?.edges} label={"Main Staff"} showDual={false} />
 
-			<TabList data={data?.genres} label={"Genre"} link={true} />
+			<TabOverviewList data={data?.genres} label={"Genre"} link={true} />
 
 			<AnimeRecommendation data={data?.recommendations?.nodes} label={"Recommendation"} />
 
-			<TabList data={data?.tags} label={"Tags"} link={true} tags={true} />
+			<TabOverviewList data={data?.tags} label={"Tags"} link={true} tags={true} />
 		</div>
 	);
 };

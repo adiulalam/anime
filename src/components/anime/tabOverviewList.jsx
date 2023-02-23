@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const TabList = ({ data, label, link = false, tags = false }) => {
+export const TabOverviewList = ({ data, label, link = false, tags = false }) => {
 	return (
 		<div
 			className="flex flex-col w-full rounded-xl border-2 border-black dark:border-white bg-white 
