@@ -1,7 +1,7 @@
 import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import _ from "lodash";
 import { useTheme } from "next-themes";
-import "rc-slider/assets/index.css";
 import { filterMap } from "@/utils/constMap";
 
 export const FilterSlider = ({ filterValue, setFilterValue, filterKey }) => {

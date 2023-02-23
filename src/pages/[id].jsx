@@ -1,15 +1,12 @@
-import { Icon } from "@/components/molecules/icon";
-import { useEffect, useState } from "react";
-import { AnimeBanner } from "@/components/anime/animeBanner";
-import { AnimePoster } from "@/components/anime/animePoster";
-import { AnimeTab } from "@/components/anime/animeTab";
-import { PageError } from "@/components/error";
-import { client } from "@/services/client";
-import { getAnimePage } from "@/services/queries";
-import _ from "lodash";
 import Head from "next/head";
-import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
-import { AnimeSkeleton } from "@/components/skeleton/animeSkeleton";
+import { useEffect, useState } from "react";
+import _ from "lodash";
+import { getAnimePage } from "@/services/queries";
+import { client } from "@/services/client";
+import { PageError } from "@/components/error";
+import { Icon } from "@/components/molecules";
+import { AnimeTab, AnimeBanner, AnimePoster } from "@/components/anime";
+import { AnimeSkeleton, FilterSkeleton } from "@/components/skeleton";
 
 export default function Anime({ data, isError }) {
 	const [isLoading, setIsLoading] = useState(true);

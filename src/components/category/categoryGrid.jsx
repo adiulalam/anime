@@ -1,4 +1,4 @@
-import { Grid } from "../organisms/Grid";
+import { Grid } from "../organisms";
 
 export const CategoryGrid = ({
 	data,

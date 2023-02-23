@@ -1,4 +1,4 @@
-import { Table } from "../organisms/Table";
+import { Table } from "../organisms";
 
 export const CategoryTable = ({
 	data,

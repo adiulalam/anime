@@ -1,7 +1,7 @@
 import Image from "next/image";
 import zoro from "../assets/zoro.png";
 import { Fade } from "@/utils/getAnimationStyle";
-import { Icon } from "./molecules/icon";
+import { Icon } from "./molecules";
 
 export const PageError = ({ message, statuscode }) => {
 	return (

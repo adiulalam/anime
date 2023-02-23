@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Filter } from "@/components/filters/filterBar";
+import { Filter } from "../filters";
 
 export const AnimeBanner = ({ src, name }) => {
 	return (

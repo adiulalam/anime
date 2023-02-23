@@ -1,4 +1,4 @@
-import { CarouselCard } from "../carousel/carouselCard";
+import { CarouselCard } from "../carousel";
 import { useRef } from "react";
 
 export const CategoryCover = ({

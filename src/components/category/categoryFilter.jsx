@@ -1,7 +1,7 @@
 import cleanDeep from "clean-deep";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { FilterPopover } from "../filters/filterPopover";
+import { FilterPopover } from "../filters";
 import _ from "lodash";
 
 export const CategoryFilter = ({ data, loading, searchQuery }) => {

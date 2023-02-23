@@ -3,11 +3,11 @@ import { Fragment, useState } from "react";
 import settings2 from "react-useanimations/lib/settings2";
 import UseAnimations from "react-useanimations";
 import { useTheme } from "next-themes";
+import { filterMap } from "@/utils/constMap";
 import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
 import { FilterSlider } from "./filterSlider";
 import { FilterToggle } from "./filterToggle";
-import { filterMap } from "@/utils/constMap";
 
 // todo add remove all text/array from autocomplete
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {

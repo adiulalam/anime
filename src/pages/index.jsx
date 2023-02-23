@@ -1,15 +1,14 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { CarouselBox } from "@/components/carousel/carouselBox";
 import { carouselMap } from "@/utils/constMap";
 import { getLandingPage } from "@/services/queries";
 import { client } from "@/services/client";
 import { useEffect, useState } from "react";
 import { PageError } from "@/components/error";
-import { CarouselSkeleton } from "@/components/skeleton/carouselSkeleton";
-import { Filter } from "@/components/filters/filterBar";
-import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
-import { Icon } from "@/components/molecules/icon";
+import { CarouselSkeleton, FilterSkeleton } from "@/components/skeleton";
+import { Filter } from "@/components/filters";
+import { CarouselBox } from "@/components/carousel";
+import { Icon } from "@/components/molecules";
 import Head from "next/head";
 
 export default function Home({ data, isError }) {

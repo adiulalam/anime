@@ -1,21 +1,20 @@
+import Head from "next/head";
 import { getFilterCategoryResults } from "@/services/queries";
 import { useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import _ from "lodash";
-import { CategoryFilter } from "@/components/category/categoryFilter";
-import { CategoryGrid } from "@/components/category/categoryGrid";
-import { CategoryCoverSkeleton } from "@/components/skeleton/categoryCoverSkeleton";
-import { CategoryGridSkeleton } from "@/components/skeleton/categoryGridSkeleton";
-import { FilterSkeleton } from "@/components/skeleton/filterSkeleton";
-import { CategoryCover } from "@/components/category/categoryCover";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { CategoryTable } from "@/components/category/categoryTable";
-import { CategoryTableSkeleton } from "@/components/skeleton/categoryTableSkeleton";
-import { Icon } from "@/components/molecules/icon";
-import Head from "next/head";
-import { CoverSkeleton } from "@/components/skeleton/coverSkeleton";
-import { TableSkeleton } from "@/components/skeleton/tableSkeleton";
-import { GridSkeleton } from "@/components/skeleton/gridSkeleton";
+import { Icon } from "@/components/molecules";
+import { CategoryTable, CategoryFilter, CategoryGrid, CategoryCover } from "@/components/category";
+import {
+	CoverSkeleton,
+	TableSkeleton,
+	GridSkeleton,
+	CategoryTableSkeleton,
+	CategoryCoverSkeleton,
+	CategoryGridSkeleton,
+	FilterSkeleton,
+} from "@/components/skeleton";
 
 // todo Error handling and empty data..
 export default function Categories() {

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { CarouselHover } from "./carouselHover";
 import _ from "lodash";
-import { Title } from "../molecules/title";
+import { CarouselHover } from "./carouselHover";
+import { Title } from "../molecules";
 
 export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 	const [showRight, setShowRight] = useState(false);

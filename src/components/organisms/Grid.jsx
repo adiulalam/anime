@@ -1,11 +1,7 @@
 import Image from "next/image";
 import { Gradient } from "@/utils/getAnimationStyle";
 import Link from "next/link";
-import { Title } from "../molecules/title";
-import { Score } from "../molecules/score";
-import { Season } from "../molecules/season";
-import { Genre } from "../molecules/genre";
-import { Description } from "../molecules/description";
+import { Description, Title, Score, Season, Genre } from "../molecules";
 
 export const Grid = ({ element }) => {
 	return (

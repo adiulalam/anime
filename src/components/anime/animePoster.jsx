@@ -1,7 +1,6 @@
 import { Gradient } from "@/utils/getAnimationStyle";
 import Image from "next/image";
-import { Description } from "../molecules/description";
-import { Title } from "../molecules/title";
+import { Title, Description } from "../molecules";
 
 export const AnimePoster = ({ src, name, description, color }) => {
 	return (

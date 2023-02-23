@@ -1,4 +1,4 @@
-import { CategoryCountdown } from "@/components/category/categoryCountdown";
+import { CategoryCountdown } from "../category";
 import { seasonalMap } from "@/utils/constMap";
 import humanizeDuration from "humanize-duration";
 

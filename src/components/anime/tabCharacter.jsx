@@ -6,9 +6,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import _ from "lodash";
 import cleanDeep from "clean-deep";
-import { FilterAutocomplete } from "../filters/filterAutocomplete";
-import { CardSkeleton } from "../skeleton/cardSkeleton";
-import { AnimeCardSkeleton } from "../skeleton/animeCardSkeleton";
+import { FilterAutocomplete } from "../filters";
+import { AnimeCardSkeleton, CardSkeleton } from "../skeleton";
 
 export const TabCharacter = () => {
 	const router = useRouter();
