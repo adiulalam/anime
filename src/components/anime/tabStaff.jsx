@@ -1,12 +1,9 @@
 import { getStaffPage } from "@/services/queries";
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AnimeCharacterCard } from "./animeCharacterCard";
 import _ from "lodash";
-import cleanDeep from "clean-deep";
-import { FilterAutocomplete } from "../filters/filterAutocomplete";
 import CardSkeleton from "../skeleton/cardSkeleton";
 import AnimeCardSkeleton from "../skeleton/animeCardSkeleton";
 

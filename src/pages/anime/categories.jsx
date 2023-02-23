@@ -13,6 +13,9 @@ import CategoryTable from "@/components/category/categoryTable";
 import CategoryTableSkeleton from "@/components/skeleton/categoryTableSkeleton";
 import { Icon } from "@/components/molecules/icon";
 import Head from "next/head";
+import CoverSkeleton from "@/components/skeleton/coverSkeleton";
+import TableSkeleton from "@/components/skeleton/tableSkeleton";
+import GridSkeleton from "@/components/skeleton/gridSkeleton";
 
 // todo Error handling and empty data..
 const Categories = () => {
@@ -80,11 +83,11 @@ const Categories = () => {
 					hasMore={data?.filter?.pageInfo?.hasNextPage}
 					loader={
 						categoryView === "cover" ? (
-							<CategoryCoverSkeleton showOverflow={false} />
+							<CoverSkeleton showOverflow={false} />
 						) : categoryView === "table" ? (
-							<CategoryTableSkeleton showOverflow={false} />
+							<TableSkeleton showOverflow={false} />
 						) : (
-							<CategoryGridSkeleton showOverflow={false} />
+							<GridSkeleton showOverflow={false} />
 						)
 					}
 				>

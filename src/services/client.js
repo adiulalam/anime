@@ -20,6 +20,9 @@ const cache = new InMemoryCache({
 				staff: {
 					merge: true,
 				},
+				relations: {
+					merge: true,
+				},
 			},
 		},
 	},
