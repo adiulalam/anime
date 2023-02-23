@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { formatMap } from "@/utils/constMap";
 
 export const FilterSearchList = ({ list }) => {
 	const listRef = useRef(null);
@@ -12,7 +13,7 @@ export const FilterSearchList = ({ list }) => {
 	return (
 		<li className="flex w-full h-full rounded-box bg-black dark:bg-white ">
 			<Link
-				href={`/anime/${list.id}`}
+				href={`/${list.id}`}
 				className="flex h-full w-full focus:bg-neutral-700	dark:focus:bg-neutral-300"
 			>
 				<div
@@ -32,17 +33,16 @@ export const FilterSearchList = ({ list }) => {
 								? `(${list?.startDate.year})`
 								: ""}
 						</p>
-						{list?.averageScore ? <p>• Score: {list?.averageScore}</p> : <></>}
-						{list?.status ? <p>• Status: {list?.status}</p> : <></>}
+						{list?.format ? <p>• {formatMap[list?.type] ?? list?.type}</p> : null}
+						{list?.averageScore ? <p>• Score: {list?.averageScore}</p> : null}
+						{list?.status ? <p>• Status: {list?.status}</p> : null}
 						{list?.episodes ? (
 							list?.episodes > 1 ? (
 								<p>• Episodes: {list?.episodes}</p>
 							) : (
 								<p>• {list?.format}</p>
 							)
-						) : (
-							<></>
-						)}
+						) : null}
 					</div>
 				</div>
 			</Link>

@@ -17,7 +17,7 @@ export const Genre = ({
 					<Link
 						key={i}
 						href={{
-							pathname: "/anime/categories",
+							pathname: "/categories",
 							query: { genre_in: [genre] },
 						}}
 					>

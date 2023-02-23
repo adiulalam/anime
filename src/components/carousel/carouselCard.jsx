@@ -11,7 +11,7 @@ export const CarouselCard = ({ cardData, boxWidth, slider }) => {
 	return (
 		<div className="px-2">
 			<div className="group relative">
-				<Link href={`/anime/${cardData.id}`}>
+				<Link href={`/${cardData.id}`}>
 					<div
 						className={`flex flex-col relative md:h-72 md:w-52 h-52 w-36 justify-end rounded-lg`}
 						onMouseEnter={(e) =>

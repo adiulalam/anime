@@ -18,7 +18,7 @@ export const Grid = ({ element }) => {
 				className="grid grid-cols-5 grid-rows-1 grid-flow-col w-full h-full rounded-xl"
 			>
 				<div className="col-span-2 row-span-full">
-					<Link href={`/anime/${element.id}`}>
+					<Link href={`/${element.id}`}>
 						<div className="relative w-full h-full bg-cover">
 							<Image
 								alt={element.title.userPreferred}
@@ -43,7 +43,7 @@ export const Grid = ({ element }) => {
 				<div className="flex flex-col items-center justify-between flex-wrap col-span-3 row-span-1 ">
 					<div className="flex w-full h-2/5">
 						<div className="flex flex-col items-center justify-evenly flex-wrap w-full h-full gap-1">
-							<Link href={`/anime/${element.id}`}>
+							<Link href={`/${element.id}`}>
 								<Title
 									label={element.title.userPreferred}
 									containerClass={`flex w-full max-h-12 sm:max-h-10 md:max-h-14 text-lg sm:text-sm md:text-xl 

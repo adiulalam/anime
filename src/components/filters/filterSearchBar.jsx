@@ -29,7 +29,7 @@ export const FilterSearchBar = ({
 					}
 				></input>
 			</div>
-			{router.pathname !== "/anime/categories" && (
+			{router.pathname !== "/categories" && (
 				<div className="flex w-full">
 					<ul
 						tabIndex={0}
@@ -69,7 +69,7 @@ export const FilterSearchBar = ({
 									<div className="flex items-end justify-end text-black dark:text-white">
 										<Link
 											href={{
-												pathname: "/anime/categories",
+												pathname: "/categories",
 												query: { ...cleanDeep(filterValue) },
 											}}
 										>

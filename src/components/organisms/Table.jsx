@@ -14,7 +14,7 @@ export const Table = ({ element }) => {
 			startColour={element.coverImage.color ?? "#ee7752"}
 			className="flex flex-row w-full h-28 rounded-md"
 		>
-			<Link href={`/anime/${element.id}`} className="relative w-20 h-full aspect-video">
+			<Link href={`/${element.id}`} className="relative w-20 h-full aspect-video">
 				<Image
 					alt={element.title.userPreferred}
 					fill
@@ -25,7 +25,7 @@ export const Table = ({ element }) => {
 			</Link>
 			<div className="flex flex-col flex-grow md:flex-row overflow-hidden ">
 				<div className="flex flex-col h-full w-full text-base md:text-2xl">
-					<Link href={`/anime/${element.id}`} className="flex md:h-3/5 h-12">
+					<Link href={`/${element.id}`} className="flex md:h-3/5 h-12">
 						<Title
 							label={element.title.userPreferred}
 							containerClass={`flex h-full w-full overflow-hidden items-center justify-center`}

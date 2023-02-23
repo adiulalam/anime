@@ -53,7 +53,7 @@ export const CarouselBox = ({ data, moreSettings, title, sort, filter, index }) 
 				</h2>
 				<Link
 					href={{
-						pathname: "/anime/categories",
+						pathname: "/categories",
 						query: { sort: sort, ...filter },
 					}}
 				>
