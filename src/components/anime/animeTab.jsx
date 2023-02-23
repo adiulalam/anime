@@ -4,6 +4,7 @@ import { TabOverview } from "./tabOverview";
 import { TabCharacter } from "./tabCharacter";
 import { TabStaff } from "./tabStaff";
 import { TabRelated } from "./tabRelated";
+import { TabRecommended } from "./tabRecommended";
 
 export const AnimeTab = ({ data, categoryView }) => {
 	const [categories, setCategories] = useState({});
@@ -14,6 +15,7 @@ export const AnimeTab = ({ data, categoryView }) => {
 			Characters: <TabCharacter />,
 			Staff: <TabStaff />,
 			Related: <TabRelated categoryView={categoryView} />,
+			Recommended: <TabRecommended categoryView={categoryView} />,
 		});
 	}, [data, categoryView]);
 

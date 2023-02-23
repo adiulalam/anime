@@ -618,3 +618,53 @@ export const getRelatedPage = gql`
 		}
 	}
 `;
+
+export const getRecommendedPage = gql`
+	query getRecommendedPage($id: Int) {
+		media: Media(id: $id) {
+			recommendations {
+				pageInfo {
+					total
+					perPage
+					currentPage
+					hasNextPage
+				}
+				nodes {
+					mediaRecommendation {
+						id
+						title {
+							userPreferred
+						}
+						format
+						averageScore
+						episodes
+						status
+						seasonYear
+						season
+						duration
+						description
+						genres
+						startDate {
+							year
+						}
+						coverImage {
+							large
+							color
+						}
+						nextAiringEpisode {
+							id
+							episode
+							timeUntilAiring
+						}
+						studios(isMain: true) {
+							nodes {
+								id
+								name
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;

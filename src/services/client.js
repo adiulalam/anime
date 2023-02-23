@@ -23,6 +23,9 @@ const cache = new InMemoryCache({
 				relations: {
 					merge: true,
 				},
+				recommendations: {
+					merge: true,
+				},
 			},
 		},
 	},
