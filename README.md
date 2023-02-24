@@ -14,7 +14,7 @@ Website was created using JavaScript, React, Next JS and Tailwind CSS.
 
 ### Installing
 ```
-npm run dev 
+npm run dev
 ```
 ```
 npm run build
