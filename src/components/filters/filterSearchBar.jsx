@@ -6,6 +6,7 @@ import { BsSearch } from "react-icons/bs";
 import Link from "next/link";
 import cleanDeep from "clean-deep";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export const FilterSearchBar = ({
 	searchData,
@@ -15,6 +16,7 @@ export const FilterSearchBar = ({
 	filterKey,
 }) => {
 	const router = useRouter();
+	const [showDropdown, setShowDropdown] = useState(false);
 
 	return (
 		<div className="dropdown flex flex-col h-full md:w-[40rem] w-full rounded-lg">
@@ -27,9 +29,10 @@ export const FilterSearchBar = ({
 					onChange={(e) =>
 						setFilterValue((prev) => ({ ...prev, [filterKey]: e.target.value }))
 					}
+					onFocus={() => setShowDropdown(true)}
 				></input>
 			</div>
-			{router.pathname !== "/categories" && (
+			{router.pathname !== "/categories" && showDropdown && (
 				<div className="flex w-full">
 					<ul
 						tabIndex={0}
@@ -63,7 +66,11 @@ export const FilterSearchBar = ({
 						) : (
 							<>
 								{searchData?.media?.map((element, index) => (
-									<FilterSearchList key={index} list={element} />
+									<FilterSearchList
+										key={index}
+										list={element}
+										setShowDropdown={setShowDropdown}
+									/>
 								))}
 								{searchData?.media?.length >= 5 && (
 									<div className="flex items-end justify-end text-black dark:text-white">
@@ -72,6 +79,7 @@ export const FilterSearchBar = ({
 												pathname: "/categories",
 												query: { ...cleanDeep(filterValue) },
 											}}
+											onClick={() => setShowDropdown(false)}
 										>
 											<p>See more...</p>
 										</Link>
