@@ -49,7 +49,7 @@ export default function Anime({ data, isError }) {
 			<Head>
 				<title>{data.title.userPreferred}</title>
 			</Head>
-			<div className="flex flex-col w-full h-full">
+			<div className="flex flex-col w-full h-full p-1">
 				<AnimeBanner src={data.bannerImage} name={data.title.userPreferred} />
 				<div className="flex items-center justify-end px-2 py-1">
 					<Icon
