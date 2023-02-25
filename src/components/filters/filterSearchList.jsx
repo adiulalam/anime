@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { formatMap } from "@/utils/constMap";
 
-export const FilterSearchList = ({ list }) => {
+export const FilterSearchList = ({ list, setShowDropdown }) => {
 	const listRef = useRef(null);
 	const [isScrollingText, setIsScrollingText] = useState(false);
 
@@ -15,6 +15,7 @@ export const FilterSearchList = ({ list }) => {
 			<Link
 				href={`/${list.id}`}
 				className="flex h-full w-full focus:bg-neutral-700	dark:focus:bg-neutral-300"
+				onClick={() => setShowDropdown(false)}
 			>
 				<div
 					ref={listRef}

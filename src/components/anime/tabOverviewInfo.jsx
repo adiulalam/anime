@@ -59,8 +59,8 @@ export const TabOverviewInfo = ({ data }) => {
 
 	return (
 		<div
-			className="flex flex-row flex-wrap w-full h-full gap-2  
-		text-center items-center justify-evenly rounded-xl bg-white dark:bg-black p-3 border-2 border-black dark:border-white"
+			className="flex flex-row flex-wrap w-full h-full gap-2 text-center items-center justify-evenly 
+			rounded-xl bg-white dark:bg-black p-3 border-2 border-black dark:border-white"
 		>
 			{Object.entries(overviewTabInfoMap).map(
 				([key, value], index) =>

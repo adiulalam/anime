@@ -7,14 +7,30 @@ import { PageError } from "@/components/error";
 import { Icon } from "@/components/molecules";
 import { AnimeTab, AnimeBanner, AnimePoster } from "@/components/anime";
 import { AnimeSkeleton, FilterSkeleton } from "@/components/skeleton";
+import { Router } from "next/router";
 
 export default function Anime({ data, isError }) {
-	const [isLoading, setIsLoading] = useState(true);
+	const [isNotRefreshing, setIsNotRefreshing] = useState(true);
 	const [categoryView, setCategoryView] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
+		const start = () => {
+			setIsLoading(true);
+		};
+		const end = () => {
+			setIsLoading(false);
+		};
 		setCategoryView(localStorage.getItem("categoryView") ?? "grid");
-		setIsLoading(false);
+		setIsNotRefreshing(false);
+		Router.events.on("routeChangeStart", start);
+		Router.events.on("routeChangeComplete", end);
+		Router.events.on("routeChangeError", end);
+		return () => {
+			Router.events.off("routeChangeStart", start);
+			Router.events.off("routeChangeComplete", end);
+			Router.events.off("routeChangeError", end);
+		};
 	}, []);
 
 	if (isError || _.isEmpty(data)) {
@@ -33,7 +49,7 @@ export default function Anime({ data, isError }) {
 		);
 	}
 
-	if (isLoading) {
+	if (isNotRefreshing || isLoading) {
 		return (
 			<>
 				<div className="h-28 md:h-40 bg-white dark:bg-black">
@@ -49,7 +65,7 @@ export default function Anime({ data, isError }) {
 			<Head>
 				<title>{data.title.userPreferred}</title>
 			</Head>
-			<div className="flex flex-col w-full h-full">
+			<div className="flex flex-col w-full h-full p-1">
 				<AnimeBanner src={data.bannerImage} name={data.title.userPreferred} />
 				<div className="flex items-center justify-end px-2 py-1">
 					<Icon

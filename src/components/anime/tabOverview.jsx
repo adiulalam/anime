@@ -5,7 +5,7 @@ import { TabOverviewList } from "./tabOverviewList";
 
 export const TabOverview = ({ data, categoryView }) => {
 	return (
-		<div className="flex flex-col flex-wrap w-full h-full gap-6 text-center items-center justify-evenly p-1">
+		<div className="flex flex-col flex-wrap w-full h-full gap-6 text-center items-center justify-evenly py-1">
 			<TabOverviewInfo data={data} />
 
 			<AnimeCharacterCard
