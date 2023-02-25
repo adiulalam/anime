@@ -12,7 +12,7 @@ import { FilterToggle } from "./filterToggle";
 // todo add remove all text/array from autocomplete
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {
 	const [enableAdvanced, setEnableAdvanced] = useState(false);
-	const { theme } = useTheme();
+	const { theme, systemTheme } = useTheme();
 
 	return (
 		<Popover className="relative flex h-full w-full items-center justify-center">
@@ -29,7 +29,11 @@ export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading
 						<UseAnimations
 							animation={settings2}
 							size={50}
-							strokeColor={theme === "dark" || theme === "system" ? "white" : "black"}
+							strokeColor={
+								theme === "dark" || (theme === "system" && systemTheme === "dark")
+									? "white"
+									: "black"
+							}
 						/>
 					</Popover.Button>
 					<Transition

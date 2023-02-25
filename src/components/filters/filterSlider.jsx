@@ -5,10 +5,10 @@ import { useTheme } from "next-themes";
 import { filterMap } from "@/utils/constMap";
 
 export const FilterSlider = ({ filterValue, setFilterValue, filterKey }) => {
-	const { theme } = useTheme();
+	const { theme, systemTheme } = useTheme();
 	const { min, max, interval, label, range, sliderMap, isDate } = filterMap[filterKey];
 
-	const isDarkMode = theme === "dark" || theme === "system";
+	const isDarkMode = theme === "dark" || (theme === "system" && systemTheme === "dark");
 
 	const onChangeEvent = (value) => {
 		if (range) {
