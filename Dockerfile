@@ -1,17 +1,17 @@
 FROM node:18-alpine AS base
 
-FROM base AS deps
+# Install and build in one stage so node_modules isn't copied into a second
+# layer. Copying package*.json first keeps `npm ci` cached until the lockfile
+# changes.
+FROM base AS builder
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci
+# Clean npm's download cache in the same step so it isn't saved in the layer.
+RUN npm ci && npm cache clean --force
 
-
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npm run build
