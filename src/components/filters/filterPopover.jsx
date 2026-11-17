@@ -1,13 +1,18 @@
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import dynamic from "next/dynamic";
 import settings2 from "react-useanimations/lib/settings2";
-import UseAnimations from "react-useanimations";
 import { useTheme } from "next-themes";
 import { filterMap } from "@/utils/constMap";
 import { FilterAutocomplete } from "./filterAutocomplete";
 import { FilterSearchBar } from "./filterSearchBar";
 import { FilterSlider } from "./filterSlider";
 import { FilterToggle } from "./filterToggle";
+
+const UseAnimations = dynamic(() => import("react-useanimations"), {
+	ssr: false,
+	loading: () => <span className="block h-[50px] w-[50px]" />,
+});
 
 // todo add remove all text/array from autocomplete
 export const FilterPopover = ({ searchData, filterValue, setFilterValue, loading }) => {

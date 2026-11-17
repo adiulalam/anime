@@ -1,16 +1,14 @@
 FROM node:18-alpine AS base
 
-# Install and build in one stage so node_modules isn't copied into a second
-# layer. Copying package*.json first keeps `npm ci` cached until the lockfile
-# changes.
 FROM base AS builder
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-# Clean npm's download cache in the same step so it isn't saved in the layer.
-RUN npm ci && npm cache clean --force
+RUN npm ci \
+    && rm -rf node_modules/@next/swc-linux-*-gnu \
+    && npm cache clean --force
 
 COPY . .
 

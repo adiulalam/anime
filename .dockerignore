@@ -1,21 +1,14 @@
-# Installed and built inside the image; never copy local copies in
 node_modules
 .next
 out
 build
-
-# Version control and CI
 .git
 .gitignore
 .github
-
-# Docker and deploy files aren't needed inside the build
 Dockerfile
 .dockerignore
 docker-compose*.yml
 deploy-anime.sh
-
-# Docs, logs and local-only files
 README.md
 npm-debug.log*
 yarn-debug.log*
